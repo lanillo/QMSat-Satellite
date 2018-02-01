@@ -520,8 +520,8 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x40 ./Source/Peripherals/LED.o
  .debug_ranges  0x00000000       0x30 ./Source/Peripherals/LED.o
- .debug_line    0x00000000       0xf1 ./Source/Peripherals/LED.o
- .debug_str     0x00000000      0x1c6 ./Source/Peripherals/LED.o
+ .debug_line    0x00000000       0xd2 ./Source/Peripherals/LED.o
+ .debug_str     0x00000000      0x1a7 ./Source/Peripherals/LED.o
  .comment       0x00000000       0x71 ./Source/Peripherals/LED.o
  .debug_frame   0x00000000       0xd4 ./Source/Peripherals/LED.o
  .ARM.attributes
@@ -2026,27 +2026,27 @@ OUTPUT(QMSat_Embeded.axf elf32-littlearm)
  .comment       0x00000000       0x71 ./Source/EFM32/EFM32_Timer0.o
  .comment       0x00000000       0x71 ./emlib/em_system.o
 
-.debug_line     0x00000000     0x16f3
+.debug_line     0x00000000     0x1522
  .debug_line    0x00000000       0xd3 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_line    0x000000d3      0x38b ./CMSIS/EFM32GG/system_efm32gg.o
- .debug_line    0x0000045e      0x369 ./Factory/Factory.o
- .debug_line    0x000007c7      0x1c5 ./Source/Application/InitState.o
- .debug_line    0x0000098c      0x1c5 ./Source/Application/RunState.o
- .debug_line    0x00000b51      0x177 ./Source/Application/StateManager.o
- .debug_line    0x00000cc8      0x57b ./Source/Application/main.o
- .debug_line    0x00001243      0x1a0 ./Source/EFM32/EFM32_Timer0.o
- .debug_line    0x000013e3      0x310 ./emlib/em_system.o
+ .debug_line    0x0000045e      0x30c ./Factory/Factory.o
+ .debug_line    0x0000076a      0x187 ./Source/Application/InitState.o
+ .debug_line    0x000008f1      0x187 ./Source/Application/RunState.o
+ .debug_line    0x00000a78      0x139 ./Source/Application/StateManager.o
+ .debug_line    0x00000bb1      0x4ff ./Source/Application/main.o
+ .debug_line    0x000010b0      0x162 ./Source/EFM32/EFM32_Timer0.o
+ .debug_line    0x00001212      0x310 ./emlib/em_system.o
 
-.debug_info     0x00000000     0x2fa4
- .debug_info    0x00000000      0x102 ./CMSIS/EFM32GG/startup_efm32gg.o
- .debug_info    0x00000102      0x57e ./CMSIS/EFM32GG/system_efm32gg.o
- .debug_info    0x00000680      0xac7 ./Factory/Factory.o
- .debug_info    0x00001147      0x4da ./Source/Application/InitState.o
- .debug_info    0x00001621      0x4da ./Source/Application/RunState.o
- .debug_info    0x00001afb      0x3a3 ./Source/Application/StateManager.o
- .debug_info    0x00001e9e      0xa73 ./Source/Application/main.o
- .debug_info    0x00002911      0x421 ./Source/EFM32/EFM32_Timer0.o
- .debug_info    0x00002d32      0x272 ./emlib/em_system.o
+.debug_info     0x00000000     0x2f85
+ .debug_info    0x00000000       0xe3 ./CMSIS/EFM32GG/startup_efm32gg.o
+ .debug_info    0x000000e3      0x57e ./CMSIS/EFM32GG/system_efm32gg.o
+ .debug_info    0x00000661      0xac7 ./Factory/Factory.o
+ .debug_info    0x00001128      0x4da ./Source/Application/InitState.o
+ .debug_info    0x00001602      0x4da ./Source/Application/RunState.o
+ .debug_info    0x00001adc      0x3a3 ./Source/Application/StateManager.o
+ .debug_info    0x00001e7f      0xa73 ./Source/Application/main.o
+ .debug_info    0x000028f2      0x421 ./Source/EFM32/EFM32_Timer0.o
+ .debug_info    0x00002d13      0x272 ./emlib/em_system.o
 
 .debug_abbrev   0x00000000     0x1077
  .debug_abbrev  0x00000000       0x14 ./CMSIS/EFM32GG/startup_efm32gg.o
@@ -2099,22 +2099,22 @@ OUTPUT(QMSat_Embeded.axf elf32-littlearm)
  .debug_ranges  0x00000268       0x48 ./Source/EFM32/EFM32_Timer0.o
  .debug_ranges  0x000002b0       0x18 ./emlib/em_system.o
 
-.debug_str      0x00000000      0xe45
+.debug_str      0x00000000      0xe26
  .debug_str     0x00000000      0x43e ./CMSIS/EFM32GG/system_efm32gg.o
                                 0x4c9 (size before relaxing)
- .debug_str     0x0000043e      0x5a5 ./Factory/Factory.o
-                                0x608 (size before relaxing)
- .debug_str     0x000009e3       0xb0 ./Source/Application/InitState.o
-                                0x2ed (size before relaxing)
- .debug_str     0x00000a93       0x93 ./Source/Application/RunState.o
-                                0x2e3 (size before relaxing)
- .debug_str     0x00000b26       0x68 ./Source/Application/StateManager.o
-                                0x31e (size before relaxing)
- .debug_str     0x00000b8e       0xc1 ./Source/Application/main.o
-                                0x786 (size before relaxing)
- .debug_str     0x00000c4f       0xe4 ./Source/EFM32/EFM32_Timer0.o
-                                0x348 (size before relaxing)
- .debug_str     0x00000d33      0x112 ./emlib/em_system.o
+ .debug_str     0x0000043e      0x586 ./Factory/Factory.o
+                                0x5e9 (size before relaxing)
+ .debug_str     0x000009c4       0xb0 ./Source/Application/InitState.o
+                                0x2ce (size before relaxing)
+ .debug_str     0x00000a74       0x93 ./Source/Application/RunState.o
+                                0x2c4 (size before relaxing)
+ .debug_str     0x00000b07       0x68 ./Source/Application/StateManager.o
+                                0x2ff (size before relaxing)
+ .debug_str     0x00000b6f       0xc1 ./Source/Application/main.o
+                                0x767 (size before relaxing)
+ .debug_str     0x00000c30       0xe4 ./Source/EFM32/EFM32_Timer0.o
+                                0x329 (size before relaxing)
+ .debug_str     0x00000d14      0x112 ./emlib/em_system.o
                                 0x2e4 (size before relaxing)
 
 .debug_frame    0x00000000     0x2964

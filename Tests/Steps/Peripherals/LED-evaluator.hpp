@@ -14,11 +14,12 @@ class LEDEvaluator
 {
 private:
 	LED m_LED;
+
 public:
 	LEDEvaluator();
 
 	/** @bdd a LED initialize to off state */
-	LEDTurnOFF();
+	void LEDTurnOFF();
 	
 	
 	

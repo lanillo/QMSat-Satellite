@@ -13,12 +13,13 @@
 class LED: public ILED
 {
 public:
+	LED() {};
 	LED(unsigned short p_PinNumber);
 	~LED();
 
-	void turnOFF() = 0;
-	void turnON() = 0;
-	void toggle() = 0;
+	void turnOFF();
+	void turnON();
+	void toggle();
 
 private:
 	bool m_State;

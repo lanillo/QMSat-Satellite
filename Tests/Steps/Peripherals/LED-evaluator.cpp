@@ -1,13 +1,13 @@
-#include "LED-evaluator"
+#include "LED-evaluator.hpp"
 
 LEDEvaluator::LEDEvaluator() 
 {
 	
 }
 	
-LEDEvaluator::LEDTurnOFF() 
+void LEDEvaluator::LEDTurnOFF()
 {
-	m_LED = LED();
-	m_LED.TurnOff();
+	m_LED = LED(13);
+	m_LED.turnOff();
 }
 	
