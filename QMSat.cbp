@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="QMSat" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/QMSat" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="C:/SourceTree/BDD/fw-cxxtest/cxxtest" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/QMSat" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../Include/Application/InitState.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Include/Application/RunState.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Include/Application/StateManager.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Include/EFM32/EFM32_Timer0.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Include/Interface/ILED.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Include/Interface/IState.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Include/Interface/ITimer.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Include/Peripherals/LED.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Source/Application/InitState.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Source/Application/RunState.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Source/Application/StateManager.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Source/Application/main.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Source/EFM32/EFM32_Timer0.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../Source/Peripherals/LED.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
