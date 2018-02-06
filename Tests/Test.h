@@ -1,7 +1,8 @@
 
 #include <cxxtest/TestSuite.h>
 #include "types.h"
-#include "C:\Users\guill\SimplicityStudio\v4_workspace\QMSat_Embeded\Tests\Steps\Luis.h"
+#include "C:\SourceTree\QMSat_embeded\Tests\Steps\Luis.h"
+#include "C:\SourceTree\QMSat_embeded\Tests\Steps\Peripherals\LED-evaluator.hpp"
 
 
 class Feature_MLR9488_Just_a_test : public CxxTest::TestSuite {
