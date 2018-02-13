@@ -2,7 +2,7 @@
  * LED.hpp
  *
  *  Created on: 2018-01-25
- *      Author: guillaume
+ *      Author: Guillaume
  */
 
 #ifndef INCLUDE_EF32GG_LED_HPP_
@@ -13,9 +13,9 @@
 class LED: public ILED
 {
 public:
-	LED() {};
+	LED();
 	LED(unsigned short p_PinNumber);
-	~LED();
+	~LED() {};
 
 	void turnOFF();
 	void turnON();
@@ -23,6 +23,7 @@ public:
 
 private:
 	bool m_State;
+	unsigned short m_PinNumber;
 };
 
 #endif /* INCLUDE_EF32GG_LED_HPP_ */

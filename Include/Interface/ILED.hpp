@@ -12,7 +12,7 @@ class ILED
 {
 public:
 	ILED() {};
-	virtual ~ILED();
+	virtual ~ILED() {};
 
 	virtual void turnOFF() = 0;
 	virtual void turnON() = 0;

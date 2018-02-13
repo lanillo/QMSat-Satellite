@@ -3,6 +3,7 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="QMSat" />
+		<Option platforms="Windows;" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -13,7 +14,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="C:/SourceTree/BDD/fw-cxxtest/cxxtest" />
+					<Add directory="../BDD/fw-cxxtest" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -31,49 +32,49 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="../BDD/fw-cxxtest" />
+			<Add directory="Include/Peripherals" />
+			<Add directory="Include/Interface" />
+			<Add directory="../BDD/fw-cxxtest/cxxtest" />
+			<Add directory="Include/Application" />
+			<Add directory="Tests/Steps/Peripherals" />
+			<Add directory="Include/EFM32" />
 		</Compiler>
-		<Unit filename="../Include/Application/InitState.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Include/Application/RunState.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Include/Application/StateManager.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Include/EFM32/EFM32_Timer0.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Include/Interface/ILED.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Include/Interface/IState.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Include/Interface/ITimer.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Include/Peripherals/LED.hpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Source/Application/InitState.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Source/Application/RunState.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Source/Application/StateManager.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Source/Application/main.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Source/EFM32/EFM32_Timer0.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../Source/Peripherals/LED.cpp">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/Descriptions.cpp" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/Descriptions.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/DummyDescriptions.cpp" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/DummyDescriptions.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/ErrorFormatter.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/Flags.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/LinkedList.cpp" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/LinkedList.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/RealDescriptions.cpp" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/RealDescriptions.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/Root.cpp" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestListener.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestMain.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestRunner.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestSuite.cpp" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestSuite.h" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestTracker.cpp" />
+		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestTracker.h" />
+		<Unit filename="Include/Application/InitState.hpp" />
+		<Unit filename="Include/Application/RunState.hpp" />
+		<Unit filename="Include/Application/StateManager.hpp" />
+		<Unit filename="Include/EFM32/EFM32_Timer0.hpp" />
+		<Unit filename="Include/Interface/ILED.hpp" />
+		<Unit filename="Include/Interface/IState.hpp" />
+		<Unit filename="Include/Interface/ITimer.hpp" />
+		<Unit filename="Include/Peripherals/LED.hpp" />
+		<Unit filename="Source/Application/InitState.cpp" />
+		<Unit filename="Source/Application/RunState.cpp" />
+		<Unit filename="Source/Application/StateManager.cpp" />
+		<Unit filename="Source/Peripherals/LED.cpp" />
+		<Unit filename="Tests/Steps/Luis.h" />
+		<Unit filename="Tests/Steps/Peripherals/LED-evaluator.cpp" />
+		<Unit filename="Tests/Steps/Peripherals/LED-evaluator.hpp" />
+		<Unit filename="Tests/Test.h" />
+		<Unit filename="Tests/runner.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

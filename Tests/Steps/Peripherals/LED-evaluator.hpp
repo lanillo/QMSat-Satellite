@@ -17,12 +17,16 @@ private:
 
 public:
 	LEDEvaluator();
+	~LEDEvaluator() {};
 
 	/** @bdd a LED initialize to off state */
 	void LEDTurnOFF();
-	
-	
-	
+
+	/** @bdd the LED works */
+	bool verifyLED();
+
+
+
 };
 
 #endif /* LED_EVALUATOR_HPP_ */

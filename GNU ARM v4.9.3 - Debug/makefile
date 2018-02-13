@@ -8,6 +8,11 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include obj/Debug/QMSat_embeded/Tests/Steps/Peripherals/subdir.mk
+-include obj/Debug/QMSat_embeded/Tests/subdir.mk
+-include obj/Debug/QMSat_embeded/Source/Peripherals/subdir.mk
+-include obj/Debug/QMSat_embeded/Source/Application/subdir.mk
+-include obj/Debug/BDD/fw-cxxtest/cxxtest/subdir.mk
 -include emlib/subdir.mk
 -include Source/Peripherals/subdir.mk
 -include Source/EFM32/subdir.mk

@@ -31,4 +31,9 @@ Source/Application \
 Source/EFM32 \
 Source/Peripherals \
 emlib \
+obj/Debug/BDD/fw-cxxtest/cxxtest \
+obj/Debug/QMSat_embeded/Source/Application \
+obj/Debug/QMSat_embeded/Source/Peripherals \
+obj/Debug/QMSat_embeded/Tests/Steps/Peripherals \
+obj/Debug/QMSat_embeded/Tests \
 
