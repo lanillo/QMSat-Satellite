@@ -66,6 +66,7 @@ Source/Application/main.o: ../Source/Application/main.cpp \
  C:\SourceTree\QMSat_embeded\Include\Application/RunState.hpp \
  C:\SourceTree\QMSat_embeded\Include\EFM32/EFM32_Timer0.hpp \
  C:\SourceTree\QMSat_embeded\Include\Interface/ITimer.hpp \
+ C:\SourceTree\QMSat_embeded\Factory/Constants.hpp \
  C:\SourceTree\QMSat_embeded\Factory/Callback.hpp
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\em_device.h:
@@ -201,5 +202,7 @@ C:\SourceTree\QMSat_embeded\Include\Application/RunState.hpp:
 C:\SourceTree\QMSat_embeded\Include\EFM32/EFM32_Timer0.hpp:
 
 C:\SourceTree\QMSat_embeded\Include\Interface/ITimer.hpp:
+
+C:\SourceTree\QMSat_embeded\Factory/Constants.hpp:
 
 C:\SourceTree\QMSat_embeded\Factory/Callback.hpp:

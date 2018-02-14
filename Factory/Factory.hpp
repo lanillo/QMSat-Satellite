@@ -30,11 +30,11 @@ private:
 	/**** Timer0 ****/
 	EFM32_Timer0 m_Timer0;
 	bool m_Timer0Created;
-	void createTimer0();
 
 public:
 	Factory();
 	StateManager* createStateManager();
+	EFM32_Timer0* createTimer0();
 };
 
 

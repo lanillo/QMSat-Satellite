@@ -14,7 +14,6 @@
 class LED: public ILED
 {
 public:
-	LED();
 	LED(IGPIO* p_GPIO);
 	~LED() {};
 

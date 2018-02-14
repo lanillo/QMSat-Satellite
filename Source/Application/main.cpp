@@ -6,16 +6,20 @@
 
 int main(void)
 {
-  /* Chip errata */
+	/* Chip errata */
 
-  CMU->HFPERCLKEN0 = (1 << 13) | (1 << 5); // Enable GPIO and Timer0 peripheral clocks
+	CMU->HFRCOCTRL = 0x8;                         // Set High Freq. RC Osc. to 1 MHz
+    CMU->HFPERCLKEN0 = (1 << 13) | (1 << 5);      // Enable GPIO and Timer0 peripheral clocks
 
-  Factory factory = Factory();
-  StateManager* stateManager = factory.createStateManager();
+    Factory factory = Factory();
+    StateManager* stateManager = factory.createStateManager();
+    EFM32_Timer0* timer0 = factory.createTimer0();
 
-  /* Infinite loop */
-  while (true)
-  {
-	  stateManager->execute();
-  }
+    initTimer0();
+
+    /* Infinite loop */
+    while (true)
+    {
+    	stateManager->execute();
+    }
 }
