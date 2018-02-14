@@ -40,6 +40,9 @@
 			<Add directory="Tests/Steps/Peripherals" />
 			<Add directory="Include/EFM32" />
 		</Compiler>
+		<ExtraCommands>
+			<Add before="TestGeneration.bat" />
+		</ExtraCommands>
 		<Unit filename="../BDD/fw-cxxtest/cxxtest/Descriptions.cpp" />
 		<Unit filename="../BDD/fw-cxxtest/cxxtest/Descriptions.h" />
 		<Unit filename="../BDD/fw-cxxtest/cxxtest/DummyDescriptions.cpp" />

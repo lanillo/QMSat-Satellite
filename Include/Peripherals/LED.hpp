@@ -9,12 +9,13 @@
 #define INCLUDE_EF32GG_LED_HPP_
 
 #include "ILED.hpp"
+#include "IGPIO.hpp"
 
 class LED: public ILED
 {
 public:
 	LED();
-	LED(unsigned short p_PinNumber);
+	LED(IGPIO* p_GPIO);
 	~LED() {};
 
 	void turnOFF();
@@ -23,7 +24,7 @@ public:
 
 private:
 	bool m_State;
-	unsigned short m_PinNumber;
+	IGPIO* m_GPIO;
 };
 
 #endif /* INCLUDE_EF32GG_LED_HPP_ */

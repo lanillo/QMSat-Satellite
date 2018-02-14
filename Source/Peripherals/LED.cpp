@@ -14,10 +14,10 @@ LED::LED()
 }
 
 /****************************************************/
-LED::LED(unsigned short p_PinNumber)
+LED::LED(IGPIO* p_GPIO)
 {
-    m_PinNumber = p_PinNumber;
-	m_State = false;
+	m_GPIO = p_GPIO;
+	turnOFF();
 }
 
 /****************************************************/
