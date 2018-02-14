@@ -54,7 +54,7 @@ all: QMSat_Embeded.axf
 QMSat_Embeded.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM C++ Linker'
-	arm-none-eabi-g++ -g -gdwarf-2 -mcpu=cortex-m3 -mthumb -T "QMSat_Embeded.ld" --specs=nosys.specs -Xlinker --gc-sections -Xlinker -Map="QMSat_Embeded.map" --specs=nano.specs -o QMSat_Embeded.axf "./CMSIS/EFM32GG/startup_efm32gg.o" "./CMSIS/EFM32GG/system_efm32gg.o" "./Factory/Factory.o" "./Source/Application/InitState.o" "./Source/Application/RunState.o" "./Source/Application/StateManager.o" "./Source/Application/main.o" "./Source/EFM32/EFM32_GPIO.o" "./Source/EFM32/EFM32_Timer0.o" "./Source/Peripherals/Constants.o" "./Source/Peripherals/LED.o" "./emlib/em_system.o" -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
+	arm-none-eabi-g++ -g -gdwarf-2 -mcpu=cortex-m3 -mthumb -T "QMSat_Embeded.ld" --specs=nosys.specs -Xlinker --gc-sections -Xlinker -Map="QMSat_Embeded.map" --specs=nano.specs -o QMSat_Embeded.axf "./CMSIS/EFM32GG/startup_efm32gg.o" "./CMSIS/EFM32GG/system_efm32gg.o" "./Factory/Constants.o" "./Factory/Factory.o" "./Source/Application/InitState.o" "./Source/Application/RunState.o" "./Source/Application/StateManager.o" "./Source/Application/main.o" "./Source/EFM32/EFM32_GPIO.o" "./Source/EFM32/EFM32_Timer0.o" "./Source/Peripherals/LED.o" "./emlib/em_system.o" -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

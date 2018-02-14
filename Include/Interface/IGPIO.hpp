@@ -13,18 +13,6 @@
 #ifndef INCLUDE_INTERFACE_IGPIO_HPP_
 #define INCLUDE_INTERFACE_IGPIO_HPP_
 
-<<<<<<< HEAD
-
-class IGPIO
-{
-public:
-
-	IGPIO() {};
-	virtual ~IGPIO() {};
-};
-
-
-=======
 class IGPIO
 {
 public:
@@ -36,9 +24,4 @@ public:
 	virtual void toggle() = 0;
 };
 
-
-
-
-
->>>>>>> GPIO
 #endif /* INCLUDE_INTERFACE_IGPIO_HPP_ */
