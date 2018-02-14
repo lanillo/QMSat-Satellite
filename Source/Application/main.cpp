@@ -16,6 +16,7 @@ int main(void)
     EFM32_Timer0* timer0 = factory.createTimer0();
 
     initTimer0();
+    timer0->start();
 
     /* Infinite loop */
     while (true)
