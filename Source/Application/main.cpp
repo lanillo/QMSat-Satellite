@@ -4,6 +4,8 @@
 #include "Factory.hpp"
 #include "Constants.hpp"
 
+#include "EFM32_GPIO.hpp"
+
 #define LED_PORT E
 #define BUTTON_PORT B
 #define LED0 2
@@ -18,15 +20,14 @@ int main(void)
 	CMU->HFPERCLKEN0 = (1 << 13);
 
 	// Instantiate constants class
-	Constants C = new Constants();
+	Constants C;
 
 	Factory factory = Factory();
 	StateManager* stateManager = factory.createStateManager();
 
+	EFM32_GPIO E2 = EFM32_GPIO(2, C.E);
+	EFM32_GPIO E2 = EFM32_GPIO(3, C.E);
 
-
-	GPIO->P[LED_PORT].MODEL = (5 << 12) | (4 << 8);
-	GPIO->P[LED_PORT].DOUTSET = 1 << LED0;
 	/* Infinite loop */
 	while (true)
 	{

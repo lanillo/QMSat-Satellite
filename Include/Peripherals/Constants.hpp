@@ -11,7 +11,13 @@
 class Constants
 {
 public:
-	const enum GPIO_BANK{A, B, C, D, E, F};
+	enum GPIO_BANK{A, B, C, D, E, F};
+
+	Constants();
+	~Constants();
+
+private:
+	int null;
 };
 
 
