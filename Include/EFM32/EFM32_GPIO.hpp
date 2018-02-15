@@ -23,7 +23,6 @@ public:
 	void toggle();
 
 private:
-	unsigned short m_State;
 	unsigned short m_PinNumber;
 	unsigned short m_BankNumber;
 

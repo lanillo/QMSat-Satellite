@@ -10,11 +10,8 @@
 /****************************************************/
 EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter)
 {
-
 	m_BankNumber = bankLetter;
     m_PinNumber = pinNumber;
-	m_State = C.CREATED;
-
 }
 
 /****************************************************/
