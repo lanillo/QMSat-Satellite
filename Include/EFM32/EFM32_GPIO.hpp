@@ -15,6 +15,7 @@
 class EFM32_GPIO: public IGPIO
 {
 public:
+	EFM32_GPIO();
 	EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter);
 	~EFM32_GPIO() {};
 
@@ -25,8 +26,6 @@ public:
 private:
 	unsigned short m_PinNumber;
 	unsigned short m_BankNumber;
-
-	Constants C;
 };
 
 

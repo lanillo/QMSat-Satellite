@@ -6,6 +6,14 @@
  */
 
 #include <EFM32_GPIO.hpp>
+#include "Constants.hpp"
+
+/****************************************************/
+EFM32_GPIO::EFM32_GPIO()
+{
+	m_BankNumber = null;
+    m_PinNumber = null;
+}
 
 /****************************************************/
 EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter)

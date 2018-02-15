@@ -18,10 +18,7 @@ int main(void)
     StateManager* stateManager = factory.createStateManager();
     EFM32_Timer0* timer0 = factory.createTimer0();
 
-    // Instantiate constants class
-    Constants g_C;
-
-    EFM32_GPIO PE2 = EFM32_GPIO(2, g_C.E);
+    EFM32_GPIO PE2 = EFM32_GPIO(2, E);
 
     PE2.turnON();
     PE2.turnOFF();
