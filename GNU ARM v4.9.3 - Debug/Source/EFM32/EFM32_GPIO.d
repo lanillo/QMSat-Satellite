@@ -1,6 +1,7 @@
 Source/EFM32/EFM32_GPIO.o: ../Source/EFM32/EFM32_GPIO.cpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/IGPIO.hpp \
+ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\em_device.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg990f1024.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\cmsis\include\core_cm3.h \
@@ -59,6 +60,8 @@ Source/EFM32/EFM32_GPIO.o: ../Source/EFM32/EFM32_GPIO.cpp \
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp:
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/IGPIO.hpp:
+
+C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\em_device.h:
 

@@ -9,6 +9,7 @@
 #define INCLUDE_PERIPHERALS_EFM32GPIO_HPP_
 
 #include "IGPIO.hpp"
+#include "Constants.hpp"
 #include "em_device.h"
 
 class EFM32_GPIO: public IGPIO
@@ -22,8 +23,10 @@ public:
 	void toggle();
 
 private:
-	bool m_State;
 	unsigned short m_PinNumber;
+	unsigned short m_BankNumber;
+
+	Constants C;
 };
 
 
