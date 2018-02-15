@@ -6,6 +6,7 @@
  */
 
 #include "Factory.hpp"
+#include "Constants.hpp"
 
 /****************************************************/
 Factory::Factory()
@@ -13,6 +14,7 @@ Factory::Factory()
 	m_StateManagerCreated = false;
 	m_StatesCreated = false;
 	m_Timer0Created = false;
+	m_LED0Created = false;
 }
 
 /****************************************************/
@@ -36,6 +38,19 @@ void Factory::createStates()
 	{
 		m_InitState = InitState();
 		m_RunState = RunState();
+
+		m_StatesCreated = true;
+	}
+}
+
+void Factory::createLED()
+{
+	if(m_LED0Created == false)
+	{
+		m_GPIO_LED0 = EFM32_GPIO(2,4);
+		m_LED0 = LED(&m_GPIO_LED0);
+
+		m_LED0Created = true;
 	}
 }
 

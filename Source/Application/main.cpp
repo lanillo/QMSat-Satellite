@@ -22,8 +22,13 @@ int main(void)
     initTimer0();
 
     /* Infinite loop */
+    unsigned int test = timer0->getReferenceTime_microsecond();
     while (true)
     {
-    	stateManager->execute();
+    	/*if (timer0->getElapsedTime_microsecond() > 500000)
+    	{
+    		stateManager->execute();
+    		timer0->getReferenceTime_microsecond();
+    	}*/
     }
 }
