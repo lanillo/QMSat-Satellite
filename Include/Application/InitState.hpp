@@ -6,6 +6,7 @@
  */
 
 #include "IState.hpp"
+#include "ILED.hpp"
 
 #ifndef INCLUDE_APPLICATION_INITSTATE_HPP_
 #define INCLUDE_APPLICATION_INITSTATE_HPP_
@@ -14,12 +15,14 @@ class InitState: public IState
 {
 public:
 	InitState();
+	InitState(ILED* p_LED0);
 	~InitState() {};
 
 	short getStateId();
 
 private:
 	short stateId;
+	ILED* m_LED;
 
 	void onEntry();
 	void onExit();

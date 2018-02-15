@@ -34,9 +34,10 @@ StateManager* Factory::createStateManager()
 /****************************************************/
 void Factory::createStates()
 {
+	createLED();
 	if(m_StatesCreated == false)
 	{
-		m_InitState = InitState();
+		m_InitState = InitState(&m_LED0);
 		m_RunState = RunState();
 
 		m_StatesCreated = true;
