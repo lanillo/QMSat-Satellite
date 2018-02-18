@@ -21,7 +21,7 @@ public:
 	short getStateId();
 
 private:
-	short stateId;
+	short m_StateId;
 	ILED* m_LED;
 
 	void onEntry();

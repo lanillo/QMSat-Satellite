@@ -23,6 +23,7 @@ StateManager::StateManager(IState* p_State)
 	m_CurrentState =  p_State;
 	m_CurrentStateId = -1;
 	m_NextStateId = p_State->getStateId();
+	addState(p_State);
 }
 
 /****************************************************/

@@ -24,7 +24,7 @@ public:
 	~EFM32_Timer0() {};
 
 	unsigned int getReferenceTime_microsecond();
-	unsigned int getElapsedTime_microsecond();
+	unsigned int getElapsedTime_microsecond(unsigned int p_ReferenceTime_microsecond);
 	void start();
 	void stop();
 

@@ -21,7 +21,6 @@ public:
 
 	virtual void turnOFF() = 0;
 	virtual void turnON() = 0;
-	virtual void toggle() = 0;
 };
 
 #endif /* INCLUDE_INTERFACE_IGPIO_HPP_ */

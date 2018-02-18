@@ -24,7 +24,7 @@ void EFM32_Timer0::start() {
 }
 
 void EFM32_Timer0::stop() {
-	TIMER0->CMD = 0x0;
+	TIMER0->CMD = 0x2;
 }
 
 /****************************************************/
@@ -35,13 +35,13 @@ unsigned int EFM32_Timer0::getReferenceTime_microsecond()
 }
 
 /****************************************************/
-unsigned int EFM32_Timer0::getElapsedTime_microsecond()
+unsigned int EFM32_Timer0::getElapsedTime_microsecond(unsigned int p_ReferenceTime_microsecond)
 {
-	if (m_ReferenceTime_microsecond > m_ElapsedTime_microsecond)
+	if (p_ReferenceTime_microsecond > m_ElapsedTime_microsecond)
 	{
-		return((2147483647 - m_ReferenceTime_microsecond) + m_ElapsedTime_microsecond);
+		return((4294967295 - p_ReferenceTime_microsecond) + m_ElapsedTime_microsecond);
 	}
-	return m_ElapsedTime_microsecond - m_ReferenceTime_microsecond;
+	return (m_ElapsedTime_microsecond - p_ReferenceTime_microsecond);
 }
 
 /****************************************************/
@@ -58,7 +58,7 @@ void EFM32_Timer0::callbackForTimer0Increment(void* p_TimerInstance)
 /*interrupt d'incrémentation*/
 void TIMER0_IRQHandler(void)
 {
-    TIMER0->IFC = 1;                              // Clear overflow flag
+    TIMER0->IFC = 0x1;                            // Clear overflow flag
     callbackTimer0Increment(timer0Instance);      // Increment counter
 }
 
@@ -68,7 +68,7 @@ void initTimer0()
 {
 	TIMER0->IEN = 1;             // Enable Timer0 overflow interrupt
 	NVIC_EnableIRQ(TIMER0_IRQn); // Enable TIMER0 interrupt vector in NVIC
-	TIMER0->CTRL = TIMER0->CTRL | (_TIMER_CTRL_PRESC_DIV1 << 24);
+	//TIMER0->CTRL = TIMER0->CTRL | (_TIMER_CTRL_PRESC_DIV1 << 24);
 }
 
 /****************************************************/

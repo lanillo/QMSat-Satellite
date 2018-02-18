@@ -3,32 +3,31 @@
 /****************************************************/
 InitState::InitState()
 {
-	stateId = Init;
+	m_StateId = Init;
 }
 
 /****************************************************/
 InitState::InitState(ILED* p_LED)
 {
 	m_LED = p_LED;
-	stateId = Init;
+	m_StateId = Init;
 }
 
 /****************************************************/
 short InitState::getStateId()
 {
-	return stateId;
+	return m_StateId;
 }
 
 /****************************************************/
 void InitState::onEntry()
 {
-
+	m_LED->turnON();
 }
 
 /****************************************************/
 short InitState::execute()
 {
-	m_LED->turnON();
 	return Init;
 }
 
