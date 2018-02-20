@@ -15,6 +15,7 @@
 
 #include "EFM32_Timer0.hpp"
 #include "EFM32_GPIO.hpp"
+#include "EFM32_USART1.hpp"
 
 class Factory
 {
@@ -33,11 +34,16 @@ private:
 	EFM32_Timer0 m_Timer0;
 	bool m_Timer0Created;
 
-	/**** LED ****/
+	/**** LED0 ****/
 	LED m_LED0;
 	EFM32_GPIO m_GPIO_LED0;
 	bool m_LED0Created;
 	void createLED();
+
+	/**** USART0 ****/
+	EFM32_USART1 m_EFM32_USART1;
+	bool m_USART1Created;
+	void createUSART1();
 
 public:
 	Factory();

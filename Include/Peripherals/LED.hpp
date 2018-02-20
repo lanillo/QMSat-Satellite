@@ -22,6 +22,8 @@ public:
 	void turnON();
 	void toggle();
 
+	bool getStatus();
+
 private:
 	bool m_State;
 	IGPIO* m_GPIO;
