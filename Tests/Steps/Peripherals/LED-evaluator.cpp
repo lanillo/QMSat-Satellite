@@ -32,6 +32,12 @@ void LEDEvaluator::LEDTurnOFF()
 }
 
 /**************************************************/
+void LEDEvaluator::LEDToggle()
+{
+    m_LED.toggle();
+}
+
+/**************************************************/
 bool LEDEvaluator::verifyLEDState(int p_ExpectedState)
 {
 	return p_ExpectedState == m_LED.getStatus();

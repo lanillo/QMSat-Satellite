@@ -33,6 +33,9 @@ public:
 	/** @bdd turning the LED ON */
 	void LEDTurnON();
 
+	/** @bdd toggling the LED state */
+	void LEDToggle();
+
 	/** @bdd the state of the LED is (?P<p_ExpectedState>[-+]?\d+(\.\d+)?) */
 	bool verifyLEDState(int p_ExpectedState);
 };

@@ -21,7 +21,6 @@ Factory::Factory()
 /****************************************************/
 StateManager* Factory::createStateManager()
 {
-	createUSART1();
 	createStates();
 
 	if(m_StateManagerCreated == false)
@@ -36,10 +35,11 @@ StateManager* Factory::createStateManager()
 /****************************************************/
 void Factory::createStates()
 {
+	createUSART1();
 	createLED();
 	if(m_StatesCreated == false)
 	{
-		m_InitState = InitState(&m_LED0);
+		m_InitState = InitState(&m_LED0, &m_EFM32_USART1);
 		m_RunState = RunState();
 
 		m_StatesCreated = true;
@@ -62,9 +62,7 @@ void Factory::createUSART1()
 {
 	if(m_USART1Created == false)
 	{
-		m_EFM32_USART1 = EFM32_USART1(38400,true,false);
-		while(true){
-		m_EFM32_USART1.sendSerial("Hello Fucking world!\r\n");}
+		m_EFM32_USART1 = EFM32_USART1(57600, _USART_FRAME_STOPBITS_ONE, _USART_FRAME_PARITY_NONE);
 		m_USART1Created = true;
 	}
 }

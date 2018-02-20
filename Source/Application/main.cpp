@@ -11,9 +11,9 @@ int main(void)
 {
 	/* Chip errata */
 
-	CMU->HFRCOCTRL = 0x8;                         // Set High Freq. RC Osc. to 1 MHz
-    CMU->HFPERCLKEN0 = (1 << 13) | (1 << 5) | (1 << 1);      // Enable GPIO and Timer0 peripheral clocks
-    CMU->CTRL |= (1 << 14);                         // Set HF clock divider to /2 to keep core frequency <32MHz
+	CMU->HFRCOCTRL = CMU_HFRCOCTRL_BAND_1MHZ;                         // Set High Freq. RC Osc. to 1 MHz
+    CMU->HFPERCLKEN0 = (1 << _CMU_HFPERCLKEN0_GPIO_SHIFT) | (1 << _CMU_HFPERCLKEN0_TIMER0_SHIFT) | (1 << _CMU_HFPERCLKEN0_USART1_SHIFT);      // Enable GPIO and Timer0 peripheral clocks
+    CMU->CTRL |= (1 << _CMU_CTRL_HFCLKDIV_SHIFT);                         // Set HF clock divider to /2 to keep core frequency <32MHz
 	CMU->OSCENCMD |= 0x4;                           // Enable XTAL Oscillator
 	while(! (CMU->STATUS & 0x8) );                  // Wait for XTAL osc to stabilize
 	CMU->CMD = 0x2;
@@ -22,19 +22,22 @@ int main(void)
     StateManager* stateManager = factory.createStateManager();
     EFM32_Timer0* timer0 = factory.createTimer0();
 
+    /*Initialisations*/
     initTimer0();
     initUSART1();
-    timer0->start();
+
+    //timer0->start();
 
     /* Infinite loop */
-    unsigned int test;
-    test = timer0->getReferenceTime_microsecond();
+    unsigned int referenceTime_microsecond;
+    referenceTime_microsecond = timer0->getReferenceTime_microsecond();
     while (true)
     {
-    	if (timer0->getElapsedTime_microsecond(test) > TIME_500_MILLISECONDS)
+    	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) > TIME_500_MILLISECONDS)
     	{
     		stateManager->execute();
-    		test = timer0->getReferenceTime_microsecond();
+    		referenceTime_microsecond = timer0->getReferenceTime_microsecond();
     	}
+    	stateManager->execute();
     }
 }
