@@ -15,6 +15,7 @@ Factory::Factory()
 	m_StatesCreated = false;
 	m_Timer0Created = false;
 	m_LED0Created = false;
+	m_GPIOCreated = false;
 }
 
 /****************************************************/
@@ -47,11 +48,22 @@ void Factory::createLED()
 {
 	if(m_LED0Created == false)
 	{
-		m_GPIO_LED0 = EFM32_GPIO(2,4);
-		m_LED0 = LED(&m_GPIO_LED0);
+		m_GPIO = EFM32_GPIO(2,4, true, PULLDOWN);
+		m_LED0 = LED(&m_GPIO);
 
 		m_LED0Created = true;
 	}
+}
+
+/****************************************************/
+EFM32_GPIO* Factory::createGPIO()
+{
+	if(m_GPIOCreated == false)
+	{
+		m_GPIO = EFM32_GPIO(2,4, true, PULLDOWN);
+		m_Timer0Created = true;
+	}
+	return &m_GPIO;
 }
 
 /****************************************************/

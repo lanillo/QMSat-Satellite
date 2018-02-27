@@ -16,16 +16,25 @@ class EFM32_GPIO: public IGPIO
 {
 public:
 	EFM32_GPIO();
-	EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter);
+	EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool isInput, int typeIO);
 	~EFM32_GPIO() {};
 
-	void turnOFF();
-	void turnON();
-	void toggle();
+	// For inputs
+	bool readInput();
+
+	// For outputs
+	bool setOutputHigh();
+	bool setOutputLow();
+	bool toggleOutput();
 
 private:
 	unsigned short m_PinNumber;
 	unsigned short m_BankNumber;
+	unsigned short m_IOType;
+
+	bool m_isInput;
+	bool m_error;
+
 };
 
 

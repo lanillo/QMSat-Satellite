@@ -35,14 +35,18 @@ private:
 
 	/**** LED ****/
 	LED m_LED0;
-	EFM32_GPIO m_GPIO_LED0;
 	bool m_LED0Created;
 	void createLED();
+
+	/**** GPIO ****/
+	EFM32_GPIO m_GPIO;
+	bool m_GPIOCreated;
 
 public:
 	Factory();
 	StateManager* createStateManager();
 	EFM32_Timer0* createTimer0();
+	EFM32_GPIO* createGPIO();
 };
 
 

@@ -18,10 +18,13 @@ int main(void)
     StateManager* stateManager = factory.createStateManager();
     EFM32_Timer0* timer0 = factory.createTimer0();
 
-    EFM32_GPIO PE2 = EFM32_GPIO(2, E);
+    EFM32_GPIO PE2 = EFM32_GPIO(2, E, false, OPENSOURCE_PULLDOWN);
+    EFM32_GPIO PC2 = EFM32_GPIO(2, C, false, OPENSOURCE_PULLDOWN);
 
-    PE2.turnON();
-    PE2.turnOFF();
+	//PE2.turnON();
+
+    PE2.setOutputHigh();
+    PE2.setOutputLow();
 
     initTimer0();
 
