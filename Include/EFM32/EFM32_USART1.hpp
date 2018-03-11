@@ -10,6 +10,8 @@
 
 #include "ISerialComm.hpp"
 #include "efm32gg990f1024.h"
+#include "Callback.hpp"
+#include "Constants.hpp"
 
 class EFM32_USART1: public ISerialComm
 {
@@ -21,13 +23,23 @@ public:
 	void sendSerial(char* p_TxBuffer);
 	void receiveSerial();
 
+	void incrementTxBuffer();
+
+	static void callbackForSerialTransmit(void* p_USART1Instance);
+	static void callbackForSerialReceive(void* p_USART1Instance);
 private:
 	int m_Baudrate;
 	bool m_StopBit;
 	bool m_Parity;
 
+	unsigned short m_TxBufferSize;
+	char* m_TxBuffer;
 };
 
 void initUSART1();
+void callbackUSART1Init(callback p_callbackTx, callback p_callbackRx, void* p_USART1Instance);
+
+void USART1_RX_IRQHandler(void);
+void USART1_TX_IRQHandler(void);
 
 #endif /* INCLUDE_EFM32_EFM32_USART1_HPP_ */

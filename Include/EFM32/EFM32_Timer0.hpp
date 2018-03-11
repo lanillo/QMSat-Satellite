@@ -13,9 +13,6 @@
 #include "Callback.hpp"
 #include "efm32gg990f1024.h"
 
-callback increment_Timer0(void* p_Instance);
-
-
 class EFM32_Timer0: public ITimer
 {
 public:

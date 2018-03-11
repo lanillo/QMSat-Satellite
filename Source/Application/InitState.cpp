@@ -24,12 +24,12 @@ short InitState::getStateId()
 void InitState::onEntry()
 {
 	m_LED->turnON();
+	m_EFM32_USART1->sendSerial("Hello Fucking world!\r\n");
 }
 
 /****************************************************/
 short InitState::execute()
 {
-	m_EFM32_USART1->sendSerial("Hello Fucking world!\r\n");
 	return Init;
 }
 

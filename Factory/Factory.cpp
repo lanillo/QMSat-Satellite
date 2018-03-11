@@ -27,7 +27,7 @@ StateManager* Factory::createStateManager()
 	{
 		m_StateManager = StateManager(&m_InitState);
 
-		m_StateManager.addState(&m_RunState);
+		//m_StateManager.addState(&m_RunState);
 	}
 	return &m_StateManager;
 }
@@ -58,11 +58,13 @@ void Factory::createLED()
 	}
 }
 
+/****************************************************/
 void Factory::createUSART1()
 {
 	if(m_USART1Created == false)
 	{
 		m_EFM32_USART1 = EFM32_USART1(57600, _USART_FRAME_STOPBITS_ONE, _USART_FRAME_PARITY_NONE);
+		callbackUSART1Init(&EFM32_USART1::callbackForSerialTransmit, &EFM32_USART1::callbackForSerialReceive, (void*)&m_EFM32_USART1);
 		m_USART1Created = true;
 	}
 }

@@ -10,13 +10,13 @@
 int main(void)
 {
 	/* Chip errata */
-
-	CMU->HFRCOCTRL = CMU_HFRCOCTRL_BAND_1MHZ;                         // Set High Freq. RC Osc. to 1 MHz
-    CMU->HFPERCLKEN0 = (1 << _CMU_HFPERCLKEN0_GPIO_SHIFT) | (1 << _CMU_HFPERCLKEN0_TIMER0_SHIFT) | (1 << _CMU_HFPERCLKEN0_USART1_SHIFT);      // Enable GPIO and Timer0 peripheral clocks
-    CMU->CTRL |= (1 << _CMU_CTRL_HFCLKDIV_SHIFT);                         // Set HF clock divider to /2 to keep core frequency <32MHz
-	CMU->OSCENCMD |= 0x4;                           // Enable XTAL Oscillator
-	while(! (CMU->STATUS & 0x8) );                  // Wait for XTAL osc to stabilize
+	CMU->HFRCOCTRL |= CMU_HFRCOCTRL_BAND_1MHZ; // Set High Freq. RC Osc. to 1 MHz
+    CMU->CTRL |= (1 << _CMU_CTRL_HFCLKDIV_SHIFT); // Set HF clock divider to /2 to keep core frequency <32MHz
+	CMU->OSCENCMD |= 0x4; // Enable XTAL Oscillator
+	while(! (CMU->STATUS & 0x8) ); // Wait for XTAL osc to stabilize
 	CMU->CMD = 0x2;
+
+	CMU->HFPERCLKEN0 = (1 << _CMU_HFPERCLKEN0_GPIO_SHIFT) | (1 << _CMU_HFPERCLKEN0_TIMER0_SHIFT) | (1 << _CMU_HFPERCLKEN0_USART1_SHIFT);
 
     Factory factory = Factory();
     StateManager* stateManager = factory.createStateManager();
