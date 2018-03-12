@@ -27,6 +27,10 @@ public:
 	bool setOutputLow();
 	bool toggleOutput();
 
+	// For attributes
+	bool getError();
+	bool getIsInput();
+
 private:
 	unsigned short m_PinNumber;
 	unsigned short m_BankNumber;

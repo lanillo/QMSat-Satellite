@@ -50,8 +50,7 @@ EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool
 					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
 					break;
 				default:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_INPUTPULL << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
+					m_error = true;
 					break;
 			}
 
@@ -77,8 +76,7 @@ EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool
 					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
 					break;
 				default:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_INPUTPULL << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
+					m_error = true;
 					break;
 			}
 		}
@@ -134,8 +132,7 @@ EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool
 					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
 					break;
 				default:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDOR << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
+					m_error = true;
 					break;
 			}
 		}
@@ -175,9 +172,16 @@ EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool
 					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDANDDRIVEPULLUPFILTER << 4*(pinNumber-7);
 					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
 					break;
-				default:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEH_MODE8_WIREDOR << 4*(pinNumber-7);
+				case PUSHPULL:
+					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEH_MODE8_PUSHPULL << 4*pinNumber;
 					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
+					break;
+				case PUSHPULL_ALTDRIVE:
+					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEH_MODE8_PUSHPULLDRIVE << 4*pinNumber;
+					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
+					break;
+				default:
+					m_error = true;
 					break;
 			}
 		}
@@ -233,4 +237,15 @@ bool EFM32_GPIO::toggleOutput()
 		return true;
 	}
 }
+
 /****************************************************/
+bool EFM32_GPIO::getError()
+{
+    return m_error;
+}
+
+/****************************************************/
+bool EFM32_GPIO::getIsInput()
+{
+    return m_isInput;
+}
