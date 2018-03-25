@@ -39,6 +39,11 @@
 			<Add directory="Include/Application" />
 			<Add directory="Tests/Steps/Peripherals" />
 			<Add directory="Include/EFM32" />
+			<Add directory="Tests/Steps/Mocks" />
+			<Add directory="Factory" />
+			<Add directory="../QMSat-Satellite" />
+			<Add directory="../../../../SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.1/platform/Device/SiliconLabs/EFM32GG/Include" />
+			<Add directory="../../../../SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.1/platform/CMSIS/Include" />
 		</Compiler>
 		<ExtraCommands>
 			<Add before="TestGeneration.bat" />
@@ -61,9 +66,11 @@
 		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestSuite.h" />
 		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestTracker.cpp" />
 		<Unit filename="../BDD/fw-cxxtest/cxxtest/TestTracker.h" />
+		<Unit filename="Factory/Constants.hpp" />
 		<Unit filename="Include/Application/InitState.hpp" />
 		<Unit filename="Include/Application/RunState.hpp" />
 		<Unit filename="Include/Application/StateManager.hpp" />
+		<Unit filename="Include/EFM32/EFM32_GPIO.hpp" />
 		<Unit filename="Include/EFM32/EFM32_Timer0.hpp" />
 		<Unit filename="Include/Interface/ILED.hpp" />
 		<Unit filename="Include/Interface/IState.hpp" />
@@ -72,8 +79,11 @@
 		<Unit filename="Source/Application/InitState.cpp" />
 		<Unit filename="Source/Application/RunState.cpp" />
 		<Unit filename="Source/Application/StateManager.cpp" />
+		<Unit filename="Source/EFM32/EFM32_GPIO.cpp" />
 		<Unit filename="Source/Peripherals/LED.cpp" />
-		<Unit filename="Tests/Steps/Luis.h" />
+		<Unit filename="Tests/Steps/Mocks/GPIO-mock.hpp" />
+		<Unit filename="Tests/Steps/Peripherals/GPIO-evaluator.cpp" />
+		<Unit filename="Tests/Steps/Peripherals/GPIO-evaluator.hpp" />
 		<Unit filename="Tests/Steps/Peripherals/LED-evaluator.cpp" />
 		<Unit filename="Tests/Steps/Peripherals/LED-evaluator.hpp" />
 		<Unit filename="Tests/Test.h" />

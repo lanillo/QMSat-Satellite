@@ -5,12 +5,12 @@
  *      Author: lfani
  */
 
-#ifndef INCLUDE_PERIPHERALS_EFM32GPIO_HPP_
-#define INCLUDE_PERIPHERALS_EFM32GPIO_HPP_
+#ifndef INCLUDE_EFM32_EFM32GPIO_HPP_
+#define INCLUDE_EFM32_EFM32GPIO_HPP_
 
 #include "IGPIO.hpp"
 #include "Constants.hpp"
-#include "em_device.h"
+#include "efm32gg990f1024.h"
 
 class EFM32_GPIO: public IGPIO
 {
@@ -42,4 +42,4 @@ private:
 };
 
 
-#endif /* INCLUDE_PERIPHERALS_EFM32GPIO_HPP_ */
+#endif /* INCLUDE_EFM32_EFM32GPIO_HPP_ */

@@ -9,49 +9,46 @@ class Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT : public CxxTest::TestS
 public:
     void test_Initialize_GPIO_as_INPUT_with_OUTPUT_type_0() {
 
-        GPIOEvaluator GPIOEvaluator_;
+        /* the pin number is 2, a bank letter is A (0), is an input and the type is output (6) */
+        TS_FAIL("no function");
 
-        /* the pin number is 2, a bank letter is 0, is an input and the type is 6 */
-        GPIOEvaluator_.GPIOInitialiseInput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
+        GPIOEvaluator GPIOEvaluator_;
 
         /* an initialization error flag is set */
         TS_ASSERT(GPIOEvaluator_.verifyInitializeError());
     }
     void test_Initialize_GPIO_as_OUTPUT_with_OUTPUT_type_0() {
 
-        GPIOEvaluator GPIOEvaluator_;
+        /* a pin number, a bank letter, isInput and a type */
+        TS_FAIL("no function");
 
-        /* the pin number is 2, a bank letter is 0, is an output and the type is 4 */
-        GPIOEvaluator_.GPIOInitialiseOutput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        4  /* int p_typeIO */);
+        /* isInput is FALSE and the type is OUTPUT */
+        TS_FAIL("no function");
 
-        /* a GPIO is instantiated as 0 */
-        TS_ASSERT(GPIOEvaluator_.verifyIOType(
-        0  /* int p_expectedInput */));
+        /* a GPIO is instantiated as an OUTPUT */
+        TS_FAIL("no function");
     }
     void test_Initialize_GPIO_as_INPUT_with_INPUT_type_0() {
 
-        GPIOEvaluator GPIOEvaluator_;
+        /* a pin number, a bank letter, isInput and a type */
+        TS_FAIL("no function");
 
-        /* the pin number is 2, a bank letter is 0, is an input and the type is 2 */
-        GPIOEvaluator_.GPIOInitialiseInput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        2  /* int p_typeIO */);
+        /* isInput is TRUE and the type is INPUT */
+        TS_FAIL("no function");
 
-        /* a GPIO is instantiated as 1 */
-        TS_ASSERT(GPIOEvaluator_.verifyIOType(
-        1  /* int p_expectedInput */));
+        /* a GPIO is instantiated as an INPUT */
+        TS_FAIL("no function");
     }
     void test_Initialize_GPIO_as_OUTPUT_with_INPUT_type_0() {
 
-        GPIOEvaluator GPIOEvaluator_;
+        /* a pin number, a bank letter, isInput and a type */
+        TS_FAIL("no function");
 
-        /* the pin number is 2, a bank letter is 0, is an output and the type is 2 */
-        GPIOEvaluator_.GPIOInitialiseOutput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        2  /* int p_typeIO */);
+        /* isInput is FALSE and the type is INPUT */
+        TS_FAIL("no function");
 
-        /* an initialization error flag is set */
-        TS_ASSERT(GPIOEvaluator_.verifyInitializeError());
+        /* no GPIO is instantiated */
+        TS_FAIL("no function");
     }
 };
 
@@ -224,5 +221,17 @@ public:
         /* the state of the LED is 1 */
         TS_ASSERT(LEDEvaluator_.verifyLEDState(
         1  /* int p_ExpectedState */));
+    }
+};
+
+class Feature_MLR9488_Just_a_test : public CxxTest::TestSuite {
+public:
+    void test_MVCP4902_First_one_0() {
+
+        /* a LED initialize to off state */
+        TS_FAIL("no function");
+
+        /* the LED works */
+        TS_FAIL("no function");
     }
 };
