@@ -38,7 +38,7 @@ bool GPIOEvaluator::verifyIOType(int p_expectedInput)
 }
 
 /**************************************************/
-bool GPIOEvaluator::GPIOSetStateOn(int p_expectedState, int p_setState)
+bool GPIOEvaluator::GPIOSetState(int p_expectedState, int p_GPIOType)
 {
     if (p_GPIOType == 0) //If it is an input
     {
@@ -48,7 +48,7 @@ bool GPIOEvaluator::GPIOSetStateOn(int p_expectedState, int p_setState)
         if (p_expectedState == 1) //If it is set high
             return !(m_UUT.setOutputHigh()); //Should return false since INPUT
     }
-    else if (p_GPIOType == 1) //If it is an output
+    else //if (p_GPIOType == 1) //If it is an output
     {
         if (p_expectedState == 0) //If it is set low
             if (m_UUT.setOutputLow()) //Should return true if successful
@@ -58,5 +58,7 @@ bool GPIOEvaluator::GPIOSetStateOn(int p_expectedState, int p_setState)
             if (m_UUT.setOutputHigh()) //Should return true if successful
                 return m_UUT.readInput(); // Should return true since it's high
     }
+
+    return false;
 
 }

@@ -14,7 +14,7 @@ class GPIOMock: public IGPIO
 {
 private:
 	bool m_PinState;
-	int m_GPIOState; // 0 -> error; 1 -> INPUT; 2 -> OUTPUT
+	int m_GPIOState;
 	bool m_readState;
 public:
 	GPIOMock() {m_PinState = false;};

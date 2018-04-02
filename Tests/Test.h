@@ -22,9 +22,9 @@ public:
 
         GPIOEvaluator GPIOEvaluator_;
 
-        /* the pin number is 2, a bank letter is 0, is an output and the type is 4 */
+        /* the pin number is 2, a bank letter is 0, is an output and the type is 6 */
         GPIOEvaluator_.GPIOInitialiseOutput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        4  /* int p_typeIO */);
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
         /* a GPIO is instantiated as 0 */
         TS_ASSERT(GPIOEvaluator_.verifyIOType(
@@ -34,9 +34,9 @@ public:
 
         GPIOEvaluator GPIOEvaluator_;
 
-        /* the pin number is 2, a bank letter is 0, is an input and the type is 2 */
+        /* the pin number is 2, a bank letter is 0, is an input and the type is 0 */
         GPIOEvaluator_.GPIOInitialiseInput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        2  /* int p_typeIO */);
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
         /* a GPIO is instantiated as 1 */
         TS_ASSERT(GPIOEvaluator_.verifyIOType(
@@ -46,9 +46,9 @@ public:
 
         GPIOEvaluator GPIOEvaluator_;
 
-        /* the pin number is 2, a bank letter is 0, is an output and the type is 2 */
+        /* the pin number is 2, a bank letter is 0, is an output and the type is 0 */
         GPIOEvaluator_.GPIOInitialiseOutput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        2  /* int p_typeIO */);
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
         /* an initialization error flag is set */
         TS_ASSERT(GPIOEvaluator_.verifyInitializeError());
@@ -59,25 +59,25 @@ class Feature_GPIO_can_be_toggled : public CxxTest::TestSuite {
 public:
     void test_A_GPIO_initially_OFF_initialized_as_an_INPUT_0() {
 
-        /* a GPIO set to OFF state */
-        TS_FAIL("no function");
+        GPIOEvaluator GPIOEvaluator_;
+
+        /* the pin number is 2, a bank letter is 0, is an input and the type is 0 */
+        GPIOEvaluator_.GPIOInitialiseInput(
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
         /* toggling the GPIO state */
         TS_FAIL("no function");
 
-        /* the state of the GPIO is <the_same> */
-        TS_FAIL("no function");
-
-        /* toggling the GPIO state */
-        TS_FAIL("no function");
-
-        /* the state of the GPIO is <the_same> */
+        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
         TS_FAIL("no function");
     }
     void test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT_0() {
 
-        /* a GPIO set to OFF state */
-        TS_FAIL("no function");
+        GPIOEvaluator GPIOEvaluator_;
+
+        /* the pin number is 2, a bank letter is 0, is an output and the type is 6 */
+        GPIOEvaluator_.GPIOInitialiseOutput(
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
         /* toggling the GPIO state */
         TS_FAIL("no function");
@@ -97,24 +97,24 @@ class Feature_GPIO_can_be_turned_OFF : public CxxTest::TestSuite {
 public:
     void test_A_GPIO_initially_instantiated_as_an_INPUT_0() {
 
-        /* a GPIO set to ON state */
-        TS_FAIL("no function");
+        GPIOEvaluator GPIOEvaluator_;
 
-        /* turning the GPIO OFF */
-        TS_FAIL("no function");
+        /* the pin number is 2, a bank letter is 0, is an input and the type is 0 */
+        GPIOEvaluator_.GPIOInitialiseInput(
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of the GPIO is <the_same> */
+        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
         TS_FAIL("no function");
     }
     void test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() {
 
-        /* a GPIO set to ON state */
-        TS_FAIL("no function");
+        GPIOEvaluator GPIOEvaluator_;
 
-        /* turning the GPIO OFF */
-        TS_FAIL("no function");
+        /* the pin number is 2, a bank letter is 0, is an output and the type is 6 */
+        GPIOEvaluator_.GPIOInitialiseOutput(
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
-        /* the state of the GPIO is 0 */
+        /* the state of GPIO is 0 (0_low or 1_high or 3_dont_care) since GPIO is set as a 1 (0_INPUT or 1_OUTPUT) */
         TS_FAIL("no function");
     }
 };
@@ -123,24 +123,24 @@ class Feature_GPIO_can_be_turned_ON : public CxxTest::TestSuite {
 public:
     void test_A_GPIO_initially_instantiated_as_an_INPUT_0() {
 
-        /* a GPIO set to OFF state */
-        TS_FAIL("no function");
+        GPIOEvaluator GPIOEvaluator_;
 
-        /* turning the GPIO ON */
-        TS_FAIL("no function");
+        /* the pin number is 2, a bank letter is 0, is an input and the type is 0 */
+        GPIOEvaluator_.GPIOInitialiseInput(
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of the GPIO is <the_same> */
+        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
         TS_FAIL("no function");
     }
     void test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() {
 
-        /* a GPIO set to OFF state */
-        TS_FAIL("no function");
+        GPIOEvaluator GPIOEvaluator_;
 
-        /* turning the GPIO ON */
-        TS_FAIL("no function");
+        /* the pin number is 2, a bank letter is 0, is an output and the type is 6 */
+        GPIOEvaluator_.GPIOInitialiseOutput(
+        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
-        /* the state of the GPIO is 1 */
+        /* the state of GPIO is 1 (0_low or 1_high or 3_dont_care) since GPIO is set as a 1 (0_INPUT or 1_OUTPUT) */
         TS_FAIL("no function");
     }
 };
