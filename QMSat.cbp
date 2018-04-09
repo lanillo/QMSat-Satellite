@@ -15,6 +15,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="../BDD/fw-cxxtest" />
+					<Add directory="../../../../SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.1/platform/Device/SiliconLabs/EFM32GG/Include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
