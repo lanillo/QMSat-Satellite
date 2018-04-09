@@ -40,6 +40,7 @@ private:
 
 	/**** GPIO ****/
 	EFM32_GPIO m_GPIO;
+	EFM32_GPIO m_GPIO_LED0;
 	bool m_GPIOCreated;
 
 public:

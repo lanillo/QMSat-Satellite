@@ -332,9 +332,9 @@ Discarded input sections
  .ARM.exidx.text._ZN12EFM32_Timer0D0Ev
                 0x00000000        0x8 ./Factory/Factory.o
  .text._ZN7FactoryC2Ev
-                0x00000000       0xa4 ./Factory/Factory.o
+                0x00000000       0xb8 ./Factory/Factory.o
  .ARM.extab.text._ZN7FactoryC2Ev
-                0x00000000       0x22 ./Factory/Factory.o
+                0x00000000       0x27 ./Factory/Factory.o
  .ARM.exidx.text._ZN7FactoryC2Ev
                 0x00000000        0x8 ./Factory/Factory.o
  .text._ZN7Factory18createStateManagerEv
@@ -2246,21 +2246,21 @@ OUTPUT(QMSat_Embeded.axf elf32-littlearm)
  .comment       0x00000000       0x71 ./Source/EFM32/EFM32_GPIO.o
  .comment       0x00000000       0x71 ./Source/EFM32/EFM32_Timer0.o
 
-.debug_line     0x00000000     0x17bc
+.debug_line     0x00000000     0x17c6
  .debug_line    0x00000000       0xd3 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_line    0x000000d3      0x38b ./CMSIS/EFM32GG/system_efm32gg.o
- .debug_line    0x0000045e      0x6b5 ./Factory/Factory.o
- .debug_line    0x00000b13      0x382 ./Source/Application/main.o
- .debug_line    0x00000e95      0x4bb ./Source/EFM32/EFM32_GPIO.o
- .debug_line    0x00001350      0x46c ./Source/EFM32/EFM32_Timer0.o
+ .debug_line    0x0000045e      0x6bf ./Factory/Factory.o
+ .debug_line    0x00000b1d      0x382 ./Source/Application/main.o
+ .debug_line    0x00000e9f      0x4bb ./Source/EFM32/EFM32_GPIO.o
+ .debug_line    0x0000135a      0x46c ./Source/EFM32/EFM32_Timer0.o
 
-.debug_info     0x00000000     0x335f
+.debug_info     0x00000000     0x336e
  .debug_info    0x00000000       0xf6 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_info    0x000000f6      0x57e ./CMSIS/EFM32GG/system_efm32gg.o
- .debug_info    0x00000674     0x1308 ./Factory/Factory.o
- .debug_info    0x0000197c      0x609 ./Source/Application/main.o
- .debug_info    0x00001f85      0x923 ./Source/EFM32/EFM32_GPIO.o
- .debug_info    0x000028a8      0xab7 ./Source/EFM32/EFM32_Timer0.o
+ .debug_info    0x00000674     0x1317 ./Factory/Factory.o
+ .debug_info    0x0000198b      0x609 ./Source/Application/main.o
+ .debug_info    0x00001f94      0x923 ./Source/EFM32/EFM32_GPIO.o
+ .debug_info    0x000028b7      0xab7 ./Source/EFM32/EFM32_Timer0.o
 
 .debug_abbrev   0x00000000      0xc71
  .debug_abbrev  0x00000000       0x14 ./CMSIS/EFM32GG/startup_efm32gg.o
@@ -2298,16 +2298,16 @@ OUTPUT(QMSat_Embeded.axf elf32-littlearm)
  .debug_ranges  0x000001d8       0x70 ./Source/EFM32/EFM32_GPIO.o
  .debug_ranges  0x00000248       0x80 ./Source/EFM32/EFM32_Timer0.o
 
-.debug_str      0x00000000     0x14c8
+.debug_str      0x00000000     0x14d4
  .debug_str     0x00000000      0x448 ./CMSIS/EFM32GG/system_efm32gg.o
                                 0x4c9 (size before relaxing)
- .debug_str     0x00000448      0x8f7 ./Factory/Factory.o
-                                0xa04 (size before relaxing)
- .debug_str     0x00000d3f       0x3c ./Source/Application/main.o
+ .debug_str     0x00000448      0x903 ./Factory/Factory.o
+                                0xa10 (size before relaxing)
+ .debug_str     0x00000d4b       0x3c ./Source/Application/main.o
                                 0x553 (size before relaxing)
- .debug_str     0x00000d7b      0x207 ./Source/EFM32/EFM32_GPIO.o
+ .debug_str     0x00000d87      0x207 ./Source/EFM32/EFM32_GPIO.o
                                 0x64f (size before relaxing)
- .debug_str     0x00000f82      0x546 ./Source/EFM32/EFM32_Timer0.o
+ .debug_str     0x00000f8e      0x546 ./Source/EFM32/EFM32_Timer0.o
                                 0x8d8 (size before relaxing)
 
 .debug_frame    0x00000000     0x2940
