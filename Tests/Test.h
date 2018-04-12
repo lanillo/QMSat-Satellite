@@ -66,10 +66,11 @@ public:
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
         /* toggling the GPIO state */
-        TS_FAIL("no function");
+        TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 3 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 0 ,0_INPUT or 1_OUTPUT */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
     void test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT_0() {
 
@@ -80,16 +81,18 @@ public:
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
         /* toggling the GPIO state */
-        TS_FAIL("no function");
+        TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of the GPIO is 1 */
-        TS_FAIL("no function");
+        /* the state of GPIO is 1 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        1,  /* int p_expectedState */        1  /* int p_GPIOType */));
 
         /* toggling the GPIO state */
-        TS_FAIL("no function");
+        TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of the GPIO is 0 */
-        TS_FAIL("no function");
+        /* the state of GPIO is 0 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        0,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
 };
 
@@ -103,8 +106,9 @@ public:
         GPIOEvaluator_.GPIOInitialiseInput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 3 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 0 ,0_INPUT or 1_OUTPUT */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
     void test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() {
 
@@ -114,8 +118,9 @@ public:
         GPIOEvaluator_.GPIOInitialiseOutput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
-        /* the state of GPIO is 0 (0_low or 1_high or 3_dont_care) since GPIO is set as a 1 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 0 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        0,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
 };
 
@@ -129,8 +134,9 @@ public:
         GPIOEvaluator_.GPIOInitialiseInput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 3 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 0 ,0_INPUT or 1_OUTPUT */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
     void test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() {
 
@@ -140,8 +146,9 @@ public:
         GPIOEvaluator_.GPIOInitialiseOutput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
-        /* the state of GPIO is 1 (0_low or 1_high or 3_dont_care) since GPIO is set as a 1 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 1 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        1,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
 };
 

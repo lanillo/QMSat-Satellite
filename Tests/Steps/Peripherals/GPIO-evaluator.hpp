@@ -9,11 +9,13 @@
 #define GPIO_EVALUATOR_HPP_
 
 #include "EFM32_GPIO.hpp"
+#include "GPIO-mock.hpp"
 
 class GPIOEvaluator
 {
 private:
-	EFM32_GPIO m_UUT;
+	//EFM32_GPIO m_UUT;
+    GPIOMock m_UUT;
 
 public:
 	GPIOEvaluator();
@@ -33,12 +35,12 @@ public:
 	bool verifyIOType(int p_expectedInput);
 
 	// Set GPIO State
-	/** @bdd the state of GPIO is (?P<p_expectedState>[-+]?\d+(\.\d+)?) (0_low or 1_high or 3_dont_care) since GPIO is set as a (?P<p_GPIOType>[-+]?\d+(\.\d+)?) (0_INPUT or 1_OUTPUT)*/
+	/** @bdd the state of GPIO is (?P<p_expectedState>[-+]?\d+(\.\d+)?) ,0_low or 1_high or 3_dont_care, since GPIO is set as a (?P<p_GPIOType>[-+]?\d+(\.\d+)?) ,0_INPUT or 1_OUTPUT*/
 	bool GPIOSetState(int p_expectedState, int p_GPIOType);
 
 	// Toggle GPIO
-    /** @bdd the state of GPIO is (?P<p_expectedState>[-+]?\d+(\.\d+)?) (0_low or 1_high or 3_dont_care) since GPIO is set as a (?P<p_GPIOType>[-+]?\d+(\.\d+)?) (0_INPUT or 1_OUTPUT) after toggling */
-    bool GPIOtoggle(int p_expectedState, int p_GPIOType);
+    /** @bdd toggling the GPIO state */
+    bool GPIOtoggle();
 };
 
 #endif /* GPIO_EVALUATOR_HPP_ */
