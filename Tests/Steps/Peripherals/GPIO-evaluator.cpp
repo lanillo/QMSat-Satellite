@@ -9,13 +9,13 @@ GPIOEvaluator::GPIOEvaluator()
 /**************************************************/
 void GPIOEvaluator::GPIOInitialiseInput(int p_pinNumber, int p_bankLetter, int p_typeIO)
 {
-    m_UUT = GPIOMock(p_pinNumber, p_bankLetter, true, p_typeIO);
+    m_UUT = EFM32_GPIO(p_pinNumber, p_bankLetter, true, p_typeIO);
 }
 
 /**************************************************/
 void GPIOEvaluator::GPIOInitialiseOutput(int p_pinNumber, int p_bankLetter, int p_typeIO)
 {
-    m_UUT = GPIOMock(p_pinNumber, p_bankLetter, false, p_typeIO);
+    m_UUT = EFM32_GPIO(p_pinNumber, p_bankLetter, false, p_typeIO);
 }
 
 /**************************************************/

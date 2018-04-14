@@ -1,6 +1,7 @@
 
 #include <cxxtest/TestSuite.h>
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Mocks\GPIO-mock.hpp"
+#include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Mocks\GPIO-struct-mock.hpp"
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Peripherals\GPIO-evaluator.hpp"
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Peripherals\LED-evaluator.hpp"
 
@@ -68,7 +69,7 @@ public:
         /* toggling the GPIO state */
         TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of GPIO is 3 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 0 ,0_INPUT or 1_OUTPUT */
+        /* the state of GPIO is 3 since GPIO is set as a 0 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
@@ -83,14 +84,14 @@ public:
         /* toggling the GPIO state */
         TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of GPIO is 1 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        /* the state of GPIO is 1 since GPIO is set as a 1 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         1,  /* int p_expectedState */        1  /* int p_GPIOType */));
 
         /* toggling the GPIO state */
         TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of GPIO is 0 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        /* the state of GPIO is 0 since GPIO is set as a 1 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         0,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
@@ -106,7 +107,7 @@ public:
         GPIOEvaluator_.GPIOInitialiseInput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of GPIO is 3 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 0 ,0_INPUT or 1_OUTPUT */
+        /* the state of GPIO is 3 since GPIO is set as a 0 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
@@ -118,7 +119,7 @@ public:
         GPIOEvaluator_.GPIOInitialiseOutput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
-        /* the state of GPIO is 0 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        /* the state of GPIO is 0 since GPIO is set as a 1 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         0,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
@@ -134,7 +135,7 @@ public:
         GPIOEvaluator_.GPIOInitialiseInput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of GPIO is 3 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 0 ,0_INPUT or 1_OUTPUT */
+        /* the state of GPIO is 3 since GPIO is set as a 0 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
@@ -146,7 +147,7 @@ public:
         GPIOEvaluator_.GPIOInitialiseOutput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
-        /* the state of GPIO is 1 ,0_low or 1_high or 3_dont_care, since GPIO is set as a 1 ,0_INPUT or 1_OUTPUT */
+        /* the state of GPIO is 1 since GPIO is set as a 1 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         1,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }

@@ -35,6 +35,7 @@ obj/Debug/BDD/fw-cxxtest/cxxtest \
 obj/Debug/QMSat-Satellite/Source/Application \
 obj/Debug/QMSat-Satellite/Source/EFM32 \
 obj/Debug/QMSat-Satellite/Source/Peripherals \
+obj/Debug/QMSat-Satellite/Tests/Steps/Mocks \
 obj/Debug/QMSat-Satellite/Tests/Steps/Peripherals \
 obj/Debug/QMSat-Satellite/Tests \
 obj/Debug/QMSat_embeded/Source/Application \

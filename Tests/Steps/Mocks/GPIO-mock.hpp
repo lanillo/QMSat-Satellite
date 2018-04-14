@@ -9,6 +9,7 @@
 #define GPIO_MOCK_HPP_
 
 #include "IGPIO.hpp"
+#include "GPIO-struct-mock.hpp"
 
 class GPIOMock: public IGPIO
 {
