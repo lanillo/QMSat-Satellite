@@ -2251,13 +2251,13 @@ OUTPUT(QMSat_Embeded.axf elf32-littlearm)
  .comment       0x00000000       0x71 ./Source/EFM32/EFM32_GPIO.o
  .comment       0x00000000       0x71 ./Source/EFM32/EFM32_Timer0.o
 
-.debug_line     0x00000000     0x17c5
+.debug_line     0x00000000     0x17c3
  .debug_line    0x00000000       0xd3 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_line    0x000000d3      0x38b ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_line    0x0000045e      0x6bf ./Factory/Factory.o
- .debug_line    0x00000b1d      0x381 ./Source/Application/main.o
- .debug_line    0x00000e9e      0x4bb ./Source/EFM32/EFM32_GPIO.o
- .debug_line    0x00001359      0x46c ./Source/EFM32/EFM32_Timer0.o
+ .debug_line    0x00000b1d      0x37f ./Source/Application/main.o
+ .debug_line    0x00000e9c      0x4bb ./Source/EFM32/EFM32_GPIO.o
+ .debug_line    0x00001357      0x46c ./Source/EFM32/EFM32_Timer0.o
 
 .debug_info     0x00000000     0x3360
  .debug_info    0x00000000       0xf6 ./CMSIS/EFM32GG/startup_efm32gg.o

@@ -5,10 +5,6 @@
 #include "Factory.hpp"
 #include "Constants.hpp"
 
-#include "EFM32_GPIO.hpp"
-
-#define TEST_MODE false
-
 int main(void)
 {
 	/* Chip errata */

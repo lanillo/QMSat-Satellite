@@ -19,10 +19,10 @@ typedef struct
     unsigned int DOUTTGL;  /**< Port Data Out Toggle Register  */
     unsigned int DIN;      /**< Port Data In Register  */
     unsigned int PINLOCKN; /**< Port Unlocked Pins Register  */
-} GPIO_P_TypeDef;
+} GPIO_P_TypeDef1;
 
 typedef struct {
-    GPIO_P_TypeDef P[6];    /**< Port configuration bits */
+    GPIO_P_TypeDef1 P[6];    /**< Port configuration bits */
 
     unsigned int RESERVED0[10]; /**< Reserved for future use **/
     unsigned int EXTIPSELL;     /**< External Interrupt Port Select Low Register  */
@@ -42,10 +42,12 @@ typedef struct {
     unsigned int EM4WUEN;       /**< EM4 Wake-up Enable Register  */
     unsigned int EM4WUPOL;      /**< EM4 Wake-up Polarity Register  */
     unsigned int EM4WUCAUSE;    /**< EM4 Wake-up Cause Register  */
-} GPIO_TypeDef;                 /**< GPIO Register Declaration *//** @} */
+} GPIO_TypeDef1;                 /**< GPIO Register Declaration *//** @} */
 
-#define GPIO_BASE         (0x00000000UL) /**< GPIO base address  */
-#define GPIO ((GPIO_TypeDef *) GPIO_BASE)
+#ifndef pGPIO_BASE_TEST
+static unsigned int *pGPIO_BASE_TEST = new unsigned int[86];
+#define GPIO ((GPIO_TypeDef1 *) pGPIO_BASE_TEST)
+#endif // pGPIO_BASE_TEST
 
 /* Bit fields for GPIO P_CTRL */
 #define _GPIO_P_CTRL_RESETVALUE                           0x00000000UL                           /**< Default value for GPIO_P_CTRL */
@@ -1182,7 +1184,6 @@ typedef struct {
 #define GPIO_EM4WUCAUSE_EM4WUCAUSE_F1                     (_GPIO_EM4WUCAUSE_EM4WUCAUSE_F1 << 0)      /**< Shifted mode F1 for GPIO_EM4WUCAUSE */
 #define GPIO_EM4WUCAUSE_EM4WUCAUSE_F2                     (_GPIO_EM4WUCAUSE_EM4WUCAUSE_F2 << 0)      /**< Shifted mode F2 for GPIO_EM4WUCAUSE */
 #define GPIO_EM4WUCAUSE_EM4WUCAUSE_E13                    (_GPIO_EM4WUCAUSE_EM4WUCAUSE_E13 << 0)     /**< Shifted mode E13 for GPIO_EM4WUCAUSE */
-
 
 
 
