@@ -28,8 +28,19 @@ int main( int argc, char *argv[] ) {
     status = CxxTest::Main< CxxTest::ErrorFormatter >( tmp, argc, argv );
     return status;
 }
-bool suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_init = false;
+bool suite_Feature_Empty_feature_init = false;
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Test.h"
+
+static Feature_Empty_feature suite_Feature_Empty_feature;
+
+static CxxTest::List Tests_Feature_Empty_feature = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_Empty_feature(suite_Feature_Empty_feature, Tests_Feature_Empty_feature, "Feature_Empty_feature");
+
+static class TestDescription_suite_Feature_Empty_feature_test_Empty_feature_not_implemented : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_Empty_feature_test_Empty_feature_not_implemented() : CxxTest::RealTestDescription(Tests_Feature_Empty_feature, suiteDescription_Feature_Empty_feature, "test_Empty_feature_not_implemented", 1) {}
+ void runTest() { suite_Feature_Empty_feature.test_Empty_feature_not_implemented(); }
+} testDescription_suite_Feature_Empty_feature_test_Empty_feature_not_implemented;
 
 static Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT;
 
@@ -93,6 +104,12 @@ public:
  TestDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_turned_OFF, suiteDescription_Feature_GPIO_can_be_turned_OFF, "test_A_GPIO_initially_instantiated_as_an_OUTPUT", 1) {}
  void runTest() { suite_Feature_GPIO_can_be_turned_OFF.test_A_GPIO_initially_instantiated_as_an_OUTPUT_0(); }
 } testDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0;
+
+static class TestDescription_suite_Feature_GPIO_can_be_turned_OFF_test_Empty_Scenario_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_turned_OFF_test_Empty_Scenario_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_turned_OFF, suiteDescription_Feature_GPIO_can_be_turned_OFF, "test_Empty_Scenario", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_turned_OFF.test_Empty_Scenario_0(); }
+} testDescription_suite_Feature_GPIO_can_be_turned_OFF_test_Empty_Scenario_0;
 
 static Feature_GPIO_can_be_turned_ON suite_Feature_GPIO_can_be_turned_ON;
 

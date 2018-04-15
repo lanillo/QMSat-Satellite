@@ -15,4 +15,3 @@ Feature: GPIO can be turned OFF
     Given the pin number is 2, a bank letter is 0, is an output and the type is 6
     Then  the state of GPIO is 0 since GPIO is set as a 1
 
-
