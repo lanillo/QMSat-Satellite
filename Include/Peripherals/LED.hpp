@@ -23,6 +23,8 @@ public:
 	void turnON();
 	void toggle();
 
+	bool getState();
+
 private:
 	bool m_State;
 	IGPIO* m_GPIO;

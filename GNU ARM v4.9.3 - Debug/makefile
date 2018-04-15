@@ -13,6 +13,7 @@ RM := rm -rf
 -include obj/Debug/QMSat_embeded/Source/Peripherals/subdir.mk
 -include obj/Debug/QMSat_embeded/Source/Application/subdir.mk
 -include obj/Debug/QMSat-Satellite/Tests/Steps/Peripherals/subdir.mk
+-include obj/Debug/QMSat-Satellite/Tests/Steps/Mocks/subdir.mk
 -include obj/Debug/QMSat-Satellite/Tests/subdir.mk
 -include obj/Debug/QMSat-Satellite/Source/Peripherals/subdir.mk
 -include obj/Debug/QMSat-Satellite/Source/EFM32/subdir.mk

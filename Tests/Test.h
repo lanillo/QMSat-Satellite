@@ -1,6 +1,7 @@
 
 #include <cxxtest/TestSuite.h>
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Mocks\GPIO-mock.hpp"
+#include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Mocks\GPIO-struct-mock.hpp"
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Peripherals\GPIO-evaluator.hpp"
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Peripherals\LED-evaluator.hpp"
 
@@ -66,10 +67,11 @@ public:
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
         /* toggling the GPIO state */
-        TS_FAIL("no function");
+        TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 3 since GPIO is set as a 0 */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
     void test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT_0() {
 
@@ -80,16 +82,18 @@ public:
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
         /* toggling the GPIO state */
-        TS_FAIL("no function");
+        TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of the GPIO is 1 */
-        TS_FAIL("no function");
+        /* the state of GPIO is 1 since GPIO is set as a 1 */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        1,  /* int p_expectedState */        1  /* int p_GPIOType */));
 
         /* toggling the GPIO state */
-        TS_FAIL("no function");
+        TS_ASSERT(GPIOEvaluator_.GPIOtoggle());
 
-        /* the state of the GPIO is 0 */
-        TS_FAIL("no function");
+        /* the state of GPIO is 0 since GPIO is set as a 1 */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        0,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
 };
 
@@ -103,8 +107,9 @@ public:
         GPIOEvaluator_.GPIOInitialiseInput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 3 since GPIO is set as a 0 */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
     void test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() {
 
@@ -114,8 +119,9 @@ public:
         GPIOEvaluator_.GPIOInitialiseOutput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
 
-        /* the state of GPIO is 0 (0_low or 1_high or 3_dont_care) since GPIO is set as a 1 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 0 since GPIO is set as a 1 */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        0,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
 };
 
@@ -129,19 +135,21 @@ public:
         GPIOEvaluator_.GPIOInitialiseInput(
         2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        0  /* int p_typeIO */);
 
-        /* the state of GPIO is 3 (0_low or 1_high or 3_dont_care) since GPIO is set as a 0 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 3 since GPIO is set as a 0 */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        3,  /* int p_expectedState */        0  /* int p_GPIOType */));
     }
     void test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() {
 
         GPIOEvaluator GPIOEvaluator_;
 
-        /* the pin number is 2, a bank letter is 0, is an output and the type is 6 */
+        /* the pin number is 2, a bank letter is 5, is an output and the type is 4 */
         GPIOEvaluator_.GPIOInitialiseOutput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
+        2,  /* int p_pinNumber */        5,  /* int p_bankLetter */        4  /* int p_typeIO */);
 
-        /* the state of GPIO is 1 (0_low or 1_high or 3_dont_care) since GPIO is set as a 1 (0_INPUT or 1_OUTPUT) */
-        TS_FAIL("no function");
+        /* the state of GPIO is 1 since GPIO is set as a 1 */
+        TS_ASSERT(GPIOEvaluator_.GPIOSetState(
+        1,  /* int p_expectedState */        1  /* int p_GPIOType */));
     }
 };
 

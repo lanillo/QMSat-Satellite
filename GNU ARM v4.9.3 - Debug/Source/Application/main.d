@@ -71,7 +71,8 @@ Source/Application/main.o: ../Source/Application/main.cpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/ITimer.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Callback.hpp \
- C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp
+ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp \
+ c:\universite\projetfinbac\git\qmsat-satellite\tests\steps\mocks\gpio-struct-mock.hpp
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\em_device.h:
 
@@ -218,3 +219,5 @@ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp:
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Callback.hpp:
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp:
+
+c:\universite\projetfinbac\git\qmsat-satellite\tests\steps\mocks\gpio-struct-mock.hpp:

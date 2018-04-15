@@ -82,7 +82,9 @@
 		<Unit filename="Source/Application/StateManager.cpp" />
 		<Unit filename="Source/EFM32/EFM32_GPIO.cpp" />
 		<Unit filename="Source/Peripherals/LED.cpp" />
+		<Unit filename="Tests/Steps/Mocks/GPIO-mock.cpp" />
 		<Unit filename="Tests/Steps/Mocks/GPIO-mock.hpp" />
+		<Unit filename="Tests/Steps/Mocks/GPIO-struct-mock.hpp" />
 		<Unit filename="Tests/Steps/Peripherals/GPIO-evaluator.cpp" />
 		<Unit filename="Tests/Steps/Peripherals/GPIO-evaluator.hpp" />
 		<Unit filename="Tests/Steps/Peripherals/LED-evaluator.cpp" />

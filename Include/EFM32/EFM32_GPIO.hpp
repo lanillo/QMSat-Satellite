@@ -10,7 +10,14 @@
 
 #include "IGPIO.hpp"
 #include "Constants.hpp"
-#include "efm32gg990f1024.h"
+
+//#define NOT_IN_TEST
+
+#ifndef NOT_IN_TEST
+    #include "../Tests/Steps/Mocks/GPIO-struct-mock.hpp"
+#else
+    #include "efm32gg990f1024.h"
+#endif // NOT_IN_TEST
 
 class EFM32_GPIO: public IGPIO
 {
