@@ -6,13 +6,6 @@
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Steps\Peripherals\LED-evaluator.hpp"
 
 
-class Feature_Empty_feature : public CxxTest::TestSuite {
-public:
-    void test_Empty_feature_not_implemented() {
-        TS_WARN("feature _Empty feature_ not implemented");
-    }
-};
-
 class Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT : public CxxTest::TestSuite {
 public:
     void test_Initialize_GPIO_as_INPUT_with_OUTPUT_type_0() {
@@ -129,15 +122,6 @@ public:
         /* the state of GPIO is 0 since GPIO is set as a 1 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(
         0,  /* int p_expectedState */        1  /* int p_GPIOType */));
-
-        /* znvsnvsdv */
-        TS_FAIL("no function");
-
-        /* kdjvnsvndsjvn */
-        TS_FAIL("no function");
-    }
-    void test_Empty_Scenario_0() {
-        TS_WARN("scenario _Empty Scenario_ not implemented");
     }
 };
 
@@ -159,9 +143,9 @@ public:
 
         GPIOEvaluator GPIOEvaluator_;
 
-        /* the pin number is 2, a bank letter is 0, is an output and the type is 6 */
+        /* the pin number is 2, a bank letter is 5, is an output and the type is 4 */
         GPIOEvaluator_.GPIOInitialiseOutput(
-        2,  /* int p_pinNumber */        0,  /* int p_bankLetter */        6  /* int p_typeIO */);
+        2,  /* int p_pinNumber */        5,  /* int p_bankLetter */        4  /* int p_typeIO */);
 
         /* the state of GPIO is 1 since GPIO is set as a 1 */
         TS_ASSERT(GPIOEvaluator_.GPIOSetState(

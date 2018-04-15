@@ -12,7 +12,7 @@ Feature: GPIO can be turned ON
 
 
   Scenario: A GPIO initially instantiated as an OUTPUT
-    Given the pin number is 2, a bank letter is 0, is an output and the type is 6
+    Given the pin number is 2, a bank letter is 5, is an output and the type is 4
     Then  the state of GPIO is 1 since GPIO is set as a 1
 
 

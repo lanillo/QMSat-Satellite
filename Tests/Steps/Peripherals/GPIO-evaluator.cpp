@@ -63,7 +63,6 @@ bool GPIOEvaluator::GPIOSetState(int p_expectedState, int p_GPIOType)
 
         // p_expectedState == 3 should never happen since we do care when it is an output
     }
-
     return false;
 
 }
