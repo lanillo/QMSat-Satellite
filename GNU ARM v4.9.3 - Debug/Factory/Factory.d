@@ -64,7 +64,6 @@ Factory/Factory.o: ../Factory/Factory.cpp ../Factory/Factory.hpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_af_ports.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_af_pins.h \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp \
- c:\universite\projetfinbac\git\qmsat-satellite\tests\steps\mocks\gpio-struct-mock.hpp \
  ../Factory/Constants.hpp
 
 ../Factory/Factory.hpp:
@@ -198,7 +197,5 @@ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_af_pins.h:
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp:
-
-c:\universite\projetfinbac\git\qmsat-satellite\tests\steps\mocks\gpio-struct-mock.hpp:
 
 ../Factory/Constants.hpp:

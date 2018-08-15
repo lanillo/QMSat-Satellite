@@ -10,12 +10,17 @@
 
 #include "EFM32_GPIO.hpp"
 #include "GPIO-mock.hpp"
+#include <cstdio>
+
+#define NUMBER_OF_BANKS 6
+#define MASK 65535
 
 class GPIOEvaluator
 {
 private:
 	//EFM32_GPIO m_UUT;
     EFM32_GPIO m_UUT;
+    bool m_PinState;
 
 public:
 	GPIOEvaluator();
@@ -41,6 +46,9 @@ public:
 	// Toggle GPIO
     /** @bdd toggling the GPIO state */
     bool GPIOtoggle();
+
+    // Update registers of the GPIO struct
+    void UpdateRegisters();
 };
 
 #endif /* GPIO_EVALUATOR_HPP_ */

@@ -7,6 +7,7 @@
 
 #include <EFM32_GPIO.hpp>
 #include "Constants.hpp"
+#include <cstdio>
 
 /****************************************************/
 EFM32_GPIO::EFM32_GPIO()
@@ -26,6 +27,8 @@ EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool
     this->m_isInput = isInput;
     this->m_IOType = type;
     this->m_error = false;
+
+    //printf("\n\n Voici l'objet GPIO: %p\n\n", GPIO); //004110E0
 
     if (isInput)
     {
