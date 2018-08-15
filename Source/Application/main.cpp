@@ -30,9 +30,15 @@ int main(void)
 
     PE0.setOutputHigh();
     PE1.setOutputHigh();
+
     PE2.setOutputHigh();
     PE3.setOutputHigh();
     PE4.setOutputHigh();
+
+    PE2.setOutputLow();
+    PE3.setOutputLow();
+    PE4.setOutputLow();
+
     PE5.setOutputHigh();
     PE6.setOutputHigh();
     PE7.setOutputHigh();
@@ -46,32 +52,4 @@ int main(void)
     PE15.setOutputHigh();
 
 
-
-/*
-    EFM32_GPIO PE2 = EFM32_GPIO(2, E, false, OPENSOURCE);
-    EFM32_GPIO PE3 = EFM32_GPIO(3, E, false, OPENSOURCE);
-
-    int cpt = 0;
-
-    PE2.setOutputHigh();
-    if (PE2.readInput())
-    {
-    	cpt++;
-    }
-    PE2.setOutputLow();
-    if (PE2.readInput())
-	{
-		cpt++;
-	}
-    PE3.setOutputHigh();
-    if (PE3.readInput())
-	{
-		cpt++;
-	}
-    PE3.setOutputLow();
-    if (PE3.readInput())
-	{
-		cpt++;
-	}
-*/
 }
