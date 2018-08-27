@@ -69,7 +69,17 @@ void EFM32_I2C::SendAddress()
 	{
 		if (slaveAddress[i] == 0)
 		{
-
+			currentSDA.setOutputLow();
+			Delay();
+			currentSCL.toggleOutput();
+			Delay();
+		}
+		else if (slaveAddress[i] == 1)
+		{
+			currentSDA.setOutputHigh();
+			Delay();
+			currentSCL.toggleOutput();
+			Delay();
 		}
 
 	}
