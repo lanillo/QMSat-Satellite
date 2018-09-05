@@ -1,4 +1,5 @@
 #include "InitState.hpp"
+#include "efm32gg990f1024.h"
 
 /****************************************************/
 InitState::InitState()
@@ -7,10 +8,10 @@ InitState::InitState()
 }
 
 /****************************************************/
-InitState::InitState(ILED* p_LED,ISerialComm* p_EFM32_USART1)
+InitState::InitState(ILED* p_LED, ISerialComm* p_USART)
 {
 	m_LED = p_LED;
-	m_EFM32_USART1 = p_EFM32_USART1;
+	m_USART = p_USART;
 	m_StateId = Init;
 }
 
@@ -23,14 +24,14 @@ short InitState::getStateId()
 /****************************************************/
 void InitState::onEntry()
 {
-	m_LED->turnON();
-	m_EFM32_USART1->sendSerial("Hello Fucking world!\r\n");
+	m_USART->sendSerial("Entering Init State\n\r",21);
 }
 
 /****************************************************/
 short InitState::execute()
 {
-	return Init;
+	m_USART->sendSerial("Executing Init State\n\r",22);
+	return Run;
 }
 
 /****************************************************/

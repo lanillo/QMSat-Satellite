@@ -32,16 +32,17 @@ void StateManager::execute()
 	if(m_CurrentStateId != m_NextStateId)
 	{
         m_CurrentState->onEntry();
-
-        m_CurrentState = getNextState();
         m_CurrentStateId = m_CurrentState->getStateId();
 	}
-
-	m_NextStateId = m_CurrentState->execute();
+	else
+	{
+		m_NextStateId = m_CurrentState->execute();
+	}
 
 	if(m_CurrentStateId != m_NextStateId)
 	{
 		m_CurrentState->onExit();
+		m_CurrentState = getNextState();
 	}
 }
 
@@ -55,7 +56,7 @@ void StateManager::addState(IState* p_State)
 /****************************************************/
 IState* StateManager::getNextState()
 {
-	for(unsigned short index = 0; index < MAX_NUMBER_OF_STATES; index++)
+	for(unsigned short index = 0; index < m_StatesIndex; index++)
 	{
 		if(m_States[index]->getStateId() == m_NextStateId)
 		{

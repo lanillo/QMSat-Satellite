@@ -7,6 +7,8 @@
 
 #include "EFM32_GPIO.hpp"
 
+
+
 int main(void)
 {
 	/* Chip errata */
@@ -22,22 +24,21 @@ int main(void)
     StateManager* stateManager = factory.createStateManager();
     EFM32_Timer0* timer0 = factory.createTimer0();
 
-    /*Initialisations*/
+    /*Initializations*/
     initTimer0();
     initUSART1();
 
-    //timer0->start();
+    timer0->start();
 
     /* Infinite loop */
-    unsigned int referenceTime_microsecond;
+    static unsigned int referenceTime_microsecond;
     referenceTime_microsecond = timer0->getReferenceTime_microsecond();
     while (true)
     {
-    	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) > TIME_500_MILLISECONDS)
+    	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_1_SECOND)
     	{
     		stateManager->execute();
     		referenceTime_microsecond = timer0->getReferenceTime_microsecond();
     	}
-    	stateManager->execute();
     }
 }

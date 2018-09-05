@@ -16,7 +16,7 @@ class InitState: public IState
 {
 public:
 	InitState();
-	InitState(ILED* p_LED0,ISerialComm* p_EFM32_USART1);
+	InitState(ILED* p_LED0,ISerialComm* p_USART);
 	~InitState() {};
 
 	short getStateId();
@@ -24,7 +24,7 @@ public:
 private:
 	short m_StateId;
 	ILED* m_LED;
-	ISerialComm* m_EFM32_USART1;
+	ISerialComm* m_USART;
 
 	void onEntry();
 	void onExit();

@@ -10,25 +10,34 @@
 /****************************************************/
 RunState::RunState()
 {
-	stateId = Run;
+	m_stateId = Run;
+}
+
+/****************************************************/
+RunState::RunState(ISerialComm* p_USART)
+{
+	m_stateId = Run;
+
+	m_USART = p_USART;
 }
 
 /****************************************************/
 short RunState::getStateId()
 {
-	return stateId;
+	return m_stateId;
 }
 
 /****************************************************/
 void RunState::onEntry()
 {
-
+	m_USART->sendSerial("Entering Run State\n\r",20);
 }
 
 /****************************************************/
 short RunState::execute()
 {
-	return Run;
+	m_USART->sendSerial("Executing Run State\n\r",21);
+	return Init;
 }
 
 /****************************************************/

@@ -20,20 +20,21 @@ public:
 	EFM32_USART1(int p_Baudrate, bool p_StopBit, bool p_Parity);
 	~EFM32_USART1() {};
 
-	void sendSerial(char* p_TxBuffer);
-	void receiveSerial();
-
-	void incrementTxBuffer();
+	void sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize);
+	char receiveSerial();
 
 	static void callbackForSerialTransmit(void* p_USART1Instance);
 	static void callbackForSerialReceive(void* p_USART1Instance);
+
 private:
 	int m_Baudrate;
 	bool m_StopBit;
 	bool m_Parity;
 
 	unsigned short m_TxBufferSize;
-	char* m_TxBuffer;
+	unsigned short m_TxBufferIndex;
+	char m_TxBuffer[TX_BUFFER_SIZE_USART1];
+	char m_RxBuffer[RX_BUFFER_SIZE_USART1];
 };
 
 void initUSART1();

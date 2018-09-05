@@ -28,30 +28,47 @@ int main( int argc, char *argv[] ) {
     status = CxxTest::Main< CxxTest::ErrorFormatter >( tmp, argc, argv );
     return status;
 }
-bool suite_Feature_MLR7059_LED_can_turn_ON_init = false;
+bool suite_Feature_LED_can_be_toggle_init = false;
 #include "C:\SourceTree\QMSat_embeded\Tests\Test.h"
 
-static Feature_MLR7059_LED_can_turn_ON suite_Feature_MLR7059_LED_can_turn_ON;
+static Feature_LED_can_be_toggle suite_Feature_LED_can_be_toggle;
 
-static CxxTest::List Tests_Feature_MLR7059_LED_can_turn_ON = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_Feature_MLR7059_LED_can_turn_ON(suite_Feature_MLR7059_LED_can_turn_ON, Tests_Feature_MLR7059_LED_can_turn_ON, "MLR7059");
+static CxxTest::List Tests_Feature_LED_can_be_toggle = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_LED_can_be_toggle(suite_Feature_LED_can_be_toggle, Tests_Feature_LED_can_be_toggle, "Feature_LED_can_be_toggle");
 
-static class TestDescription_suite_Feature_MLR7059_LED_can_turn_ON_test_MVCP2656_A_LED_initially_closed_0 : public CxxTest::RealTestDescription {
+static class TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_closed_0 : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_Feature_MLR7059_LED_can_turn_ON_test_MVCP2656_A_LED_initially_closed_0() : CxxTest::RealTestDescription(Tests_Feature_MLR7059_LED_can_turn_ON, suiteDescription_Feature_MLR7059_LED_can_turn_ON, "MVCP2656", 1) {}
- void runTest() { suite_Feature_MLR7059_LED_can_turn_ON.test_MVCP2656_A_LED_initially_closed_0(); }
-} testDescription_suite_Feature_MLR7059_LED_can_turn_ON_test_MVCP2656_A_LED_initially_closed_0;
+ TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_closed_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_be_toggle, suiteDescription_Feature_LED_can_be_toggle, "test_A_LED_initially_closed", 1) {}
+ void runTest() { suite_Feature_LED_can_be_toggle.test_A_LED_initially_closed_0(); }
+} testDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_closed_0;
 
-static Feature_MLR8739_LED_can_turn_OFF suite_Feature_MLR8739_LED_can_turn_OFF;
-
-static CxxTest::List Tests_Feature_MLR8739_LED_can_turn_OFF = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_Feature_MLR8739_LED_can_turn_OFF(suite_Feature_MLR8739_LED_can_turn_OFF, Tests_Feature_MLR8739_LED_can_turn_OFF, "MLR8739");
-
-static class TestDescription_suite_Feature_MLR8739_LED_can_turn_OFF_test_MVCP1607_A_LED_initially_opened_0 : public CxxTest::RealTestDescription {
+static class TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_opened_0 : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_Feature_MLR8739_LED_can_turn_OFF_test_MVCP1607_A_LED_initially_opened_0() : CxxTest::RealTestDescription(Tests_Feature_MLR8739_LED_can_turn_OFF, suiteDescription_Feature_MLR8739_LED_can_turn_OFF, "MVCP1607", 1) {}
- void runTest() { suite_Feature_MLR8739_LED_can_turn_OFF.test_MVCP1607_A_LED_initially_opened_0(); }
-} testDescription_suite_Feature_MLR8739_LED_can_turn_OFF_test_MVCP1607_A_LED_initially_opened_0;
+ TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_opened_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_be_toggle, suiteDescription_Feature_LED_can_be_toggle, "test_A_LED_initially_opened", 1) {}
+ void runTest() { suite_Feature_LED_can_be_toggle.test_A_LED_initially_opened_0(); }
+} testDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_opened_0;
+
+static Feature_LED_can_turn_OFF suite_Feature_LED_can_turn_OFF;
+
+static CxxTest::List Tests_Feature_LED_can_turn_OFF = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_LED_can_turn_OFF(suite_Feature_LED_can_turn_OFF, Tests_Feature_LED_can_turn_OFF, "Feature_LED_can_turn_OFF");
+
+static class TestDescription_suite_Feature_LED_can_turn_OFF_test_A_LED_initially_opened_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_LED_can_turn_OFF_test_A_LED_initially_opened_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_turn_OFF, suiteDescription_Feature_LED_can_turn_OFF, "test_A_LED_initially_opened", 1) {}
+ void runTest() { suite_Feature_LED_can_turn_OFF.test_A_LED_initially_opened_0(); }
+} testDescription_suite_Feature_LED_can_turn_OFF_test_A_LED_initially_opened_0;
+
+static Feature_LED_can_turn_ON suite_Feature_LED_can_turn_ON;
+
+static CxxTest::List Tests_Feature_LED_can_turn_ON = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_LED_can_turn_ON(suite_Feature_LED_can_turn_ON, Tests_Feature_LED_can_turn_ON, "Feature_LED_can_turn_ON");
+
+static class TestDescription_suite_Feature_LED_can_turn_ON_test_A_LED_initially_closed_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_LED_can_turn_ON_test_A_LED_initially_closed_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_turn_ON, suiteDescription_Feature_LED_can_turn_ON, "test_A_LED_initially_closed", 1) {}
+ void runTest() { suite_Feature_LED_can_turn_ON.test_A_LED_initially_closed_0(); }
+} testDescription_suite_Feature_LED_can_turn_ON_test_A_LED_initially_closed_0;
 
 #include <cxxtest/Root.cpp>
 const char* CxxTest::RealWorldDescription::_worldName = "cxxtest";

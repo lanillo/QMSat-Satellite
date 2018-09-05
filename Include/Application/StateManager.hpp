@@ -7,7 +7,7 @@
 
 #include "IState.hpp"
 
-#define MAX_NUMBER_OF_STATES (1U)
+#define MAX_NUMBER_OF_STATES (10U)
 
 class StateManager
 {
