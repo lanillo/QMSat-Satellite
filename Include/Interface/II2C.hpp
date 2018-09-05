@@ -13,9 +13,6 @@ class II2C
 public:
 	II2C() {};
 	virtual ~II2C() {};
-
-	virtual void Write() = 0;
-	virtual void Read() = 0;
 };
 
 #endif /* INCLUDE_INTERFACE_II2C_HPP_ */

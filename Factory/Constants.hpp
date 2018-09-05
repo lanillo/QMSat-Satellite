@@ -8,7 +8,7 @@
 #ifndef FACTORY_CONSTANTS_HPP_
 #define FACTORY_CONSTANTS_HPP_
 
-#define null 0
+static int null = 0;
 
 enum GPIO_BANK{A, B, C, D, E, F};
 
@@ -31,6 +31,6 @@ enum IO_TYPES
 	PUSHPULL_ALTDRIVE						// OUTPUT
 };
 
-int ACCELEROMETER_ADDRESS = 85; // 0x55
+static int ACCELEROMETER_ADDRESS = 85; // 0x55
 
 #endif /* FACTORY_CONSTANTS_HPP_ */

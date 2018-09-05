@@ -13,18 +13,31 @@
 /****************************************************/
 EFM32_I2C::EFM32_I2C()
 {
-	currentSDA = null;
-	currentSCL = null;
-	slaveAddress = null;
+
+	for (int i = 0; i < 32; i++)
+	{
+		this->slaveAddress[i] = null;
+		this->dataOut[i] = null;
+	}
+
+	this->addressInteger = null;
 }
 
 /****************************************************/
 EFM32_I2C::EFM32_I2C(EFM32_GPIO SDA, EFM32_GPIO SCL, int address)
 {
-	currentSDA = SDA;
-	currentSCL = SCL;
-	slaveAddress = null;
-	addressInteger = address;
+	this->currentSDA = SDA;
+	this->currentSCL = SCL;
+
+	for (int i = 0; i < 32; i++)
+	{
+		this->slaveAddress[i] = null;
+	}
+
+	this->addressInteger = address;
+
+	SDA.setOutputHigh();
+	SCL.setOutputHigh();
 
 	DecodeAddress();
 
@@ -65,7 +78,15 @@ void EFM32_I2C::StopCom()
 /****************************************************/
 void EFM32_I2C::SendAddress()
 {
-	for (int i = 26; i < 33; i++) // we take the seven bits representing the address of the slave
+	slaveAddress[25] = 1;
+	slaveAddress[26] = 0;
+	slaveAddress[27] = 1;
+	slaveAddress[28] = 0;
+	slaveAddress[29] = 1;
+	slaveAddress[30] = 0;
+	slaveAddress[31] = 1;
+
+	for (int i = 25; i < 32; i++) // we take the seven bits representing the address of the slave
 	{
 		if (slaveAddress[i] == 0)
 		{
@@ -83,20 +104,33 @@ void EFM32_I2C::SendAddress()
 		}
 
 	}
+
+
 }
 
 /****************************************************/
 void EFM32_I2C::DecodeAddress()
 {
-	unsigned int mask = 1 << (sizeof(int) * 8 - 1);
-
-	for(int i = 0; i < sizeof(int) * 8; i++)
+	for (int i = 0; i < 25; i++)
 	{
-		if((slaveAddress & mask) == 0 )
-			slaveAddress[i] = 0; // cout << '0' ; // MSB to LSB [31,30,29,28,27,...,2,1,0] for 32 bits
-	    else
-	    	slaveAddress[i] = 1; // cout << '1' ; // MSB to LSB [31,30,29,28,27,...,2,1,0] for 32 bits
-
-		mask  >>= 1;
+		slaveAddress[i] = 0;
 	}
+
+	slaveAddress[31] = 1;
+	slaveAddress[30] = 0;
+	slaveAddress[29] = 1;
+	slaveAddress[28] = 0;
+	slaveAddress[27] = 1;
+	slaveAddress[26] = 0;
+	slaveAddress[25] = 1;
+
 }
+
+/****************************************************/
+void EFM32_I2C::ReadData()
+{
+	StartCom();
+	SendAddress();
+
+}
+

@@ -8,20 +8,25 @@
 #ifndef INCLUDE_EFM32_EFM32_I2C_HPP_
 #define INCLUDE_EFM32_EFM32_I2C_HPP_
 
+#include "II2C.hpp"
+#include "Constants.hpp"
+#include "EFM32_GPIO.hpp"
+
 class EFM32_I2C: public II2C
 {
 public:
 	EFM32_I2C();
 	EFM32_I2C(EFM32_GPIO SDA, EFM32_GPIO SCL, int address);
+
+	void ReadData();
+
 	~EFM32_I2C() {};
 
-	void Write(int command);
-	void Read();
 
 private:
-
-	int addressInteger
+	int addressInteger;
 	int slaveAddress[32];
+	int dataOut[32];
 
 	void Delay();
 	void StartCom();
