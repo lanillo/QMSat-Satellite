@@ -14,12 +14,13 @@
 //#define NOT_IN_TEST
 
 #include "efm32gg990f1024.h"
+#include "em_gpio.h"
 
 class EFM32_GPIO: public IGPIO
 {
 public:
 	EFM32_GPIO();
-	EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool isInput, int typeIO);
+	EFM32_GPIO(GPIO_Port_TypeDef port, unsigned int pin, GPIO_Mode_TypeDef mode, unsigned int dout); // Page 750, datasheet
 	~EFM32_GPIO() {};
 
 	// For inputs
@@ -30,18 +31,21 @@ public:
 	bool setOutputLow();
 	bool toggleOutput();
 
-	// For attributes
+	// Set attributes
+	void setGPIOMode(GPIO_Mode_TypeDef mode, unsigned int dout);
+
+	// Get attributes
+	GPIO_OutputModes getOutputMode();
+	GPIO_Mode_TypeDef getGPIOMode();
+
 	bool getError();
-	bool getIsInput();
 
 private:
-	unsigned short m_PinNumber;
-	unsigned short m_BankNumber;
-	unsigned short m_IOType;
-
-	bool m_isInput;
 	bool m_error;
-
+	GPIO_Port_TypeDef m_port;
+	unsigned int m_pin;
+	GPIO_Mode_TypeDef m_mode;
+	GPIO_OutputModes m_outputMode;
 };
 
 

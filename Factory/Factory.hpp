@@ -17,6 +17,8 @@
 #include "EFM32_GPIO.hpp"
 #include "EFM32_I2C.hpp"
 
+#include "em_gpio.h"
+
 class Factory
 {
 private:

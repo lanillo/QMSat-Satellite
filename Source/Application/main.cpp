@@ -1,5 +1,8 @@
 #include "em_device.h"
 #include "em_chip.h"
+#include "em_gpio.h"
+#include "em_chip.h"
+#include "bspconfig.h"
 #include "efm32gg990f1024.h"
 
 #include <stdio.h>
@@ -7,27 +10,42 @@
 #include "Factory.hpp"
 #include "Constants.hpp"
 
+#include "EFM32_GPIO.hpp"
+
 int main(void)
 {
 	/* Chip errata */
 	CMU->HFRCOCTRL = 0x8;                         // Set High Freq. RC Osc. to 1 MHz
     CMU->HFPERCLKEN0 = (1 << 13) | (1 << 5);      // Enable GPIO and Timer0 peripheral clocks
 
-    EFM32_GPIO SDA_PC4 = EFM32_GPIO(4, C, false, OPENSOURCE);
-    EFM32_GPIO SCL_PC5 = EFM32_GPIO(5, C, false, OPENSOURCE);
+    /* Initialize chip */
+    //CHIP_Init();
 
-    SDA_PC4.setOutputLow();
-    SDA_PC4.setOutputHigh();
-    SDA_PC4.setOutputLow();
-    SDA_PC4.setOutputHigh();
+    /* Enable clock for GPIO module */
+    //CMU_ClockEnable(cmuClock_GPIO, true);
 
-    SCL_PC5.setOutputLow();
-    SCL_PC5.setOutputHigh();
-    SCL_PC5.setOutputLow();
-    SCL_PC5.setOutputHigh();
+    /* Configure PB0 pin as an input for PB0 button */
+    EFM32_GPIO B9(BSP_GPIO_PB0_PORT,BSP_GPIO_PB0_PIN, gpioModeInput, 0);
 
-    EFM32_I2C I2CT = EFM32_I2C(SDA_PC4, SCL_PC5, ACCELEROMETER_ADDRESS);
+    /* Configure LED0 as a push pull for LED drive */
+    EFM32_GPIO E2(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPullDrive, 1);
 
-    I2CT.ReadData();
+    EFM32_GPIO PA12(gpioPortE, 1, gpioModePushPullDrive, 1);
+
+    while (1)
+      {
+    	if (!B9.readInput())
+		{
+		  /* Configure LED Port with alternate drive strength of 0.5mA */
+    		E2.setOutputHigh();
+    		PA12.setOutputHigh();
+		}
+		else
+		{
+		  /* Configure LED Port with standard drive strength of 6mA */
+			E2.setOutputLow();
+			PA12.setOutputLow();
+		}
+      }
 
 }
