@@ -18,6 +18,12 @@ enum GPIO_OutputModes
 	OM_OpenDrain_WiredAND = 3
 };
 
+enum GPIO_INTERRUPTS_FLAGS
+{
+	ALL_GPIO_ODDS = 0xAAAA,
+	ALL_GPIO_EVEN = 0x5555
+};
+
 static int ACCELEROMETER_ADDRESS = 85; // 0x55
 
 #endif /* FACTORY_CONSTANTS_HPP_ */

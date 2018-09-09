@@ -30,7 +30,8 @@ int main(void)
     /* Configure LED0 as a push pull for LED drive */
     EFM32_GPIO E2(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPullDrive, 1);
 
-    EFM32_GPIO PA12(gpioPortE, 1, gpioModePushPullDrive, 1);
+    EFM32_GPIO PA12(gpioPortD, 14, gpioModePushPull, 1);
+    PA12.setGPIOPortDriveMode(gpioDriveModeLowest);
 
     while (1)
       {

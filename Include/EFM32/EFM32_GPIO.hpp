@@ -31,21 +31,44 @@ public:
 	bool setOutputLow();
 	bool toggleOutput();
 
+	// For interrupts
+	void clearInterrupts(uint32_t flags);
+	void disableInterrupts(uint32_t flags);
+	void enableInterrupts(uint32_t flags);
+	uint32_t getInterrupts();
+	uint32_t getEnabledInterrupts();
+
 	// Set attributes
 	void setGPIOMode(GPIO_Mode_TypeDef mode, unsigned int dout);
+	void setGPIOPortDriveMode(GPIO_DriveMode_TypeDef driveMode);
+	void setInterrupt(bool risingEdge, bool fallingEdge, bool enable);
 
 	// Get attributes
-	GPIO_OutputModes getOutputMode();
-	GPIO_Mode_TypeDef getGPIOMode();
-
 	bool getError();
+	bool getGPIOCreated();
+	bool getIsInterrupt();
+
+	unsigned int getPin();
+
+	GPIO_OutputModes getOutputMode();
+
+	GPIO_Port_TypeDef getPort();
+	GPIO_Mode_TypeDef getGPIOMode();
+	GPIO_DriveMode_TypeDef getGPIODriveMode();
 
 private:
+
 	bool m_error;
-	GPIO_Port_TypeDef m_port;
+	bool m_GPIOCreated;
+	bool m_isInterrupt;
+
 	unsigned int m_pin;
-	GPIO_Mode_TypeDef m_mode;
+
 	GPIO_OutputModes m_outputMode;
+
+	GPIO_Port_TypeDef m_port;
+	GPIO_Mode_TypeDef m_mode;
+	GPIO_DriveMode_TypeDef m_driveMode;
 };
 
 
