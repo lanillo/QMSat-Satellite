@@ -45,6 +45,10 @@ private:
 	bool m_USART1Created;
 	void createUSART1();
 
+	/**** USB ****/
+	bool m_USBCreated;
+	void createUSB();
+
 public:
 	Factory();
 	StateManager* createStateManager();

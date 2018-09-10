@@ -16,6 +16,7 @@ Factory::Factory()
 	m_Timer0Created = false;
 	m_LED0Created = false;
 	m_USART1Created = false;
+	m_USBCreated = false;
 }
 
 /****************************************************/
@@ -70,11 +71,20 @@ void Factory::createUSART1()
 }
 
 /****************************************************/
+void Factory::createUSB()
+{
+	if(m_USBCreated == false)
+	{
+
+	}
+}
+
+/****************************************************/
 EFM32_Timer0* Factory::createTimer0()
 {
 	if(m_Timer0Created == false)
 	{
-		m_Timer0 = EFM32_Timer0(TIME_1_MILLISECOND);
+		m_Timer0 = EFM32_Timer0(TIME_100_MICROSECONDS);
 		m_Timer0Created = true;
 	}
 	return &m_Timer0;

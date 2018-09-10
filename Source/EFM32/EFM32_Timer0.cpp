@@ -14,8 +14,8 @@ static unsigned int s_IntMaxValue = 4294967000;
 /****************************************************/
 EFM32_Timer0::EFM32_Timer0(unsigned int p_Period_microsecond)
 {
-	s_Period_Timer0_microsecond = p_Period_microsecond/2;
-	TIMER0->TOP = p_Period_microsecond/2;
+	s_Period_Timer0_microsecond = p_Period_microsecond;
+	TIMER0->TOP = p_Period_microsecond*40;  //HF Clock is at 12MHz,
 	m_ReferenceTime_microsecond = 0;
 	s_ElapsedTime_Timer0_microsecond = 0;
 }
@@ -53,7 +53,7 @@ void TIMER0_IRQHandler(void)
     s_ElapsedTime_Timer0_microsecond += s_Period_Timer0_microsecond;
     if(s_ElapsedTime_Timer0_microsecond >= s_IntMaxValue)
     {
-    	s_ElapsedTime_Timer0_microsecond = 0;
+    	s_ElapsedTime_Timer0_microsecond = 0; //Assure that the elapsed time stays within the limit of an int 32 bits
     }
 }
 
