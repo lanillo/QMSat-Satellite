@@ -8,6 +8,8 @@
 #ifndef FACTORY_CONSTANTS_HPP_
 #define FACTORY_CONSTANTS_HPP_
 
+#define ACCELEROMETER_ADDRESS 	0x55 << 1
+
 static int null = 0;
 
 enum GPIO_OutputModes
@@ -24,6 +26,6 @@ enum GPIO_INTERRUPTS_FLAGS
 	ALL_GPIO_EVEN = 0x5555
 };
 
-static int ACCELEROMETER_ADDRESS = 85; // 0x55
+
 
 #endif /* FACTORY_CONSTANTS_HPP_ */

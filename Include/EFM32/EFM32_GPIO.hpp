@@ -32,16 +32,16 @@ public:
 	bool toggleOutput();
 
 	// For interrupts
-	void clearInterrupts(uint32_t flags);
-	void disableInterrupts(uint32_t flags);
-	void enableInterrupts(uint32_t flags);
-	uint32_t getInterrupts();
-	uint32_t getEnabledInterrupts();
+	void clearInterruptsToTest(uint32_t flags);
+	void disableInterruptsToTest(uint32_t flags);
+	void enableInterruptsToTest(uint32_t flags);
+	uint32_t getInterruptsToTest();
+	uint32_t getEnabledInterruptsToTest();
 
 	// Set attributes
 	void setGPIOMode(GPIO_Mode_TypeDef mode, unsigned int dout);
 	void setGPIOPortDriveMode(GPIO_DriveMode_TypeDef driveMode);
-	void setInterrupt(bool risingEdge, bool fallingEdge, bool enable);
+	void setInterruptToTest(bool risingEdge, bool fallingEdge, bool enable);
 
 	// Get attributes
 	bool getError();
@@ -54,7 +54,7 @@ public:
 
 	GPIO_Port_TypeDef getPort();
 	GPIO_Mode_TypeDef getGPIOMode();
-	GPIO_DriveMode_TypeDef getGPIODriveMode();
+	//GPIO_DriveMode_TypeDef getGPIODriveMode(); 	// Commented because DriveMode is for the whole port, not the pin.
 
 private:
 
@@ -68,7 +68,7 @@ private:
 
 	GPIO_Port_TypeDef m_port;
 	GPIO_Mode_TypeDef m_mode;
-	GPIO_DriveMode_TypeDef m_driveMode;
+	//GPIO_DriveMode_TypeDef m_driveMode; 			// Commented because DriveMode is for the whole port, not the pin.
 };
 
 

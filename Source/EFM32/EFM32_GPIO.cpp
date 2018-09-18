@@ -18,7 +18,7 @@ EFM32_GPIO::EFM32_GPIO()
 		m_pin(null),
 		m_mode(gpioModeDisabled),
 		m_outputMode(OM_Disabled),
-		m_driveMode(gpioDriveModeLow),
+		//m_driveMode(gpioDriveModeLow),
 		m_isInterrupt(false)
 {
 }
@@ -88,14 +88,14 @@ bool EFM32_GPIO::toggleOutput()
 }
 
 /****************************************************/
-void EFM32_GPIO::setGPIOPortDriveMode(GPIO_DriveMode_TypeDef driveMode)
+/*void EFM32_GPIO::setGPIOPortDriveMode(GPIO_DriveMode_TypeDef driveMode)
 {
 	m_driveMode = driveMode;
 	GPIO_DriveModeSet(m_port, driveMode);
-}
+}*/
 
 /****************************************************/
-void EFM32_GPIO::setInterrupt(bool risingEdge, bool fallingEdge, bool enable)
+void EFM32_GPIO::setInterruptToTest(bool risingEdge, bool fallingEdge, bool enable)
 {
 	/*
 	if (m_isInterrupt)
@@ -117,31 +117,31 @@ void EFM32_GPIO::setInterrupt(bool risingEdge, bool fallingEdge, bool enable)
 }
 
 /****************************************************/
-void EFM32_GPIO::clearInterrupts(uint32_t flags)
+void EFM32_GPIO::clearInterruptsToTest(uint32_t flags)
 {
 	GPIO_IntClear(flags);
 }
 
 /****************************************************/
-void EFM32_GPIO::disableInterrupts(uint32_t flags)
+void EFM32_GPIO::disableInterruptsToTest(uint32_t flags)
 {
 	GPIO_IntDisable(flags);
 }
 
 /****************************************************/
-void EFM32_GPIO::enableInterrupts(uint32_t flags)
+void EFM32_GPIO::enableInterruptsToTest(uint32_t flags)
 {
 	GPIO_IntEnable(flags);
 }
 
 /****************************************************/
-uint32_t EFM32_GPIO::getInterrupts()
+uint32_t EFM32_GPIO::getInterruptsToTest()
 {
-	GPIO_IntGet();
+	return GPIO_IntGet();
 }
 
 /****************************************************/
-uint32_t EFM32_GPIO::getEnabledInterrupts()
+uint32_t EFM32_GPIO::getEnabledInterruptsToTest()
 {
 	return GPIO_IntGetEnabled();
 }
@@ -212,7 +212,7 @@ GPIO_Mode_TypeDef EFM32_GPIO::getGPIOMode()
 }
 
 /****************************************************/
-GPIO_DriveMode_TypeDef EFM32_GPIO::getGPIODriveMode()
+/*GPIO_DriveMode_TypeDef EFM32_GPIO::getGPIODriveMode()
 {
     return m_driveMode; //GPIO_PinModeGet(m_port, m_pin);
-}
+}*/
