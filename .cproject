@@ -84,7 +84,7 @@
 									<listOptionValue builtIn="false" value="EFM32GG990F1024=1"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.148483046" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-								<inputType id="org.eclipse.cdt.core.asmSource.1807630599" superClass="org.eclipse.cdt.core.asmSource"/>
+								<inputType id="org.eclipse.cdt.core.asmSource.1601132070" superClass="org.eclipse.cdt.core.asmSource"/>
 							</tool>
 							<tool id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.base.104323631" name="GNU ARM C Linker" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.base">
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.nostdlibs.107577670" name="No startup or default libs (-nostdlib)" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.nostdlibs" value="false" valueType="boolean"/>
@@ -182,7 +182,7 @@
 									<listOptionValue builtIn="false" value="EFM32GG990F1024=1"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1064971374" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-								<inputType id="org.eclipse.cdt.core.asmSource.322191409" superClass="org.eclipse.cdt.core.asmSource"/>
+								<inputType id="org.eclipse.cdt.core.asmSource.407966858" superClass="org.eclipse.cdt.core.asmSource"/>
 							</tool>
 							<tool id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.base.137949936" name="GNU ARM C Linker" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.base">
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.nostdlibs.401482633" name="No startup or default libs (-nostdlib)" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.nostdlibs" value="false" valueType="boolean"/>
@@ -225,5 +225,4 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="refreshScope"/>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

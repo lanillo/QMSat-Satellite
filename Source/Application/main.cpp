@@ -21,7 +21,6 @@
 #include "Constants.hpp"
 
 #include "EFM32_GPIO.hpp"
-#include "EFM32_I2C.hpp"
 
 #define COM_PORT gpioPortD // USART location #1: PD0 and PD1
 #define UART_TX_pin 0      // PD0
@@ -81,12 +80,19 @@ int main(void)
     //CMU_ClockEnable(cmuClock_TIMER0, true);		// Enable Timer_0 peripheral clock
     //CMU_ClockEnable(cmuClock_I2C1, true);		// Enable I2C1 peripheral clock
 
+    /* Configure PB0 pin as an input for PB0 button */
+	EFM32_GPIO B9_PB0(BSP_GPIO_PB0_PORT,BSP_GPIO_PB0_PIN, gpioModeInputPull, 1);
+
+	/* Configure LED0 as a push pull for LED drive */
+	EFM32_GPIO E2_LED0(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPull, 0);
+
+
 	uint8_t i;
 	char test_string[] = "\n\rHello World!\n\r";     // Test string
 	char rx_char = 0;                                // Temp variable for storing received characters
 
-	GPIO_PinModeSet(COM_PORT, UART_TX_pin, gpioModePushPull, 1); // Configure UART TX pin as digital output, initialize high since UART TX idles high (otherwise glitches can occur)
-	GPIO_PinModeSet(COM_PORT, UART_RX_pin, gpioModeInput, 0);    // Configure UART RX pin as input (no filter)
+	GPIO_PinModeSet(gpioPortD, 0, gpioModePushPull, 1); // Configure UART TX pin as digital output, initialize high since UART TX idles high (otherwise glitches can occur)
+	GPIO_PinModeSet(gpioPortD, 1, gpioModeInput, 0);    // Configure UART RX pin as input (no filter)
 
 	USART_InitAsync_TypeDef uartInit =
 	{
@@ -120,6 +126,15 @@ int main(void)
 
     while (1)
     {
+    	if(!B9_PB0.readInput())
+    	{
+    		E2_LED0.setOutputHigh();
+    		USART1->TXDATA = 'a';
+    	} else
+    	{
+    		E2_LED0.setOutputLow();
+    	}
+
 		if(USART1->STATUS & (1 << 7))
 		{
 			// if RX buffer contains valid data
@@ -132,8 +147,8 @@ int main(void)
 			if(USART1->STATUS & (1 << 6))
 			{
 				// check if TX buffer is empty
-				USART1->TXDATA = 'a';     // echo received char
-				rx_char = 0;                  // reset temp variable
+				USART1->TXDATA = 'a';	// echo received char
+				rx_char = 0;			// reset temp variable
 			}
 		}
     }

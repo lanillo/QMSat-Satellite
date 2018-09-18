@@ -15,9 +15,6 @@
 
 #include "EFM32_Timer0.hpp"
 #include "EFM32_GPIO.hpp"
-#include "EFM32_I2C.hpp"
-
-#include "em_gpio.h"
 
 class Factory
 {
@@ -46,17 +43,11 @@ private:
 	EFM32_GPIO m_GPIO_LED0;
 	bool m_GPIOCreated;
 
-	/**** I2C ****/
-	EFM32_I2C m_I2C;
-	EFM32_I2C m_I2C_0;
-	bool m_I2CCreated;
-
 public:
 	Factory();
 	StateManager* createStateManager();
 	EFM32_Timer0* createTimer0();
 	EFM32_GPIO* createGPIO();
-	EFM32_I2C* createI2C0();
 };
 
 

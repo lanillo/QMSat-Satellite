@@ -67,9 +67,6 @@ Factory/Factory.o: ../Factory/Factory.cpp ../Factory/Factory.hpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg990f1024.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_bus.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_assert.h \
- C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_I2C.hpp \
- C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/II2C.hpp \
- C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp \
  ../Factory/Constants.hpp
 
 ../Factory/Factory.hpp:
@@ -209,11 +206,5 @@ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_bus.h:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_assert.h:
-
-C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_I2C.hpp:
-
-C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/II2C.hpp:
-
-C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp:
 
 ../Factory/Constants.hpp:
