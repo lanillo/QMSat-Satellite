@@ -25,6 +25,7 @@ short InitState::getStateId()
 void InitState::onEntry()
 {
 	m_USART->sendSerial("Entering Init State\n\r",21);
+	m_LED->turnON();
 }
 
 /****************************************************/
@@ -37,5 +38,5 @@ short InitState::execute()
 /****************************************************/
 void InitState::onExit()
 {
-
+	m_LED->turnOFF();
 }

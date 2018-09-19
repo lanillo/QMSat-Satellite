@@ -16,7 +16,7 @@ Factory::Factory()
 	m_Timer0Created = false;
 	m_LED0Created = false;
 	m_USART1Created = false;
-	m_USBCreated = false;
+	m_SPICreated = false;
 }
 
 /****************************************************/
@@ -71,11 +71,11 @@ void Factory::createUSART1()
 }
 
 /****************************************************/
-void Factory::createUSB()
+void Factory::createSPI()
 {
-	if(m_USBCreated == false)
+	if(m_SPICreated == false)
 	{
-
+		m_EFM32_SPI = EFM32_SPI();
 	}
 }
 

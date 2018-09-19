@@ -35,7 +35,7 @@ int main(void)
     referenceTime_microsecond = timer0->getReferenceTime_microsecond();
     while (true)
     {
-    	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_1_SECOND)
+    	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_3_SECOND)
     	{
     		stateManager->execute();
     		referenceTime_microsecond = timer0->getReferenceTime_microsecond();

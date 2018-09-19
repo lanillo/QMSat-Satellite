@@ -15,7 +15,7 @@ static unsigned int s_IntMaxValue = 4294967000;
 EFM32_Timer0::EFM32_Timer0(unsigned int p_Period_microsecond)
 {
 	s_Period_Timer0_microsecond = p_Period_microsecond;
-	TIMER0->TOP = p_Period_microsecond*40;  //HF Clock is at 12MHz,
+	TIMER0->TOP = p_Period_microsecond*24;  //HFPERCLK is at 24MHz
 	m_ReferenceTime_microsecond = 0;
 	s_ElapsedTime_Timer0_microsecond = 0;
 }

@@ -16,6 +16,7 @@
 #include "EFM32_Timer0.hpp"
 #include "EFM32_GPIO.hpp"
 #include "EFM32_USART1.hpp"
+#include "EFM32_SPI.hpp"
 
 class Factory
 {
@@ -46,8 +47,9 @@ private:
 	void createUSART1();
 
 	/**** USB ****/
-	bool m_USBCreated;
-	void createUSB();
+	EFM32_SPI m_EFM32_SPI;
+	bool m_SPICreated;
+	void createSPI();
 
 public:
 	Factory();
