@@ -73,6 +73,7 @@
 		<Unit filename="Include/Application/StateManager.hpp" />
 		<Unit filename="Include/EFM32/EFM32_GPIO.hpp" />
 		<Unit filename="Include/EFM32/EFM32_Timer0.hpp" />
+		<Unit filename="Include/Interface/IGPIO.hpp" />
 		<Unit filename="Include/Interface/ILED.hpp" />
 		<Unit filename="Include/Interface/IState.hpp" />
 		<Unit filename="Include/Interface/ITimer.hpp" />
@@ -82,6 +83,7 @@
 		<Unit filename="Source/Application/StateManager.cpp" />
 		<Unit filename="Source/EFM32/EFM32_GPIO.cpp" />
 		<Unit filename="Source/Peripherals/LED.cpp" />
+		<Unit filename="Tests/Steps/Mocks/GPIO-mock.hpp" />
 		<Unit filename="Tests/Steps/Mocks/GPIO-mock.cpp" />
 		<Unit filename="Tests/Steps/Mocks/GPIO-mock.hpp" />
 		<Unit filename="Tests/Steps/Mocks/GPIO-struct-mock.hpp" />

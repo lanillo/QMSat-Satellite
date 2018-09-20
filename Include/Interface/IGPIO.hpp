@@ -16,6 +16,7 @@ public:
 	IGPIO() {};
 	virtual ~IGPIO() {};
 
+
 	virtual bool readInput() = 0;
 	virtual bool setOutputHigh() = 0;
 	virtual bool setOutputLow() = 0;

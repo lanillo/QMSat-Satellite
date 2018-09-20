@@ -28,6 +28,7 @@ int main( int argc, char *argv[] ) {
     status = CxxTest::Main< CxxTest::ErrorFormatter >( tmp, argc, argv );
     return status;
 }
+
 bool suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_init = false;
 #include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Test.h"
 
