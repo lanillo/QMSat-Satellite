@@ -2,18 +2,19 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
+S79_SRCS := 
+ASM_SRCS := 
+CPP_SRCS := 
+S79_UPPER_SRCS := 
+S_UPPER_SRCS := 
+O_SRCS := 
 C_UPPER_SRCS := 
 CXX_SRCS := 
 C++_SRCS := 
-S79_SRCS := 
 OBJ_SRCS := 
 S_SRCS := 
 CC_SRCS := 
-ASM_SRCS := 
 C_SRCS := 
-CPP_SRCS := 
-S_UPPER_SRCS := 
-O_SRCS := 
 CC_DEPS := 
 C++_DEPS := 
 EXECUTABLES := 
@@ -32,6 +33,12 @@ Source/EFM32 \
 Source/Peripherals \
 emlib \
 obj/Debug/BDD/fw-cxxtest/cxxtest \
+obj/Debug/QMSat-Satellite/Source/Application \
+obj/Debug/QMSat-Satellite/Source/EFM32 \
+obj/Debug/QMSat-Satellite/Source/Peripherals \
+obj/Debug/QMSat-Satellite/Tests/Steps/Mocks \
+obj/Debug/QMSat-Satellite/Tests/Steps/Peripherals \
+obj/Debug/QMSat-Satellite/Tests \
 obj/Debug/QMSat_embeded/Source/Application \
 obj/Debug/QMSat_embeded/Source/Peripherals \
 obj/Debug/QMSat_embeded/Tests/Steps/Peripherals \

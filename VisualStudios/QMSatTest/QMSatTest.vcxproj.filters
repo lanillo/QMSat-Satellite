@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Tests">
+      <UniqueIdentifier>{e8f2fa2d-cd29-42bf-be62-95dc716e13dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tests\Steps">
+      <UniqueIdentifier>{c435e2d4-0745-4a07-b55b-0a16fe58a082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tests\Steps\Mocks">
+      <UniqueIdentifier>{8d02e29d-f669-4f74-b5cd-c44762afb730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tests\Steps\Peripherals">
+      <UniqueIdentifier>{bbe1d259-d82b-404a-b9e0-50294ba371eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tests">
+      <UniqueIdentifier>{431bf6de-a6e4-491b-b749-68e1f215460a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tests\Steps">
+      <UniqueIdentifier>{d502e56b-aad9-47b9-bb31-3a3203256731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tests\Steps\Mocks">
+      <UniqueIdentifier>{0e3bcfb5-4b71-427f-aa01-1d6cab25afb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tests\Steps\Peripherals">
+      <UniqueIdentifier>{bf3232eb-e906-4cf7-8e43-5ee8fa02a7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Specifications">
+      <UniqueIdentifier>{f46b7400-7c64-4ede-a885-d2cb3f4fbb77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Specifications\Application">
+      <UniqueIdentifier>{7f09c9f8-b209-437e-9449-bf91bcf142d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Specifications\EFM32">
+      <UniqueIdentifier>{245ce4f7-ce56-45c4-afdc-393e15031bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Specifications\Peripherals">
+      <UniqueIdentifier>{dd35d2a2-f18a-4714-b4c0-4ae2dd196fd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Specifications\Application\States">
+      <UniqueIdentifier>{4d20abdd-1198-401f-8ffd-be48625d3172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Specifications\EFM32\GPIO">
+      <UniqueIdentifier>{723bb334-0677-477a-bb72-1a03896ebd42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Specifications\Peripherals\LED">
+      <UniqueIdentifier>{bf01d5fd-c89b-4cf1-a83b-f4dbdd6b5bd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Include">
+      <UniqueIdentifier>{0b8027de-ba95-4b6b-901d-c0c371f3d2d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Include\Application">
+      <UniqueIdentifier>{5c1e0fae-a5bb-4656-b071-6f0e182cf889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Include\EFM32">
+      <UniqueIdentifier>{f2080480-f529-4eee-a2fa-60db8a8f3fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Include\Interface">
+      <UniqueIdentifier>{8cdeb938-aa56-4015-b045-d2a75b70feeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Include\Peripherals">
+      <UniqueIdentifier>{f2171d78-f022-45ad-b2c6-bb76c7c025e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Factory">
+      <UniqueIdentifier>{64da1257-03fc-4f38-b020-4c29586e1ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Factory">
+      <UniqueIdentifier>{b0fdc055-6688-4dbd-bd97-44611b0bb811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source">
+      <UniqueIdentifier>{d1d1e7e4-cf15-42a9-9379-553e19589603}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Application">
+      <UniqueIdentifier>{b78d0824-c1fb-4fd5-9ea1-1d1883f69aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\EFM32">
+      <UniqueIdentifier>{c6c148cb-ac16-44da-8972-fcead6eb6acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Peripherals">
+      <UniqueIdentifier>{82cba156-bbea-4a99-8654-5ae10f9df870}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Tests\Steps\Peripherals\GPIO-evaluator.cpp">
+      <Filter>Source Files\Tests\Steps\Peripherals</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\Steps\Peripherals\LED-evaluator.cpp">
+      <Filter>Source Files\Tests\Steps\Peripherals</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\Steps\Mocks\GPIO-mock.cpp">
+      <Filter>Source Files\Tests\Steps\Mocks</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\runner.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Factory\Factory.cpp">
+      <Filter>Source Files\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Application\InitState.cpp">
+      <Filter>Source Files\Source\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Application\RunState.cpp">
+      <Filter>Source Files\Source\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Application\StateManager.cpp">
+      <Filter>Source Files\Source\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\EFM32\EFM32_GPIO.cpp">
+      <Filter>Source Files\Source\EFM32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\EFM32\EFM32_Timer0.cpp">
+      <Filter>Source Files\Source\EFM32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Peripherals\LED.cpp">
+      <Filter>Source Files\Source\Peripherals</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Tests\Steps\Mocks\GPIO-mock.hpp">
+      <Filter>Header Files\Tests\Steps\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\Steps\Peripherals\GPIO-evaluator.hpp">
+      <Filter>Header Files\Tests\Steps\Peripherals</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\Steps\Peripherals\LED-evaluator.hpp">
+      <Filter>Header Files\Tests\Steps\Peripherals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Application\InitState.hpp">
+      <Filter>Header Files\Include\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Application\RunState.hpp">
+      <Filter>Header Files\Include\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Application\StateManager.hpp">
+      <Filter>Header Files\Include\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\EFM32\EFM32_GPIO.hpp">
+      <Filter>Header Files\Include\EFM32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\EFM32\EFM32_Timer0.hpp">
+      <Filter>Header Files\Include\EFM32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Interface\IGPIO.hpp">
+      <Filter>Header Files\Include\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Interface\ILED.hpp">
+      <Filter>Header Files\Include\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Interface\IState.hpp">
+      <Filter>Header Files\Include\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Interface\ITimer.hpp">
+      <Filter>Header Files\Include\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Peripherals\LED.hpp">
+      <Filter>Header Files\Include\Peripherals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Factory\Callback.hpp">
+      <Filter>Header Files\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Factory\Constants.hpp">
+      <Filter>Header Files\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Factory\Factory.hpp">
+      <Filter>Header Files\Factory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tests\Specifications\EFM32\GPIO\Gpio can be initialized as input or output.feature">
+      <Filter>Resource Files\Specifications\EFM32\GPIO</Filter>
+    </None>
+    <None Include="Tests\Specifications\EFM32\GPIO\Gpio can be toggled.feature">
+      <Filter>Resource Files\Specifications\EFM32\GPIO</Filter>
+    </None>
+    <None Include="Tests\Specifications\EFM32\GPIO\Gpio can be turned off.feature">
+      <Filter>Resource Files\Specifications\EFM32\GPIO</Filter>
+    </None>
+    <None Include="Tests\Specifications\EFM32\GPIO\Gpio can be turned on.feature">
+      <Filter>Resource Files\Specifications\EFM32\GPIO</Filter>
+    </None>
+    <None Include="Tests\Specifications\Peripherals\LED\Led can be toggle.feature">
+      <Filter>Resource Files\Specifications\Peripherals\LED</Filter>
+    </None>
+    <None Include="Tests\Specifications\Peripherals\LED\Led can turn off.feature">
+      <Filter>Resource Files\Specifications\Peripherals\LED</Filter>
+    </None>
+    <None Include="Tests\Specifications\Peripherals\LED\Led can turn on.feature">
+      <Filter>Resource Files\Specifications\Peripherals\LED</Filter>
+    </None>
+  </ItemGroup>
+</Project>

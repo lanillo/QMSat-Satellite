@@ -37,24 +37,31 @@ private:
 
 	/**** LED0 ****/
 	LED m_LED0;
-	EFM32_GPIO m_GPIO_LED0;
 	bool m_LED0Created;
 	void createLED();
+
 
 	/**** USART0 ****/
 	EFM32_USART1 m_EFM32_USART1;
 	bool m_USART1Created;
 	void createUSART1();
 
-	/**** USB ****/
+	/**** SPI ****/
 	EFM32_SPI m_EFM32_SPI;
 	bool m_SPICreated;
 	void createSPI();
+
+	/**** GPIO ****/
+	EFM32_GPIO m_GPIO;
+	EFM32_GPIO m_GPIO_LED0;
+	bool m_GPIOCreated;
+
 
 public:
 	Factory();
 	StateManager* createStateManager();
 	EFM32_Timer0* createTimer0();
+	EFM32_GPIO* createGPIO();
 };
 
 

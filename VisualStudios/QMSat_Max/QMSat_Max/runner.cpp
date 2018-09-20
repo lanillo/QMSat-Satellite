@@ -1,0 +1,154 @@
+/* Generated file, do not edit */
+
+#ifndef CXXTEST_RUNNING
+#define CXXTEST_RUNNING
+#endif
+
+#ifdef __TMS320C28X__
+#include "F2806x_SysCtrl.h"
+#endif
+
+#include <TestListener.h>
+#include <TestTracker.h>
+#include <TestRunner.h>
+#include <RealDescriptions.h>
+#include <TestMain.h>
+#include <ErrorFormatter.h>
+
+int main( int argc, char *argv[] ) {
+    int status;
+
+    #ifdef __TMS320C28X__
+    SysCtrl_runInRam();
+    SysCtrl_InitFlash();
+    #endif
+
+    CxxTest::ErrorFormatter tmp;
+    CxxTest::RealWorldDescription::_worldName = "C:/Universite/ProjetFinBac/Git/QMSat-Satellite/Tests/Test.h";
+    status = CxxTest::Main< CxxTest::ErrorFormatter >( tmp, argc, argv );
+    return status;
+}
+bool suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_init = false;
+#include "C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Tests\Test.h"
+
+static Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT;
+
+static CxxTest::List Tests_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT(suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, Tests_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, "Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT");
+
+static class TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_INPUT_with_OUTPUT_type_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_INPUT_with_OUTPUT_type_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, suiteDescription_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, "test_Initialize_GPIO_as_INPUT_with_OUTPUT_type", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT.test_Initialize_GPIO_as_INPUT_with_OUTPUT_type_0(); }
+} testDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_INPUT_with_OUTPUT_type_0;
+
+static class TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_OUTPUT_with_OUTPUT_type_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_OUTPUT_with_OUTPUT_type_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, suiteDescription_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, "test_Initialize_GPIO_as_OUTPUT_with_OUTPUT_type", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT.test_Initialize_GPIO_as_OUTPUT_with_OUTPUT_type_0(); }
+} testDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_OUTPUT_with_OUTPUT_type_0;
+
+static class TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_INPUT_with_INPUT_type_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_INPUT_with_INPUT_type_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, suiteDescription_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, "test_Initialize_GPIO_as_INPUT_with_INPUT_type", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT.test_Initialize_GPIO_as_INPUT_with_INPUT_type_0(); }
+} testDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_INPUT_with_INPUT_type_0;
+
+static class TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_OUTPUT_with_INPUT_type_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_OUTPUT_with_INPUT_type_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, suiteDescription_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT, "test_Initialize_GPIO_as_OUTPUT_with_INPUT_type", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT.test_Initialize_GPIO_as_OUTPUT_with_INPUT_type_0(); }
+} testDescription_suite_Feature_GPIO_can_be_initialized_as_INPUT_or_OUTPUT_test_Initialize_GPIO_as_OUTPUT_with_INPUT_type_0;
+
+static Feature_GPIO_can_be_toggled suite_Feature_GPIO_can_be_toggled;
+
+static CxxTest::List Tests_Feature_GPIO_can_be_toggled = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_GPIO_can_be_toggled(suite_Feature_GPIO_can_be_toggled, Tests_Feature_GPIO_can_be_toggled, "Feature_GPIO_can_be_toggled");
+
+static class TestDescription_suite_Feature_GPIO_can_be_toggled_test_A_GPIO_initially_OFF_initialized_as_an_INPUT_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_toggled_test_A_GPIO_initially_OFF_initialized_as_an_INPUT_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_toggled, suiteDescription_Feature_GPIO_can_be_toggled, "test_A_GPIO_initially_OFF_initialized_as_an_INPUT", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_toggled.test_A_GPIO_initially_OFF_initialized_as_an_INPUT_0(); }
+} testDescription_suite_Feature_GPIO_can_be_toggled_test_A_GPIO_initially_OFF_initialized_as_an_INPUT_0;
+
+static class TestDescription_suite_Feature_GPIO_can_be_toggled_test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_toggled_test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_toggled, suiteDescription_Feature_GPIO_can_be_toggled, "test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_toggled.test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT_0(); }
+} testDescription_suite_Feature_GPIO_can_be_toggled_test_A_GPIO_initially_OFF_initialized_as_an_OUTPUT_0;
+
+static Feature_GPIO_can_be_turned_OFF suite_Feature_GPIO_can_be_turned_OFF;
+
+static CxxTest::List Tests_Feature_GPIO_can_be_turned_OFF = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_GPIO_can_be_turned_OFF(suite_Feature_GPIO_can_be_turned_OFF, Tests_Feature_GPIO_can_be_turned_OFF, "Feature_GPIO_can_be_turned_OFF");
+
+static class TestDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_INPUT_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_INPUT_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_turned_OFF, suiteDescription_Feature_GPIO_can_be_turned_OFF, "test_A_GPIO_initially_instantiated_as_an_INPUT", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_turned_OFF.test_A_GPIO_initially_instantiated_as_an_INPUT_0(); }
+} testDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_INPUT_0;
+
+static class TestDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_turned_OFF, suiteDescription_Feature_GPIO_can_be_turned_OFF, "test_A_GPIO_initially_instantiated_as_an_OUTPUT", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_turned_OFF.test_A_GPIO_initially_instantiated_as_an_OUTPUT_0(); }
+} testDescription_suite_Feature_GPIO_can_be_turned_OFF_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0;
+
+static Feature_GPIO_can_be_turned_ON suite_Feature_GPIO_can_be_turned_ON;
+
+static CxxTest::List Tests_Feature_GPIO_can_be_turned_ON = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_GPIO_can_be_turned_ON(suite_Feature_GPIO_can_be_turned_ON, Tests_Feature_GPIO_can_be_turned_ON, "Feature_GPIO_can_be_turned_ON");
+
+static class TestDescription_suite_Feature_GPIO_can_be_turned_ON_test_A_GPIO_initially_instantiated_as_an_INPUT_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_turned_ON_test_A_GPIO_initially_instantiated_as_an_INPUT_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_turned_ON, suiteDescription_Feature_GPIO_can_be_turned_ON, "test_A_GPIO_initially_instantiated_as_an_INPUT", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_turned_ON.test_A_GPIO_initially_instantiated_as_an_INPUT_0(); }
+} testDescription_suite_Feature_GPIO_can_be_turned_ON_test_A_GPIO_initially_instantiated_as_an_INPUT_0;
+
+static class TestDescription_suite_Feature_GPIO_can_be_turned_ON_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_GPIO_can_be_turned_ON_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0() : CxxTest::RealTestDescription(Tests_Feature_GPIO_can_be_turned_ON, suiteDescription_Feature_GPIO_can_be_turned_ON, "test_A_GPIO_initially_instantiated_as_an_OUTPUT", 1) {}
+ void runTest() { suite_Feature_GPIO_can_be_turned_ON.test_A_GPIO_initially_instantiated_as_an_OUTPUT_0(); }
+} testDescription_suite_Feature_GPIO_can_be_turned_ON_test_A_GPIO_initially_instantiated_as_an_OUTPUT_0;
+
+static Feature_LED_can_be_toggle suite_Feature_LED_can_be_toggle;
+
+static CxxTest::List Tests_Feature_LED_can_be_toggle = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_LED_can_be_toggle(suite_Feature_LED_can_be_toggle, Tests_Feature_LED_can_be_toggle, "Feature_LED_can_be_toggle");
+
+static class TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_closed_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_closed_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_be_toggle, suiteDescription_Feature_LED_can_be_toggle, "test_A_LED_initially_closed", 1) {}
+ void runTest() { suite_Feature_LED_can_be_toggle.test_A_LED_initially_closed_0(); }
+} testDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_closed_0;
+
+static class TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_opened_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_opened_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_be_toggle, suiteDescription_Feature_LED_can_be_toggle, "test_A_LED_initially_opened", 1) {}
+ void runTest() { suite_Feature_LED_can_be_toggle.test_A_LED_initially_opened_0(); }
+} testDescription_suite_Feature_LED_can_be_toggle_test_A_LED_initially_opened_0;
+
+static Feature_LED_can_turn_OFF suite_Feature_LED_can_turn_OFF;
+
+static CxxTest::List Tests_Feature_LED_can_turn_OFF = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_LED_can_turn_OFF(suite_Feature_LED_can_turn_OFF, Tests_Feature_LED_can_turn_OFF, "Feature_LED_can_turn_OFF");
+
+static class TestDescription_suite_Feature_LED_can_turn_OFF_test_A_LED_initially_opened_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_LED_can_turn_OFF_test_A_LED_initially_opened_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_turn_OFF, suiteDescription_Feature_LED_can_turn_OFF, "test_A_LED_initially_opened", 1) {}
+ void runTest() { suite_Feature_LED_can_turn_OFF.test_A_LED_initially_opened_0(); }
+} testDescription_suite_Feature_LED_can_turn_OFF_test_A_LED_initially_opened_0;
+
+static Feature_LED_can_turn_ON suite_Feature_LED_can_turn_ON;
+
+static CxxTest::List Tests_Feature_LED_can_turn_ON = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_Feature_LED_can_turn_ON(suite_Feature_LED_can_turn_ON, Tests_Feature_LED_can_turn_ON, "Feature_LED_can_turn_ON");
+
+static class TestDescription_suite_Feature_LED_can_turn_ON_test_A_LED_initially_closed_0 : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_Feature_LED_can_turn_ON_test_A_LED_initially_closed_0() : CxxTest::RealTestDescription(Tests_Feature_LED_can_turn_ON, suiteDescription_Feature_LED_can_turn_ON, "test_A_LED_initially_closed", 1) {}
+ void runTest() { suite_Feature_LED_can_turn_ON.test_A_LED_initially_closed_0(); }
+} testDescription_suite_Feature_LED_can_turn_ON_test_A_LED_initially_closed_0;
+
+#include <Root.cpp>
+const char* CxxTest::RealWorldDescription::_worldName = "cxxtest";

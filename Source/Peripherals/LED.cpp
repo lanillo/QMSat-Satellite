@@ -17,29 +17,28 @@ LED::LED(IGPIO* p_GPIO)
 /****************************************************/
 void LED::turnOFF()
 {
-	m_GPIO->turnOFF();
+	m_GPIO->setOutputLow();
     m_State = false;
 }
 
 /****************************************************/
 void LED::turnON()
 {
-	m_GPIO->turnON();
+	m_GPIO->setOutputHigh();
     m_State = true;
 }
 
 /****************************************************/
 void LED::toggle()
 {
-	if(m_State)
-	{
-		turnOFF();
-	}
-	else
-	{
-		turnON();
-	}
+    m_GPIO->toggleOutput();
+    m_State = !m_State;
+}
 
+/****************************************************/
+bool LED::getState()
+{
+    return m_State;
 }
 
 /****************************************************/

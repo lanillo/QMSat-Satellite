@@ -23,7 +23,6 @@ Source/EFM32/EFM32_Timer0.o: ../Source/EFM32/EFM32_Timer0.cpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_lesense_st.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_lesense_buf.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_lesense_ch.h \
- c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_lesense.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_rtc.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_letimer.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_ebi.h \
@@ -34,7 +33,6 @@ Source/EFM32/EFM32_Timer0.o: ../Source/EFM32/EFM32_Timer0.cpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_i2c.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_gpio_p.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_gpio.h \
- c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_vcmp.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_prs_ch.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_prs.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_leuart.h \
@@ -105,8 +103,6 @@ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_lesense_ch.h:
 
-c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_lesense.h:
-
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_rtc.h:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_letimer.h:
@@ -126,8 +122,6 @@ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_gpio_p.h:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_gpio.h:
-
-c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_vcmp.h:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg_prs_ch.h:
 

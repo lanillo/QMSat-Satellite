@@ -13,6 +13,7 @@
 
 class LED: public ILED
 {
+
 public:
 	LED() {};
 	LED(IGPIO* p_GPIO);
@@ -22,7 +23,8 @@ public:
 	void turnON();
 	void toggle();
 
-	bool getStatus();
+	bool getState();
+
 
 private:
 	bool m_State;

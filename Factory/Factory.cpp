@@ -17,6 +17,7 @@ Factory::Factory()
 	m_LED0Created = false;
 	m_USART1Created = false;
 	m_SPICreated = false;
+	m_GPIOCreated = false;
 }
 
 /****************************************************/
@@ -50,13 +51,21 @@ void Factory::createStates()
 /****************************************************/
 void Factory::createLED()
 {
-	if(m_LED0Created == false)
-	{
-		m_GPIO_LED0 = EFM32_GPIO(2,4);
-		m_LED0 = LED(&m_GPIO_LED0);
+  if(m_LEDCreated == false)
+  {
+  
+  }
+}
 
-		m_LED0Created = true;
+/****************************************************/
+EFM32_GPIO* Factory::createGPIO()
+{
+	if(m_GPIOCreated == false)
+	{
+
 	}
+
+	return &m_GPIO;
 }
 
 /****************************************************/
