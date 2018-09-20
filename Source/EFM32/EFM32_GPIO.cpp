@@ -18,8 +18,8 @@ EFM32_GPIO::EFM32_GPIO()
 		m_pin(null),
 		m_mode(gpioModeDisabled),
 		m_outputMode(OM_Disabled),
-		//m_driveMode(gpioDriveModeLow),
 		m_isInterrupt(false)
+		//m_driveMode(gpioDriveModeLow),
 {
 }
 

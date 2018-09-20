@@ -52,6 +52,11 @@ void Factory::createLED()
 /****************************************************/
 EFM32_GPIO* Factory::createGPIO()
 {
+	if(m_GPIOCreated == false)
+	{
+
+	}
+
 	return &m_GPIO;
 }
 

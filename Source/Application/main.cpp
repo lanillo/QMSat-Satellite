@@ -29,14 +29,14 @@ int main(void)
 	CHIP_Init();
 
 	// Setup Clock Tree
-	CMU_ClockDivSet(cmuClock_HF, cmuClkDiv_2);	// Set HF clock divider to /2 to keep core frequency < 32MHz
-	CMU_OscillatorEnable(cmuOsc_HFXO, true, true);   // Enable XTAL OSC and wait to stabilize
-	CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFXO); // Select HF XTAL osc as system clock source. 48MHz XTAL, but we divided the system clock by 2, therefore our HF clock will be 24MHz
+	CMU_ClockDivSet(cmuClock_HF, cmuClkDiv_2);			// Set HF clock divider to /2 to keep core frequency < 32MHz
+	CMU_OscillatorEnable(cmuOsc_HFXO, true, true);   	// Enable XTAL OSC and wait to stabilize
+	CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFXO); 	// Select HF XTAL osc as system clock source. 48MHz XTAL, but we divided the system clock by 2, therefore our HF clock will be 24MHz
 
-    CMU_ClockEnable(cmuClock_GPIO, true);       // Enable GPIO peripheral clock
+    CMU_ClockEnable(cmuClock_GPIO, true);       	// Enable GPIO peripheral clock
     //CMU_ClockEnable(cmuClock_USART1, true);		// Enable USART1 peripheral clock
     //CMU_ClockEnable(cmuClock_TIMER0, true);		// Enable Timer_0 peripheral clock
-    //CMU_ClockEnable(cmuClock_I2C1, true);		// Enable I2C1 peripheral clock
+    //CMU_ClockEnable(cmuClock_I2C1, true);			// Enable I2C1 peripheral clock
 
     while(1) {}
 }

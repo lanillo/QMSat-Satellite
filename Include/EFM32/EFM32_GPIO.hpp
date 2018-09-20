@@ -16,6 +16,20 @@
 #include "efm32gg990f1024.h"
 #include "em_gpio.h"
 
+enum GPIO_OutputModes
+{
+	OM_Disabled = 0,
+	OM_PushPull = 1,
+	OM_OpenSource_WiredOR = 2,
+	OM_OpenDrain_WiredAND = 3
+};
+
+enum GPIO_INTERRUPTS_FLAGS
+{
+	ALL_GPIO_ODDS = 0xAAAA,
+	ALL_GPIO_EVEN = 0x5555
+};
+
 class EFM32_GPIO: public IGPIO
 {
 public:
