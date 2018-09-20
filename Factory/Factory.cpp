@@ -51,7 +51,7 @@ void Factory::createStates()
 /****************************************************/
 void Factory::createLED()
 {
-  if(m_LEDCreated == false)
+  if(m_LED0Created == false)
   {
   
   }

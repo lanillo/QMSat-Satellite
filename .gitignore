@@ -15,3 +15,13 @@ GNU ARM v4.9.3 - Debug/QMSat_Embeded.axf
 *.depend
 *.layout
 *.layout
+*.mk
+*.d
+GNU ARM v4.9.3 - Debug/makefile
+*.bin
+*.hex
+*.map
+*.s37
+*.d
+*.o
+*.d

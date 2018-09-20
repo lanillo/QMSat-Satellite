@@ -40,9 +40,3 @@ bool LED::getState()
 {
     return m_State;
 }
-
-/****************************************************/
-bool LED::getStatus()
-{
-	return m_State;
-}
