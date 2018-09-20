@@ -3,11 +3,11 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-C_SRCS += \
-C:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.1/platform/Device/SiliconLabs/EFM32GG/Source/system_efm32gg.c 
-
 S_UPPER_SRCS += \
 C:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.1/platform/Device/SiliconLabs/EFM32GG/Source/GCC/startup_efm32gg.S 
+
+C_SRCS += \
+C:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.1/platform/Device/SiliconLabs/EFM32GG/Source/system_efm32gg.c 
 
 OBJS += \
 ./CMSIS/EFM32GG/startup_efm32gg.o \

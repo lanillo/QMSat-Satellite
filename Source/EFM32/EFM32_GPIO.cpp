@@ -6,239 +6,167 @@
  */
 
 #include <EFM32_GPIO.hpp>
-#include "Constants.hpp"
+
 #include <cstdio>
 
 /****************************************************/
 EFM32_GPIO::EFM32_GPIO()
+:
+		m_GPIOCreated(false),
+		m_error(false),
+		m_port(gpioPortA),
+		m_pin(null),
+		m_mode(gpioModeDisabled),
+		m_outputMode(OM_Disabled),
+		m_isInterrupt(false)
+		//m_driveMode(gpioDriveModeLow),
 {
-	m_BankNumber = null;
-    m_PinNumber = null;
-    m_isInput = false;
-    m_IOType = 0;
-    m_error = false;
 }
 
 /****************************************************/
-EFM32_GPIO::EFM32_GPIO(unsigned short pinNumber, unsigned short bankLetter, bool isInput, int type)
+// Look page 750 from the datasheet to see all the mode configuration
+EFM32_GPIO::EFM32_GPIO(GPIO_Port_TypeDef port, unsigned int pin, GPIO_Mode_TypeDef mode, unsigned int dout)
+:
+		m_GPIOCreated(true),
+		m_error(false),
+		m_port(port),
+		m_pin(pin),
+		m_mode(mode),
+		m_isInterrupt(false)
 {
-	this->m_BankNumber = bankLetter;
-    this->m_PinNumber = pinNumber;
-    this->m_isInput = isInput;
-    this->m_IOType = type;
-    this->m_error = false;
-
-    //printf("\n\n Voici l'objet GPIO: %p\n\n", GPIO); //004110E0
-
-    if (isInput)
-    {
-    	if (pinNumber >= 0 && pinNumber <= 7)
-    	{
-    		switch (type)
-    		{
-				case PULLDOWN:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_INPUTPULL << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PULLUP:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_INPUTPULL << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
-					break;
-				case PULLDOWN_FILTERED:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_INPUTPULLFILTER << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PULLUP_FILTERED:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_INPUTPULLFILTER << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
-					break;
-				default:
-					m_error = true;
-					break;
-			}
-
-    	}
-    	else if (pinNumber >= 8 && pinNumber <= 15)
-		{
-    		switch (type)
-			{
-				case PULLDOWN:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_INPUTPULL << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PULLUP:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_INPUTPULL << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
-					break;
-				case PULLDOWN_FILTERED:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_INPUTPULLFILTER << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PULLUP_FILTERED:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_INPUTPULLFILTER << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
-					break;
-				default:
-					m_error = true;
-					break;
-			}
-		}
-    	else
-		{
-			m_error = true;
-		}
-    }
+	if (mode == gpioModeDisabled || mode == gpioModeInput || mode == gpioModeInputPull || mode == gpioModeInputPullFilter)
+	{
+		m_outputMode = OM_Disabled;
+	}
+	else if (mode == gpioModePushPull || mode == gpioModePushPullDrive)
+	{
+		m_outputMode = OM_PushPull;
+	}
+	else if (mode == gpioModeWiredOr || mode == gpioModeWiredOrPullDown)
+	{
+		m_outputMode = OM_OpenDrain_WiredAND;
+	}
 	else
-    {
-		if (pinNumber >= 0 && pinNumber <= 7)
-		{
-			switch (type)
-			{
-				case OPENSOURCE:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDOR << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENSOURCE_PULLDOWN:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDORPULLDOWN << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
-					break;
-				case OPENDRAIN_PULLUP:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDANDPULLUP << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_PULLUP_FILTER:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDANDPULLUPFILTER << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDANDDRIVE << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE_FILTER:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDANDDRIVEFILTER << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE_PULLUP:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDANDDRIVEPULLUP << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE_PULLUP_FILTER:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_WIREDANDDRIVEPULLUPFILTER << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PUSHPULL:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_PUSHPULL << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PUSHPULL_ALTDRIVE:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEL_MODE0_PUSHPULLDRIVE << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				default:
-					m_error = true;
-					break;
-			}
-		}
-		else if (pinNumber >= 8 && pinNumber <= 15)
-		{
-			switch (type)
-			{
-				case OPENSOURCE:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDOR << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENSOURCE_PULLDOWN:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDORPULLDOWN << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 1 << pinNumber;
-					break;
-				case OPENDRAIN_PULLUP:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDANDPULLUP << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_PULLUP_FILTER:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDANDPULLUPFILTER << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE9_WIREDANDDRIVE << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE_FILTER:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDANDDRIVEFILTER << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE_PULLUP:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDANDDRIVEPULLUP << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case OPENDRAIN_ATLDRIVE_PULLUP_FILTER:
-					GPIO->P[bankLetter].MODEH = _GPIO_P_MODEH_MODE8_WIREDANDDRIVEPULLUPFILTER << 4*(pinNumber-7);
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PUSHPULL:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEH_MODE8_PUSHPULL << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				case PUSHPULL_ALTDRIVE:
-					GPIO->P[bankLetter].MODEL = _GPIO_P_MODEH_MODE8_PUSHPULLDRIVE << 4*pinNumber;
-					GPIO->P[bankLetter].DOUT = 0 << pinNumber;
-					break;
-				default:
-					m_error = true;
-					break;
-			}
-		}
-		else
-		{
-			m_error = true;
-		}
-    }
+	{
+		m_outputMode = OM_OpenSource_WiredOR;
+	}
+
+	GPIO_PinModeSet(port, pin, mode, dout);
 }
 
 /****************************************************/
 bool EFM32_GPIO::readInput()
 {
-	return GPIO->P[this->m_BankNumber].DOUT;
+	return GPIO_PinInGet(m_port, m_pin) == 1;
 }
 
 /****************************************************/
 bool EFM32_GPIO::setOutputHigh()
 {
-	if (m_isInput)
-	{
-		return false;
-	} else
-	{
-		GPIO->P[this->m_BankNumber].DOUTSET = 1 << this->m_PinNumber;
-		return true;
-	}
+	GPIO_PinOutSet(m_port, m_pin);
+
+	return readInput() == 1;
 }
 
 /****************************************************/
 bool EFM32_GPIO::setOutputLow()
 {
-	if (m_isInput)
-	{
-		return false;
-	} else
-	{
-		GPIO->P[this->m_BankNumber].DOUTCLR = 1 << this->m_PinNumber;
-		return true;
-	}
+	GPIO_PinOutClear(m_port, m_pin);
+
+	return readInput() == 0;
 }
 
 /****************************************************/
 bool EFM32_GPIO::toggleOutput()
 {
-	if (m_isInput)
+	unsigned int tmp;
+	tmp = readInput();
+
+	GPIO_PinOutToggle(m_port, m_pin);
+
+	return readInput() != tmp;
+}
+
+/****************************************************/
+/*void EFM32_GPIO::setGPIOPortDriveMode(GPIO_DriveMode_TypeDef driveMode)
+{
+	m_driveMode = driveMode;
+	GPIO_DriveModeSet(m_port, driveMode);
+}*/
+
+/****************************************************/
+void EFM32_GPIO::setInterruptToTest(bool risingEdge, bool fallingEdge, bool enable)
+{
+	/*
+	if (m_isInterrupt)
+		GPIO_Disable ? // Fonction doesn't exist
+	*/
+
+	int intNo; // The interrupt number to trigger.
+
+	if (m_pin <= 3)
+		intNo = 0;
+	else if (m_pin > 3 && m_pin <= 7)
+		intNo = 1;
+	else if (m_pin > 7 && m_pin <= 11)
+		intNo = 2;
+	else if (m_pin > 11 && m_pin <= 15)
+		intNo = 3;
+
+	GPIO_ExtIntConfig(m_port, m_pin, intNo, risingEdge, fallingEdge, enable);
+}
+
+/****************************************************/
+void EFM32_GPIO::clearInterruptsToTest(uint32_t flags)
+{
+	GPIO_IntClear(flags);
+}
+
+/****************************************************/
+void EFM32_GPIO::disableInterruptsToTest(uint32_t flags)
+{
+	GPIO_IntDisable(flags);
+}
+
+/****************************************************/
+void EFM32_GPIO::enableInterruptsToTest(uint32_t flags)
+{
+	GPIO_IntEnable(flags);
+}
+
+/****************************************************/
+uint32_t EFM32_GPIO::getInterruptsToTest()
+{
+	return GPIO_IntGet();
+}
+
+/****************************************************/
+uint32_t EFM32_GPIO::getEnabledInterruptsToTest()
+{
+	return GPIO_IntGetEnabled();
+}
+
+/****************************************************/
+void EFM32_GPIO::setGPIOMode(GPIO_Mode_TypeDef mode, unsigned int dout)
+{
+	if (mode == gpioModeDisabled || mode == gpioModeInput || mode == gpioModeInputPull || mode == gpioModeInputPullFilter)
 	{
-		return false;
+		m_outputMode = OM_Disabled;
+	}
+	else if (mode == gpioModePushPull || mode == gpioModePushPullDrive)
+	{
+		m_outputMode = OM_PushPull;
+	}
+	else if (mode == gpioModeWiredOr || mode == gpioModeWiredOrPullDown)
+	{
+		m_outputMode = OM_OpenDrain_WiredAND;
 	}
 	else
 	{
-		GPIO->P[this->m_BankNumber].DOUTTGL = 1 << this->m_PinNumber;
-		return true;
+		m_outputMode = OM_OpenSource_WiredOR;
 	}
+
+		GPIO_PinModeSet(m_port, m_pin, mode, dout);
 }
 
 /****************************************************/
@@ -248,7 +176,43 @@ bool EFM32_GPIO::getError()
 }
 
 /****************************************************/
-bool EFM32_GPIO::getIsInput()
+bool EFM32_GPIO::getGPIOCreated()
 {
-    return m_isInput;
+    return m_GPIOCreated; //GPIO_PinModeGet(m_port, m_pin);
 }
+
+/****************************************************/
+bool EFM32_GPIO::getIsInterrupt()
+{
+    return m_isInterrupt; //GPIO_PinModeGet(m_port, m_pin);
+}
+
+/****************************************************/
+unsigned int EFM32_GPIO::getPin()
+{
+    return m_pin; //GPIO_PinModeGet(m_port, m_pin);
+}
+
+/****************************************************/
+GPIO_OutputModes EFM32_GPIO::getOutputMode()
+{
+    return m_outputMode;
+}
+
+/****************************************************/
+GPIO_Port_TypeDef EFM32_GPIO::getPort()
+{
+    return m_port; //GPIO_PinModeGet(m_port, m_pin);
+}
+
+/****************************************************/
+GPIO_Mode_TypeDef EFM32_GPIO::getGPIOMode()
+{
+    return m_mode; //GPIO_PinModeGet(m_port, m_pin);
+}
+
+/****************************************************/
+/*GPIO_DriveMode_TypeDef EFM32_GPIO::getGPIODriveMode()
+{
+    return m_driveMode; //GPIO_PinModeGet(m_port, m_pin);
+}*/
