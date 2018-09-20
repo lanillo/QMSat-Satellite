@@ -2723,17 +2723,17 @@ OUTPUT(QMSat_Embeded.axf elf32-littlearm)
  .comment       0x00000000       0x71 ./emlib/em_system.o
  .comment       0x00000000       0x71 ./emlib/em_usart.o
 
-.debug_line     0x00000000     0x3452
+.debug_line     0x00000000     0x3455
  .debug_line    0x00000000       0xd3 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_line    0x000000d3      0x38b ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_line    0x0000045e      0x66c ./Factory/Factory.o
- .debug_line    0x00000aca      0x4dc ./Source/Application/main.o
- .debug_line    0x00000fa6      0x85b ./Source/EFM32/EFM32_GPIO.o
- .debug_line    0x00001801      0x47d ./Source/EFM32/EFM32_Timer0.o
- .debug_line    0x00001c7e      0xa60 ./emlib/em_cmu.o
- .debug_line    0x000026de      0x46d ./emlib/em_gpio.o
- .debug_line    0x00002b4b      0x310 ./emlib/em_system.o
- .debug_line    0x00002e5b      0x5f7 ./emlib/em_usart.o
+ .debug_line    0x00000aca      0x4df ./Source/Application/main.o
+ .debug_line    0x00000fa9      0x85b ./Source/EFM32/EFM32_GPIO.o
+ .debug_line    0x00001804      0x47d ./Source/EFM32/EFM32_Timer0.o
+ .debug_line    0x00001c81      0xa60 ./emlib/em_cmu.o
+ .debug_line    0x000026e1      0x46d ./emlib/em_gpio.o
+ .debug_line    0x00002b4e      0x310 ./emlib/em_system.o
+ .debug_line    0x00002e5e      0x5f7 ./emlib/em_usart.o
 
 .debug_info     0x00000000     0x7dfa
  .debug_info    0x00000000       0xf6 ./CMSIS/EFM32GG/startup_efm32gg.o
