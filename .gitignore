@@ -25,3 +25,14 @@ GNU ARM v4.9.3 - Debug/makefile
 *.d
 *.o
 *.d
+*.mk
+*.d
+*.mk
+*.d
+GNU ARM v4.9.3 - Debug/makefile
+*.bin
+*.hex
+*.map
+*.s37
+*.d
+*.o
