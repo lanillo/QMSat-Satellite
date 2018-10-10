@@ -23,6 +23,7 @@ EFM32_USART1::EFM32_USART1(int p_Baudrate, bool p_StopBit, bool p_Parity)
 
 	m_TxBufferSize = 0;
 	m_TxBufferIndex = 0;
+	m_IsSending = false;
 
 	for(unsigned short index = 0; index < TX_BUFFER_SIZE_USART1; index++)
 	{
@@ -48,6 +49,18 @@ char EFM32_USART1::receiveSerial()
 }
 
 /****************************************************/
+bool EFM32_USART1::isSending()
+{
+	return m_IsSending;
+}
+
+/****************************************************/
+void EFM32_USART1::setSending(bool p_Sending)
+{
+	m_IsSending = p_Sending;
+}
+
+/****************************************************/
 void EFM32_USART1::callbackForSerialReceive(void* p_USART1Instance)
 {
 	if (p_USART1Instance != null)
@@ -69,6 +82,7 @@ void USART1_RX_IRQHandler(void)
 void EFM32_USART1::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
 {
 	m_TxBufferSize = p_TxBufferSize;
+	setSending(true);
 	for(unsigned short index = 0; index < p_TxBufferSize; index++)
 	{
 		m_TxBuffer[index] = (char)*p_TxBuffer;
@@ -79,6 +93,7 @@ void EFM32_USART1::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
 	{
 		USART1->TXDATA = m_TxBuffer[0];
 	}
+	while(isSending());
 }
 
 /****************************************************/
@@ -103,6 +118,7 @@ void EFM32_USART1::callbackForSerialTransmit(void* p_USART1Instance)
 			{
 				usart->m_TxBuffer[index] = (char)0;
 			}
+			usart->setSending(false);
 		}
 	}
 }

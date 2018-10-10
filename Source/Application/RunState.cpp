@@ -30,13 +30,14 @@ short RunState::getStateId()
 /****************************************************/
 void RunState::onEntry()
 {
-	m_USART->sendSerial("Entering Run State\n\r",20);
+	m_USART->sendSerial("Entering Run State\n",19);
 }
 
 /****************************************************/
 short RunState::execute()
 {
-	m_USART->sendSerial("Executing Run State\n\r",21);
+	m_USART->sendSerial("Executing Run State\n",20);
+
 	return Init;
 }
 

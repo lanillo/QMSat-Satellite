@@ -22,6 +22,8 @@ public:
 
 	void sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize);
 	char receiveSerial();
+	bool isSending();
+	void setSending(bool p_Sending);
 
 	static void callbackForSerialTransmit(void* p_USART1Instance);
 	static void callbackForSerialReceive(void* p_USART1Instance);
@@ -30,6 +32,7 @@ private:
 	int m_Baudrate;
 	bool m_StopBit;
 	bool m_Parity;
+	bool m_IsSending;
 
 	unsigned short m_TxBufferSize;
 	unsigned short m_TxBufferIndex;

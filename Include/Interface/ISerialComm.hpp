@@ -14,6 +14,8 @@ class ISerialComm
 public:
 	virtual void sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize) = 0;
 	virtual char receiveSerial() = 0;
+	virtual bool isSending() = 0;
+	virtual void setSending(bool p_Sending) = 0;
 
 	ISerialComm() {};
 	virtual ~ISerialComm() {};
