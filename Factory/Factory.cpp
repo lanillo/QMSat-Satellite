@@ -84,7 +84,7 @@ void Factory::createSPI()
 {
 	if(m_SPICreated == false)
 	{
-		m_EFM32_SPI = EFM32_SPI();
+		m_EFM32_SPI = EFM32_SPI(9600, true);
 	}
 }
 

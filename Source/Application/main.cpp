@@ -22,8 +22,6 @@
 
 #include "EFM32_GPIO.hpp"
 
-
-
 int main(void)
 {
     /* Initialize chip */
@@ -34,10 +32,11 @@ int main(void)
 	CMU_OscillatorEnable(cmuOsc_HFXO, true, true);   	// Enable XTAL OSC and wait to stabilize
 	CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFXO); 	// Select HF XTAL osc as system clock source. 48MHz XTAL, but we divided the system clock by 2, therefore our HF clock will be 24MHz
 
-    CMU_ClockEnable(cmuClock_GPIO, true);       	// Enable GPIO peripheral clock
-    CMU_ClockEnable(cmuClock_USART1, true);		// Enable USART1 peripheral clock
-    CMU_ClockEnable(cmuClock_TIMER0, true);		// Enable Timer_0 peripheral clock
-    //CMU_ClockEnable(cmuClock_I2C1, true);			// Enable I2C1 peripheral clock
+    CMU_ClockEnable(cmuClock_GPIO, true);       		// Enable GPIO peripheral clock
+    CMU_ClockEnable(cmuClock_USART0, true);				// Enable USART0 peripheral clock
+    CMU_ClockEnable(cmuClock_USART1, true);				// Enable USART1 peripheral clock
+    CMU_ClockEnable(cmuClock_TIMER0, true);				// Enable Timer_0 peripheral clock
+    //CMU_ClockEnable(cmuClock_I2C1, true);				// Enable I2C1 peripheral clock
 
     Factory factory = Factory();
     StateManager* stateManager = factory.createStateManager();
@@ -45,6 +44,7 @@ int main(void)
 
     /*Initializations*/
     initTimer0();
+    initSPI();
     initUSART1();
 
     timer0->start();
@@ -52,6 +52,7 @@ int main(void)
     /* Infinite loop */
     static unsigned int referenceTime_microsecond;
     referenceTime_microsecond = timer0->getReferenceTime_microsecond();
+
     while (true)
     {
     	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_3_SECOND)
