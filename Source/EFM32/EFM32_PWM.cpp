@@ -40,7 +40,7 @@ EFM32_PWM::EFM32_PWM(int DUTY_CYCLE)
 /****************************************************/
 bool EFM32_PWM::setDutyCycle(int dutyCycle)
 {
-	if (m_dutyCycle > TIMER_TOP || m_dutyCycle < TIMER_TOP)
+	if (m_dutyCycle > TIMER_TOP || m_dutyCycle < 0)
 	{
 		return false;
 	}
@@ -54,7 +54,7 @@ bool EFM32_PWM::setDutyCycle(int dutyCycle)
 /****************************************************/
 bool EFM32_PWM::reduceDutyCycleBy(int factor)
 {
-	if (m_dutyCycle - factor < TIMER_TOP)
+	if (m_dutyCycle - factor < 0)
 	{
 		return false;
 	}
@@ -78,9 +78,33 @@ bool EFM32_PWM::augmentDutyCycleBy(int factor)
 
 	return true;
 }
+
 /****************************************************/
 int EFM32_PWM::getDutyCycle()
 {
 	return m_dutyCycle;
 }
+
+/****************************************************/
+void EFM32_PWM::onAndOffLED()
+{
+
+	static bool m_goingUp = true;
+
+	if (m_goingUp)
+	{
+	if(augmentDutyCycleBy(TIMER_STEP))
+		m_goingUp = true;
+	else
+		m_goingUp = false;
+	}
+	else
+	{
+	if(reduceDutyCycleBy(TIMER_STEP))
+		m_goingUp = false;
+	else
+		m_goingUp = true;
+	}
+}
+
 

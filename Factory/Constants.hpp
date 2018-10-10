@@ -8,6 +8,8 @@
 #ifndef FACTORY_CONSTANTS_HPP_
 #define FACTORY_CONSTANTS_HPP_
 
+#include "bspconfig.h"
+
 #define null (0U)
 
 //Testing Purposes
@@ -26,23 +28,19 @@
 #define TIME_1_SECOND 			(1000000U)
 #define TIME_3_SECOND 			(3000000U)
 
-enum mode_values
-{
-	RAMPING_UP,
-	HIGH,
-	AMPING_DOWN,
-	LOW
-};
-
 //Buffers
 #define TX_BUFFER_SIZE_USART1 	(50U)
 #define RX_BUFFER_SIZE_USART1 	(50U)
 
-#define ACCELEROMETER_ADDRESS 	0x55 << 1
-#define DEVICE_ID             	0xE5
+//I2C
+#define ACCELEROMETER_ADDRESS 	0b00101010
+#define I2C_CMD_ARRAY_SIZE      1
+#define I2C_DATA_ARRAY_SIZE     10
+#define I2C_ERROR_CODE			0xFF
 
-// I2C
-#define CMD_ARRAY_SIZE        	1
-#define DATA_ARRAY_SIZE       	10
+//PWM
+#define PWM_DUTY_CYCLE			5
+
+//LED Array
 
 #endif /* FACTORY_CONSTANTS_HPP_ */

@@ -10,6 +10,8 @@ Factory/Factory.o: ../Factory/Factory.cpp ../Factory/Factory.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_Timer0.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/ITimer.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp \
+ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\hardware\kit\efm32gg_stk3700\config\bspconfig.h \
+ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\hardware\kit\common\bsp\bsp_bcp.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg990f1024.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\cmsis\include\core_cm3.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\cmsis\include\core_cmInstr.h \
@@ -70,6 +72,11 @@ Factory/Factory.o: ../Factory/Factory.cpp ../Factory/Factory.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_USART1.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Callback.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_SPI.hpp \
+ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_I2C.hpp \
+ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_i2c.h \
+ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_PWM.hpp \
+ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_timer.h \
+ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_cmu.h \
  ../Factory/Constants.hpp
 
 ../Factory/Factory.hpp:
@@ -95,6 +102,10 @@ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_Timer0.hpp:
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/ITimer.hpp:
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp:
+
+c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\hardware\kit\efm32gg_stk3700\config\bspconfig.h:
+
+c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\hardware\kit\common\bsp\bsp_bcp.h:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg990f1024.h:
 
@@ -215,5 +226,15 @@ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_USART1.hpp:
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Callback.hpp:
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_SPI.hpp:
+
+C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_I2C.hpp:
+
+c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_i2c.h:
+
+C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_PWM.hpp:
+
+c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_timer.h:
+
+c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_cmu.h:
 
 ../Factory/Constants.hpp:
