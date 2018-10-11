@@ -15,7 +15,12 @@ class EFM32_SPI
 {
 public:
 	EFM32_SPI() {};
+	EFM32_SPI(int p_Baudrate, bool p_MSBFirst);
 	~EFM32_SPI() {};
+
+private:
+	int m_Baudrate;
+	bool m_MSBFirst;
 };
 
 void initSPI();

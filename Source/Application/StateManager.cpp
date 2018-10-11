@@ -39,7 +39,6 @@ void StateManager::execute()
 	{
 		m_NextStateId = m_CurrentState->execute();
 	}
-
 	if(m_CurrentStateId != m_NextStateId)
 	{
 		m_CurrentState->onExit();
