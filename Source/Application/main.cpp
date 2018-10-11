@@ -30,32 +30,20 @@ int main(void)
 
     timer0->start();
 
-    uint8_t value;
-
-    /* Infinite loop */
     static unsigned int referenceTime_microsecond;
     bool sendI2CCommandDelay = false;
     referenceTime_microsecond = timer0->getReferenceTime_microsecond();
 
     cmd_array[0] = 0x05;
-	I2C->i2c_transfer(TEMP_SENSOR_ADDRESS, cmd_array, data_array, 1, 1, I2C_FLAG_WRITE);
+	I2C->transfer(TEMP_SENSOR_ADDRESS, cmd_array, data_array, 1, 1, I2C_FLAG_WRITE);
 
 	while(timer0 ->getElapsedTime_microsecond(referenceTime_microsecond) <= TIME_1_SECOND/1000){};
 	referenceTime_microsecond = timer0->getReferenceTime_microsecond();
 
 	cmd_array[0] = 0x05;
-	I2C->i2c_transfer(TEMP_SENSOR_ADDRESS, cmd_array, data_array, 1, 2, I2C_FLAG_READ);
+	I2C->transfer(TEMP_SENSOR_ADDRESS, cmd_array, data_array, 1, 2, I2C_FLAG_READ);
 
-/*
-    I2C->i2c_write_command(TEMP_SENSOR_ADDRESS, 0x05, I2C_WRITE);
-
-    while(timer0 ->getElapsedTime_microsecond(referenceTime_microsecond) <= TIME_1_SECOND/100){};
-    referenceTime_microsecond = timer0->getReferenceTime_microsecond();
-
-    uint8_t value = I2C->i2c_read_command(TEMP_SENSOR_ADDRESS, 0x05, I2C_READ);*/
-
-	value++;
-
+    /* Infinite loop */
     while (true)
     {
     	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_1_SECOND)
@@ -77,7 +65,7 @@ int main(void)
 		{
 			if (!sendI2CCommandDelay)
 			{
-				I2C->i2c_write_command(ACCELEROMETER_ADDRESS, 0x00, I2C_WRITE_READ);
+				I2C->writeCommand(ACCELEROMETER_ADDRESS, 0x00, I2C_WRITE_READ);
 				sendI2CCommandDelay = true;
 			}
 		}

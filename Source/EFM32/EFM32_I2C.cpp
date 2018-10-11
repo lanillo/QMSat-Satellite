@@ -19,7 +19,7 @@ EFM32_I2C::EFM32_I2C()
 }
 
 /****************************************************/
-void EFM32_I2C::i2c_transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t data_array[], uint16_t cmd_len, uint16_t data_len, uint8_t flag)
+void EFM32_I2C::transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t data_array[], uint16_t cmd_len, uint16_t data_len, uint8_t flag)
 {
 
 	// Transfer structure
@@ -49,18 +49,18 @@ void EFM32_I2C::i2c_transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t 
 }
 
 /****************************************************/
-uint8_t EFM32_I2C::i2c_write_command(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag)
+uint8_t EFM32_I2C::writeCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag)
 {
 	m_cmd_array[0] = reg_offset;
-	i2c_transfer(address, m_cmd_array, m_data_array, 1, 1, flag);
+	transfer(address, m_cmd_array, m_data_array, 1, 1, flag);
 	return m_data_array[0];
 }
 
 /****************************************************/
-uint8_t EFM32_I2C::i2c_read_command(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag)
+uint8_t EFM32_I2C::readCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag)
 {
 	m_cmd_array[0] = 0x00;
-	i2c_transfer(address, m_cmd_array, m_data_array, 1, 2, flag);
+	transfer(address, m_cmd_array, m_data_array, 1, 2, flag);
 	return m_data_array[0];
 }
 
