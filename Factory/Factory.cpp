@@ -6,7 +6,6 @@
  */
 
 #include "Factory.hpp"
-#include "Constants.hpp"
 
 /****************************************************/
 Factory::Factory()
@@ -18,6 +17,11 @@ Factory::Factory()
 	m_USART1Created = false;
 	m_SPICreated = false;
 	m_GPIOCreated = false;
+	m_I2CCreated = false;
+	m_PWMCreated = false;
+
+	// Setup Clock Tree
+	this->clockInit();
 }
 
 /****************************************************/
@@ -53,19 +57,37 @@ void Factory::createLED()
 {
   if(m_LED0Created == false)
   {
-  
+
   }
 }
 
 /****************************************************/
-EFM32_GPIO* Factory::createGPIO()
+void Factory::createGPIO()
 {
 	if(m_GPIOCreated == false)
 	{
+		/***** PWM *****/
+		EFM32_GPIO LED0(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPull, 0); // set LED0 (PE2) pin as push-pull output
 
+		/***** I2C *****/
+		/* MUST BE initialized after ROUTE of I2C to avoid glitches */
+	    /* Output value must be set to 1 to not drive lines low. Set SCL first, to ensure it is high before changing SDA. */
+	    EFM32_GPIO SCL(gpioPortC, 7, gpioModeWiredAndPullUpFilter, 1);	// PD7(I2C0) #1 - PC5(I2C1) #0 - PC7(I2C0) #1 - SCL
+	    EFM32_GPIO SDA(gpioPortC, 6, gpioModeWiredAndPullUpFilter, 1);	// PD6(I2C0) #1 - PC4(I2C1) #0 - PC6(I2C0) #1 - SDA
+
+	    /***** GPIO *****/
+		m_PB0 = EFM32_GPIO(BSP_GPIO_PB0_PORT, BSP_GPIO_PB0_PIN, gpioModeInput, 1); // set PBO button (B9) as input
+		m_PB1 = EFM32_GPIO(BSP_GPIO_PB1_PORT, BSP_GPIO_PB1_PIN, gpioModeInput, 1); // set PB1 button (B10) as input
+
+	    /***** LEDArray *****/
+		m_BAT.D0D1= EFM32_GPIO(gpioPortE, 0, gpioModePushPull, 0); // set LEDArray[0] (PD2) as push-pull output
+		m_BAT.D2D3 = EFM32_GPIO(gpioPortE, 1, gpioModePushPull, 0); // set LEDArray[1] (PD3) as push-pull output
+		m_BAT.D4D5 = EFM32_GPIO(gpioPortE, 3, gpioModePushPull, 0); // set LEDArray[2] (PD4) as push-pull output
+		m_BAT.D6D7 = EFM32_GPIO(gpioPortD, 13, gpioModePushPull, 0); // set LEDArray[4] (PD6) as push-pull output
+		m_BAT.D8D9= EFM32_GPIO(gpioPortD, 14, gpioModePushPull, 0); // set LEDArray[5] (PC0) as push-pull output
+
+		m_GPIOCreated = true;
 	}
-
-	return &m_GPIO;
 }
 
 /****************************************************/
@@ -97,4 +119,41 @@ EFM32_Timer0* Factory::createTimer0()
 		m_Timer0Created = true;
 	}
 	return &m_Timer0;
+}
+
+/****************************************************/
+EFM32_I2C* Factory::createI2C()
+{
+	if(m_I2CCreated == false)
+	{
+		m_I2C = EFM32_I2C();
+		m_I2CCreated = true;
+	}
+	return &m_I2C;
+}
+
+/****************************************************/
+EFM32_PWM* Factory::createPWM()
+{
+	if(m_PWMCreated == false)
+	{
+		m_PWM = EFM32_PWM(PWM_DUTY_CYCLE);
+		m_PWMCreated = true;
+	}
+	return &m_PWM;
+}
+
+/****************************************************/
+void Factory::clockInit()
+{
+	// Setup Clock Tree
+	CMU_ClockDivSet(cmuClock_HF, cmuClkDiv_2);			// Set HF clock divider to /2 to keep core frequency < 32MHz
+	CMU_OscillatorEnable(cmuOsc_HFXO, true, true);   	// Enable XTAL OSC and wait to stabilize
+	CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFXO); 	// Select HF XTAL osc as system clock source. 48MHz XTAL, but we divided the system clock by 2, therefore our HF clock will be 24MHz
+
+    CMU_ClockEnable(cmuClock_GPIO, true);       // Enable GPIO peripheral clock
+    CMU_ClockEnable(cmuClock_USART1, true);		// Enable USART1 peripheral clock
+    CMU_ClockEnable(cmuClock_TIMER0, true);		// Enable Timer_0 peripheral clock
+    CMU_ClockEnable(cmuClock_TIMER3, true);		// Enable Timer_3 peripheral clock
+    CMU_ClockEnable(cmuClock_I2C0, true);		// Enable I2C0 peripheral clock
 }

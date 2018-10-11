@@ -8,7 +8,16 @@
 #ifndef FACTORY_CONSTANTS_HPP_
 #define FACTORY_CONSTANTS_HPP_
 
+#include "bspconfig.h"
+
 #define null (0U)
+
+//Testing Purposes
+#define DEBUG_BREAK 			__asm__("BKPT #0"); //For debug
+#define LED0_PORT				gpioPortE
+#define LED1_PORT				gpioPortE
+#define LED0_PIN				2
+#define LED2_PIN				3
 
 //Time defines
 #define TIME_1_MICROSECOND 		(1U)
@@ -23,6 +32,16 @@
 #define TX_BUFFER_SIZE_USART1 	(50U)
 #define RX_BUFFER_SIZE_USART1 	(50U)
 
-#define ACCELEROMETER_ADDRESS 	0x55 << 1
+//I2C
+#define ACCELEROMETER_ADDRESS 	0b00101010
+#define I2C_CMD_ARRAY_SIZE      1
+#define I2C_DATA_ARRAY_SIZE     10
+#define I2C_ERROR_CODE			0xFF
+#define TEMP_SENSOR_ADDRESS		0x18 << 1
+
+//PWM
+#define PWM_DUTY_CYCLE			5
+
+//LED Array
 
 #endif /* FACTORY_CONSTANTS_HPP_ */
