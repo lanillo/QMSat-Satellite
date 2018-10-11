@@ -37,6 +37,7 @@
 #define I2C_CMD_ARRAY_SIZE      1
 #define I2C_DATA_ARRAY_SIZE     10
 #define I2C_ERROR_CODE			0xFF
+#define TEMP_SENSOR_ADDRESS		0x18 << 1
 
 //PWM
 #define PWM_DUTY_CYCLE			5

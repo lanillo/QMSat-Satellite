@@ -25,7 +25,8 @@ public:
 	~EFM32_I2C() {};
 
 	void i2c_transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t data_array[], uint16_t cmd_len, uint16_t data_len, uint8_t flag);
-	uint8_t i2c_send_command(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag);
+	uint8_t i2c_write_command(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag);
+	uint8_t i2c_read_command(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag);
 
 private:
 	// Globals for persistent storage
