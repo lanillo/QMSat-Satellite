@@ -50,7 +50,7 @@ private:
 	void createLED();
 
 	/**** USART0 ****/
-	EFM32_USART1 m_EFM32_USART1;
+	//EFM32_USART1 m_EFM32_USART1;
 	bool m_USART1Created;
 	void createUSART1();
 
@@ -74,6 +74,7 @@ private:
 
 public:
 	Factory();
+	EFM32_USART1 m_EFM32_USART1;//*********************************
 	StateManager* createStateManager();
 	EFM32_Timer0* createTimer0();
 	EFM32_I2C* createI2C();
