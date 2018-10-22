@@ -24,14 +24,14 @@ public:
 	EFM32_I2C();
 	~EFM32_I2C() {};
 
-	void transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t data_array[], uint16_t cmd_len, uint16_t data_len, uint8_t flag);
+	void transfer(uint16_t p_deviceAddr, uint8_t p_cmdArray[], uint8_t p_dataArray[], uint16_t p_cmdLenght, uint16_t p_dataLenght, uint8_t p_flag);
 	uint8_t writeCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag);
 	uint8_t readCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag);
 
 private:
 	// Globals for persistent storage
-	uint8_t m_cmd_array[I2C_CMD_ARRAY_SIZE];
-	uint8_t m_data_array[I2C_DATA_ARRAY_SIZE];
+	uint8_t m_cmdArray[I2C_CMD_ARRAY_SIZE];
+	uint8_t m_dataArray[I2C_DATA_ARRAY_SIZE];
 };
 
 void initI2C();

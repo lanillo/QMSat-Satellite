@@ -2,7 +2,7 @@
  * StateManager.cpp
  *
  *  Created on: 2018-01-24
- *      Author: Guillaume
+ *      Author: Guillaume Beaupré
  */
 
 

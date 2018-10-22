@@ -9,9 +9,9 @@
 
 
 /****************************************************/
-EFM32_PWM::EFM32_PWM(int DUTY_CYCLE)
+EFM32_PWM::EFM32_PWM(int p_dutyCycle)
 :
-	m_dutyCycle(DUTY_CYCLE)
+	m_dutyCycle(p_dutyCycle)
 {
 	// Create the timer count control object initializer
 	TIMER_InitCC_TypeDef timerCCInit = TIMER_INITCC_DEFAULT;
@@ -28,7 +28,7 @@ EFM32_PWM::EFM32_PWM(int DUTY_CYCLE)
 	TIMER_TopSet(TIMER3, TIMER_TOP);
 
 	// Set the PWM duty cycle here!
-	TIMER_CompareBufSet(TIMER3, TIMER_CHANNEL, DUTY_CYCLE);
+	TIMER_CompareBufSet(TIMER3, TIMER_CHANNEL, p_dutyCycle);
 
 	// Create a timerInit object, based on the API default
 	TIMER_Init_TypeDef timerInit = TIMER_INIT_DEFAULT;
@@ -38,42 +38,42 @@ EFM32_PWM::EFM32_PWM(int DUTY_CYCLE)
 }
 
 /****************************************************/
-bool EFM32_PWM::setDutyCycle(int dutyCycle)
+bool EFM32_PWM::setDutyCycle(int p_dutyCycle)
 {
 	if (m_dutyCycle > TIMER_TOP || m_dutyCycle < 0)
 	{
 		return false;
 	}
 
-	m_dutyCycle = dutyCycle;
+	m_dutyCycle = p_dutyCycle;
 	TIMER_CompareBufSet(TIMER3, TIMER_CHANNEL, m_dutyCycle);
 
 	return true;
 }
 
 /****************************************************/
-bool EFM32_PWM::reduceDutyCycleBy(int factor)
+bool EFM32_PWM::reduceDutyCycleBy(int p_factor)
 {
-	if (m_dutyCycle - factor < 0)
+	if (m_dutyCycle - p_factor < 0)
 	{
 		return false;
 	}
 
-	m_dutyCycle = m_dutyCycle - factor;
+	m_dutyCycle = m_dutyCycle - p_factor;
 	TIMER_CompareBufSet(TIMER3, TIMER_CHANNEL, m_dutyCycle);
 
 	return true;
 }
 
 /****************************************************/
-bool EFM32_PWM::augmentDutyCycleBy(int factor)
+bool EFM32_PWM::augmentDutyCycleBy(int p_factor)
 {
-	if (m_dutyCycle + factor > TIMER_TOP)
+	if (m_dutyCycle + p_factor > TIMER_TOP)
 	{
 		return false;
 	}
 
-	m_dutyCycle = m_dutyCycle + factor;
+	m_dutyCycle = m_dutyCycle + p_factor;
 	TIMER_CompareBufSet(TIMER3, TIMER_CHANNEL, m_dutyCycle);
 
 	return true;
@@ -89,21 +89,21 @@ int EFM32_PWM::getDutyCycle()
 void EFM32_PWM::onAndOffLED()
 {
 
-	static bool m_goingUp = true;
+	static bool s_goingUp = true;
 
-	if (m_goingUp)
+	if (s_goingUp)
 	{
 	if(augmentDutyCycleBy(TIMER_STEP))
-		m_goingUp = true;
+		s_goingUp = true;
 	else
-		m_goingUp = false;
+		s_goingUp = false;
 	}
 	else
 	{
 	if(reduceDutyCycleBy(TIMER_STEP))
-		m_goingUp = false;
+		s_goingUp = false;
 	else
-		m_goingUp = true;
+		s_goingUp = true;
 	}
 }
 

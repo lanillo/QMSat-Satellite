@@ -19,7 +19,7 @@ EFM32_I2C::EFM32_I2C()
 }
 
 /****************************************************/
-void EFM32_I2C::transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t data_array[], uint16_t cmd_len, uint16_t data_len, uint8_t flag)
+void EFM32_I2C::transfer(uint16_t p_deviceAddr, uint8_t p_cmdArray[], uint8_t p_dataArray[], uint16_t p_cmdLenght, uint16_t p_dataLenght, uint8_t p_flag)
 {
 
 	// Transfer structure
@@ -28,14 +28,14 @@ void EFM32_I2C::transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t data
 	// Initialize I2C transfer
 	I2C_TransferReturn_TypeDef result;
 
-	i2cTransfer.addr          = device_addr;
-	i2cTransfer.flags         = flag;
-	i2cTransfer.buf[0].data   = cmd_array;
-	i2cTransfer.buf[0].len    = cmd_len;
+	i2cTransfer.addr          = p_deviceAddr;
+	i2cTransfer.flags         = p_flag;
+	i2cTransfer.buf[0].data   = p_cmdArray;
+	i2cTransfer.buf[0].len    = p_cmdLenght;
 
 	// Note that WRITE_WRITE this is tx2 data
-	i2cTransfer.buf[1].data   = data_array;
-	i2cTransfer.buf[1].len    = data_len;
+	i2cTransfer.buf[1].data   = p_dataArray;
+	i2cTransfer.buf[1].len    = p_dataLenght;
 
 	// Set up the transfer
 	result = I2C_TransferInit(I2C0, &i2cTransfer);
@@ -49,19 +49,19 @@ void EFM32_I2C::transfer(uint16_t device_addr, uint8_t cmd_array[], uint8_t data
 }
 
 /****************************************************/
-uint8_t EFM32_I2C::writeCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag)
+uint8_t EFM32_I2C::writeCommand(uint8_t p_address, uint8_t p_registerOffset, I2C_FLAGS p_flag)
 {
-	m_cmd_array[0] = reg_offset;
-	transfer(address, m_cmd_array, m_data_array, 1, 1, flag);
-	return m_data_array[0];
+	m_cmdArray[0] = p_registerOffset;
+	transfer(p_address, m_cmdArray, m_dataArray, 1, 1, p_flag);
+	return m_dataArray[0];
 }
 
 /****************************************************/
-uint8_t EFM32_I2C::readCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag)
+uint8_t EFM32_I2C::readCommand(uint8_t p_address, uint8_t p_registerOffset, I2C_FLAGS p_flag)
 {
-	m_cmd_array[0] = 0x00;
-	transfer(address, m_cmd_array, m_data_array, 1, 2, flag);
-	return m_data_array[0];
+	m_cmdArray[0] = 0x00;
+	transfer(p_address, m_cmdArray, m_dataArray, 1, 2, p_flag);
+	return m_dataArray[0];
 }
 
 /****************************************************/

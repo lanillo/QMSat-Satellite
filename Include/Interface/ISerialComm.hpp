@@ -2,7 +2,7 @@
  * SerialCom.hpp
  *
  *  Created on: 2018-02-18
- *      Author: Guillaume
+ *      Author: Guillaume Beaupré
  */
 
 #ifndef INCLUDE_INTERFACE_ISERIALCOMM_HPP_

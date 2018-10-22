@@ -1,50 +1,45 @@
 /*
- * RunState.cpp
+ * EconoState.cpp
  *
- *  Created on: 2018-01-25
+ *  Created on: 2018-10-22
  *      Author: Guillaume Beaupré
  */
 
-#include "RunState.hpp"
+#include "EconoState.hpp"
 
 /****************************************************/
-RunState::RunState()
+EconoState::EconoState()
 {
-	m_stateId = Run;
+	m_stateId = Econo;
 }
 
 /****************************************************/
-RunState::RunState(ISerialComm* p_USART)
+EconoState::EconoState(ISerialComm* p_USART)
 {
-	m_stateId = Run;
-
 	m_USART = p_USART;
+	m_stateId = Econo;
 }
 
 /****************************************************/
-short RunState::getStateId()
+short EconoState::getStateId()
 {
 	return m_stateId;
 }
 
 /****************************************************/
-void RunState::onEntry()
+void EconoState::onEntry()
 {
-	m_USART->sendSerial("Entering Run State\n",19);
+
 }
 
 /****************************************************/
-short RunState::execute()
+short EconoState::execute()
 {
-	m_USART->sendSerial("Executing Run State\n",20);
-
-	return Init;
+	return m_stateId;
 }
 
 /****************************************************/
-void RunState::onExit()
+void EconoState::onExit()
 {
 
 }
-
-

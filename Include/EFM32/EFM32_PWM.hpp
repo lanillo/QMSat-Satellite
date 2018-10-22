@@ -20,12 +20,12 @@ class EFM32_PWM
 {
 public:
 	EFM32_PWM() :m_dutyCycle(0) {};
-	EFM32_PWM(int dutyCycle);
+	EFM32_PWM(int p_dutyCycle);
 	~EFM32_PWM() {};
 
-	bool setDutyCycle(int dutyCycle);
-	bool reduceDutyCycleBy(int factor);
-	bool augmentDutyCycleBy(int factor);
+	bool setDutyCycle(int p_dutyCycle);
+	bool reduceDutyCycleBy(int p_factor);
+	bool augmentDutyCycleBy(int p_factor);
 	void onAndOffLED();
 	int getDutyCycle();
 

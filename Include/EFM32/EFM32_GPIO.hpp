@@ -2,7 +2,7 @@
  * GPIO.hpp
  *
  *  Created on: Feb 13, 2018
- *      Author: lfani
+ *      Author: Luis Anillo
  */
 
 #ifndef INCLUDE_EFM32_EFM32_GPIO_HPP_

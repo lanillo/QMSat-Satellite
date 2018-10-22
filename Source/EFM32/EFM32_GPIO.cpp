@@ -2,7 +2,7 @@
  * GPIO.cpp
  *
  *  Created on: Feb 13, 2018
- *      Author: lfani
+ *      Author: Luis Anillo
  */
 
 #include <EFM32_GPIO.hpp>
