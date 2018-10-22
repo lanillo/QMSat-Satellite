@@ -25,7 +25,6 @@ short InitState::getStateId()
 void InitState::onEntry()
 {
 	m_USART->sendSerial("Entering Init State\n",20);
-	m_USART->sendSerial("T024\n",5);
 }
 
 /****************************************************/
