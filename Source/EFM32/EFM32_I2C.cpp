@@ -15,6 +15,11 @@ EFM32_I2C::EFM32_I2C()
 
 	/* Enable signals SCL, SDA */
 	I2C0->ROUTE |= I2C_ROUTE_SCLPEN | I2C_ROUTE_SDAPEN;
+}
+
+/****************************************************/
+EFM32_I2C::~EFM32_I2C()
+{
 
 }
 
@@ -62,6 +67,30 @@ uint8_t EFM32_I2C::readCommand(uint8_t p_address, uint8_t p_registerOffset, I2C_
 	m_cmdArray[0] = 0x00;
 	transfer(p_address, m_cmdArray, m_dataArray, 1, 2, p_flag);
 	return m_dataArray[0];
+}
+
+/****************************************************/
+void EFM32_I2C::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
+{
+
+}
+
+/****************************************************/
+char EFM32_I2C::receiveSerial()
+{
+	return 0;
+}
+
+/****************************************************/
+bool EFM32_I2C::isSending()
+{
+	return 0;
+}
+
+/****************************************************/
+void EFM32_I2C::setSending(bool p_Sending)
+{
+
 }
 
 /****************************************************/

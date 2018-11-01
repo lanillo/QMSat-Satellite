@@ -8,6 +8,7 @@
 #include "em_i2c.h"
 
 #include "Constants.hpp"
+#include "ISerialComm.hpp"
 
 /* Flags for I2C commands */
 enum I2C_FLAGS
@@ -18,15 +19,20 @@ enum I2C_FLAGS
 	I2C_WRITE_WRITE = I2C_FLAG_WRITE_WRITE
 };
 
-class EFM32_I2C
+class EFM32_I2C: public ISerialComm
 {
 public:
 	EFM32_I2C();
-	~EFM32_I2C() {};
+	~EFM32_I2C();
 
 	void transfer(uint16_t p_deviceAddr, uint8_t p_cmdArray[], uint8_t p_dataArray[], uint16_t p_cmdLenght, uint16_t p_dataLenght, uint8_t p_flag);
 	uint8_t writeCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag);
 	uint8_t readCommand(uint8_t address, uint8_t reg_offset, I2C_FLAGS flag);
+
+	void sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize);
+	char receiveSerial();
+	bool isSending();
+	void setSending(bool p_Sending);
 
 private:
 	// Globals for persistent storage
@@ -35,6 +41,4 @@ private:
 };
 
 void initI2C();
-
-
 
