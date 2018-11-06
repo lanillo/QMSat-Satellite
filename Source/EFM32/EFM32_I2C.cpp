@@ -15,6 +15,17 @@ EFM32_I2C::EFM32_I2C()
 
 	/* Enable signals SCL, SDA */
 	I2C0->ROUTE |= I2C_ROUTE_SCLPEN | I2C_ROUTE_SDAPEN;
+
+	for (int i = 0; i < I2C_CMD_ARRAY_SIZE; ++i)
+	{
+		m_CMDArray[i] = 0;
+	}
+
+	for (int i = 0; i < I2C_DATA_ARRAY_SIZE; ++i)
+	{
+		m_DATAArray[i] = 0;
+	}
+
 }
 
 /****************************************************/
@@ -24,9 +35,8 @@ EFM32_I2C::~EFM32_I2C()
 }
 
 /****************************************************/
-void EFM32_I2C::transfer(uint16_t p_deviceAddr, uint8_t p_cmdArray[], uint8_t p_dataArray[], uint16_t p_cmdLenght, uint16_t p_dataLenght, uint8_t p_flag)
+bool EFM32_I2C::transfer(uint16_t p_deviceAddr, uint8_t p_cmdArray[], uint8_t p_dataArray[], uint16_t p_cmdLenght, uint16_t p_dataLenght, uint8_t p_flag)
 {
-
 	// Transfer structure
 	I2C_TransferSeq_TypeDef i2cTransfer;
 
@@ -48,25 +58,35 @@ void EFM32_I2C::transfer(uint16_t p_deviceAddr, uint8_t p_cmdArray[], uint8_t p_
 	// Do it until the transfer is done
 	while (result != i2cTransferDone)
 	{
+		if (result != i2cTransferInProgress)
+		{
+			  return false;
+		}
 
 		result = I2C_Transfer(I2C0);
 	}
+	return true;
 }
 
 /****************************************************/
-uint8_t EFM32_I2C::writeCommand(uint8_t p_address, uint8_t p_registerOffset, I2C_FLAGS p_flag)
+bool EFM32_I2C::sendI2CCommand(uint8_t p_address, uint8_t p_registerOffset, uint16_t cmd_len, uint16_t data_len, uint8_t p_flag)
 {
-	m_cmdArray[0] = p_registerOffset;
-	transfer(p_address, m_cmdArray, m_dataArray, 1, 1, p_flag);
-	return m_dataArray[0];
+	m_CMDArray[0] = p_registerOffset;
+	return transfer(p_address, m_CMDArray, m_DATAArray, cmd_len, data_len, p_flag);
+
+	// exemple of use 	if(I2C.sendCommand(TEMP_SENSOR_ADDRESS, 0x05, 1, 2, I2C_FLAG_WRITE_READ));
 }
 
 /****************************************************/
-uint8_t EFM32_I2C::readCommand(uint8_t p_address, uint8_t p_registerOffset, I2C_FLAGS p_flag)
+uint8_t EFM32_I2C::getCMD(int index)
 {
-	m_cmdArray[0] = 0x00;
-	transfer(p_address, m_cmdArray, m_dataArray, 1, 2, p_flag);
-	return m_dataArray[0];
+	return m_CMDArray[index];
+}
+
+/****************************************************/
+uint8_t EFM32_I2C::getDATA(int index)
+{
+	return m_DATAArray[index];
 }
 
 /****************************************************/
@@ -94,8 +114,9 @@ void EFM32_I2C::setSending(bool p_Sending)
 }
 
 /****************************************************/
-void initI2C()
+void initI2C(int frequency)
 {
     I2C_Init_TypeDef i2cInit = I2C_INIT_DEFAULT;
+	i2cInit.freq = 200000;
     I2C_Init(I2C0, &i2cInit);
 }

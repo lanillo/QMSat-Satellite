@@ -17,5 +17,7 @@ MCP9808TempSensor::MCP9808TempSensor(ISerialComm* p_I2C)
 /****************************************************/
 int MCP9808TempSensor::getTemp()
 {
+	m_I2C->
+
 	return m_Temp;
 }

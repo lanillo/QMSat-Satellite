@@ -68,7 +68,7 @@ private:
 	/**** I2C ****/
 	EFM32_I2C m_I2C;
 	bool m_I2CCreated;
-	void createI2C();
+
 
 	/**** PWM ****/
 	EFM32_PWM m_PWM;
@@ -79,6 +79,7 @@ public:
 	Factory();
 	StateManager* createStateManager();
 	EFM32_Timer0* createTimer0();
+	EFM32_I2C createI2C();
 
 	void initEFM32Functionnality();
 	void clockInit();

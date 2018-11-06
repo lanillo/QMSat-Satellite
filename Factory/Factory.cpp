@@ -71,12 +71,6 @@ void Factory::createGPIO()
 		/***** PWM *****/
 		EFM32_GPIO LED0(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPull, 0); // set LED0 (PE2) pin as push-pull output
 
-		/***** I2C *****/
-		/* MUST BE initialized after ROUTE of I2C to avoid glitches */
-	    /* Output value must be set to 1 to not drive lines low. Set SCL first, to ensure it is high before changing SDA. */
-	    EFM32_GPIO SCL(gpioPortC, 7, gpioModeWiredAndPullUpFilter, 1);	// PD7(I2C0) #1 - PC5(I2C1) #0 - PC7(I2C0) #1 - SCL
-	    EFM32_GPIO SDA(gpioPortC, 6, gpioModeWiredAndPullUpFilter, 1);	// PD6(I2C0) #1 - PC4(I2C1) #0 - PC6(I2C0) #1 - SDA
-
 	    /***** GPIO *****/
 		m_PB0 = EFM32_GPIO(BSP_GPIO_PB0_PORT, BSP_GPIO_PB0_PIN, gpioModeInput, 1); // set PBO button (B9) as input
 		m_PB1 = EFM32_GPIO(BSP_GPIO_PB1_PORT, BSP_GPIO_PB1_PIN, gpioModeInput, 1); // set PB1 button (B10) as input
@@ -117,13 +111,23 @@ EFM32_Timer0* Factory::createTimer0()
 }
 
 /****************************************************/
-void Factory::createI2C()
+EFM32_I2C Factory::createI2C()
 {
 	if(m_I2CCreated == false)
 	{
+		//Route PC6 abd PC7 to I2C0
 		m_I2C = EFM32_I2C();
+
+		/***** I2C *****/
+		/* MUST BE initialized after ROUTE of I2C to avoid glitches */
+	    /* Output value must be set to 1 to not drive lines low. Set SCL first, to ensure it is high before changing SDA. */
+	    EFM32_GPIO SCL(gpioPortC, 7, gpioModeWiredAndPullUpFilter, 1);	// PD7(I2C0) #1 - PC5(I2C1) #0 - PC7(I2C0) #1 - SCL
+	    EFM32_GPIO SDA(gpioPortC, 6, gpioModeWiredAndPullUpFilter, 1);	// PD6(I2C0) #1 - PC4(I2C1) #0 - PC6(I2C0) #1 - SDA
+
 		m_I2CCreated = true;
 	}
+
+	return m_I2C;
 }
 
 /****************************************************/
@@ -142,7 +146,7 @@ void Factory::initEFM32Functionnality()
 	initTimer0();
 	initSPI();
 	initUSART1();
-	initI2C();
+	initI2C(I2C_BUS_FREQUENCY);
 }
 
 /****************************************************/
