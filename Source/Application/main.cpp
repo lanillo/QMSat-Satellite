@@ -5,150 +5,38 @@
 #include "Factory.hpp"
 #include "Constants.hpp"
 
-void auditBatterySimulator(Factory* factory);
-
-// Globals for persistent storage
-uint8_t cmd_array[I2C_CMD_ARRAY_SIZE];
-uint8_t data_array[I2C_DATA_ARRAY_SIZE];
-
 int main(void)
 {
-    /* Initialize chip and check for chip errata */
+	/* Initialize chip and check for chip errata */
 	CHIP_Init();
 
+	//Creation of the object
+	Factory factory = Factory();
+	StateManager* stateManager = factory.createStateManager();
+	EFM32_Timer0* timer0 = factory.createTimer0();
+
 	// Setup Clock Tree
-	CMU_ClockDivSet(cmuClock_HF, cmuClkDiv_2);			// Set HF clock divider to /2 to keep core frequency < 32MHz
-	CMU_OscillatorEnable(cmuOsc_HFXO, true, true);   	// Enable XTAL OSC and wait to stabilize
-	CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFXO); 	// Select HF XTAL osc as system clock source. 48MHz XTAL, but we divided the system clock by 2, therefore our HF clock will be 24MHz
+	factory.clockInit();
 
-    CMU_ClockEnable(cmuClock_GPIO, true);       		// Enable GPIO peripheral clock
-    CMU_ClockEnable(cmuClock_USART0, true);				// Enable USART0 peripheral clock
-    CMU_ClockEnable(cmuClock_USART1, true);				// Enable USART1 peripheral clock
-    CMU_ClockEnable(cmuClock_TIMER0, true);				// Enable Timer_0 peripheral clock
-    //CMU_ClockEnable(cmuClock_I2C1, true);				// Enable I2C1 peripheral clock
+	/* Initializations */
+	factory.initEFM32Functionnality();
 
-    Factory factory = Factory();
-    StateManager* stateManager = factory.createStateManager();
-    EFM32_Timer0* timer0 = factory.createTimer0();
-    EFM32_I2C* I2C = factory.createI2C();
-    EFM32_PWM* PWM0 = factory.createPWM();
-    factory.createGPIO();
+	stateManager->execute();
 
-    /* Initializations */
-    initTimer0();
-    initSPI();
-    initUSART1();
-    initI2C();
-
-    timer0->start();
-
-    static unsigned int referenceTime_microsecond;
-    bool sendI2CCommandDelay = false;
-    referenceTime_microsecond = timer0->getReferenceTime_microsecond();
-
-    cmd_array[0] = 0x05;
-	I2C->transfer(TEMP_SENSOR_ADDRESS, cmd_array, data_array, 1, 1, I2C_FLAG_WRITE);
-
-	while(timer0 ->getElapsedTime_microsecond(referenceTime_microsecond) <= TIME_1_SECOND/1000){};
+	/* Start the timer and take the first reference time */
+	timer0->start();
+	static unsigned int referenceTime_microsecond;
 	referenceTime_microsecond = timer0->getReferenceTime_microsecond();
 
-	cmd_array[0] = 0x05;
-	I2C->transfer(TEMP_SENSOR_ADDRESS, cmd_array, data_array, 1, 2, I2C_FLAG_READ);
-
-    /* Infinite loop */
-
-    while (true)
-    {
-    	if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_1_SECOND)
-    	{
-    		if (factory.m_PB0.readInput())
-    		{
-    			PWM0->onAndOffLED();
-    		}
-
-    		stateManager->execute();
-    		referenceTime_microsecond = timer0->getReferenceTime_microsecond();
-
-    		auditBatterySimulator(&factory);
-
-    		sendI2CCommandDelay = false;
-    	}
-
-		if (!factory.m_PB1.readInput())
-		{
-			if (!sendI2CCommandDelay)
-			{
-				I2C->writeCommand(ACCELEROMETER_ADDRESS, 0x00, I2C_WRITE_READ);
-				sendI2CCommandDelay = true;
-			}
-		}
-    }
-}
-
-// Temp pour laudit
-void auditBatterySimulator(Factory* factory)
-{
-	static int count = 0;
-
-	switch (count)
+	/* Main program loop */
+	while (true)
 	{
-		case 0:
-			factory->m_BAT.D0D1.setOutputHigh();
-			count++;
-			break;
-
-		case 1:
-			factory->m_BAT.D0D1.setOutputHigh();
-			count++;
-			break;
-
-		case 2:
-			factory->m_BAT.D2D3.setOutputHigh();
-			count++;
-			break;
-
-		case 3:
-			factory->m_BAT.D2D3.setOutputHigh();
-			count++;
-			break;
-
-		case 4:
-			factory->m_BAT.D4D5.setOutputHigh();
-			count++;
-			break;
-
-		case 5:
-			factory->m_BAT.D4D5.setOutputHigh();
-			count++;
-			break;
-
-		case 6:
-			factory->m_BAT.D6D7.setOutputHigh();
-			count++;
-			break;
-
-		case 7:
-			factory->m_BAT.D6D7.setOutputHigh();
-			count++;
-			break;
-
-		case 8:
-			factory->m_BAT.D8D9.setOutputHigh();
-			count++;
-			break;
-
-		case 9:
-			factory->m_BAT.D8D9.setOutputHigh();
-			count++;
-			break;
-
-		default:
-			count = 0;
-			factory->m_BAT.D0D1.setOutputLow();
-			factory->m_BAT.D2D3.setOutputLow();
-			factory->m_BAT.D4D5.setOutputLow();
-			factory->m_BAT.D6D7.setOutputLow();
-			factory->m_BAT.D8D9.setOutputLow();
-			break;
+		if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_1_SECOND)
+		{
+			stateManager->execute();
+			referenceTime_microsecond = timer0->getReferenceTime_microsecond();
+		}
 	}
+
 }
+

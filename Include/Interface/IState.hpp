@@ -11,7 +11,8 @@
 enum States
 {
 	Init,
-	Run
+	Run,
+	Econo
 };
 
 class IState

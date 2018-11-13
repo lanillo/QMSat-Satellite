@@ -22,7 +22,7 @@ public:
 	short getStateId();
 
 private:
-	short m_StateId;
+	short m_stateId;
 	ILED* m_LED;
 	ISerialComm* m_USART;
 

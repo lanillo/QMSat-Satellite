@@ -10,12 +10,14 @@
 
 #include "IState.hpp"
 #include "ISerialComm.hpp"
+#include "ITempSensor.hpp"
+#include <stdio.h>
 
 class RunState: public IState
 {
 public:
 	RunState();
-	RunState(ISerialComm* p_USART);
+	RunState(ISerialComm* p_USART, ITempSensor* p_I2C_MCP);
 	~RunState() {};
 
 	short getStateId();
@@ -23,7 +25,8 @@ public:
 private:
 	short m_stateId;
 
-	ISerialComm* m_USART;
+	ISerialComm* m_USART_UI;
+	ITempSensor* m_I2C_MCP;
 
 	void onEntry();
 	void onExit();

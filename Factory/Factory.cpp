@@ -34,6 +34,7 @@ StateManager* Factory::createStateManager()
 		m_StateManager = StateManager(&m_InitState);
 
 		m_StateManager.addState(&m_RunState);
+		m_StateManager.addState(&m_EconoState);
 	}
 	return &m_StateManager;
 }
@@ -43,10 +44,12 @@ void Factory::createStates()
 {
 	createUSART1();
 	createLED();
+	createMCPTempSense();
 	if(m_StatesCreated == false)
 	{
 		m_InitState = InitState(&m_LED0, &m_EFM32_USART1);
-		m_RunState = RunState(&m_EFM32_USART1);
+		m_RunState = RunState(&m_EFM32_USART1, &m_MCPTempSense);
+		m_EconoState = EconoState(&m_EFM32_USART1);
 
 		m_StatesCreated = true;
 	}
@@ -69,22 +72,9 @@ void Factory::createGPIO()
 		/***** PWM *****/
 		EFM32_GPIO LED0(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPull, 0); // set LED0 (PE2) pin as push-pull output
 
-		/***** I2C *****/
-		/* MUST BE initialized after ROUTE of I2C to avoid glitches */
-	    /* Output value must be set to 1 to not drive lines low. Set SCL first, to ensure it is high before changing SDA. */
-	    EFM32_GPIO SCL(gpioPortC, 7, gpioModeWiredAndPullUpFilter, 1);	// PD7(I2C0) #1 - PC5(I2C1) #0 - PC7(I2C0) #1 - SCL
-	    EFM32_GPIO SDA(gpioPortC, 6, gpioModeWiredAndPullUpFilter, 1);	// PD6(I2C0) #1 - PC4(I2C1) #0 - PC6(I2C0) #1 - SDA
-
 	    /***** GPIO *****/
 		m_PB0 = EFM32_GPIO(BSP_GPIO_PB0_PORT, BSP_GPIO_PB0_PIN, gpioModeInput, 1); // set PBO button (B9) as input
 		m_PB1 = EFM32_GPIO(BSP_GPIO_PB1_PORT, BSP_GPIO_PB1_PIN, gpioModeInput, 1); // set PB1 button (B10) as input
-
-	    /***** LEDArray *****/
-		m_BAT.D0D1= EFM32_GPIO(gpioPortE, 0, gpioModePushPull, 0); // set LEDArray[0] (PD2) as push-pull output
-		m_BAT.D2D3 = EFM32_GPIO(gpioPortE, 1, gpioModePushPull, 0); // set LEDArray[1] (PD3) as push-pull output
-		m_BAT.D4D5 = EFM32_GPIO(gpioPortE, 3, gpioModePushPull, 0); // set LEDArray[2] (PD4) as push-pull output
-		m_BAT.D6D7 = EFM32_GPIO(gpioPortD, 13, gpioModePushPull, 0); // set LEDArray[4] (PD6) as push-pull output
-		m_BAT.D8D9= EFM32_GPIO(gpioPortD, 14, gpioModePushPull, 0); // set LEDArray[5] (PC0) as push-pull output
 
 		m_GPIOCreated = true;
 	}
@@ -126,21 +116,52 @@ EFM32_I2C* Factory::createI2C()
 {
 	if(m_I2CCreated == false)
 	{
+		//Route PC6 abd PC7 to I2C0
 		m_I2C = EFM32_I2C();
+
+		/***** I2C *****/
+		/* MUST BE initialized after ROUTE of I2C to avoid glitches */
+	    /* Output value must be set to 1 to not drive lines low. Set SCL first, to ensure it is high before changing SDA. */
+	    EFM32_GPIO SCL(gpioPortC, 7, gpioModeWiredAndPullUpFilter, 1);	// PD7(I2C0) #1 - PC5(I2C1) #0 - PC7(I2C0) #1 - SCL
+	    EFM32_GPIO SDA(gpioPortC, 6, gpioModeWiredAndPullUpFilter, 1);	// PD6(I2C0) #1 - PC4(I2C1) #0 - PC6(I2C0) #1 - SDA
+
 		m_I2CCreated = true;
 	}
+
 	return &m_I2C;
 }
 
 /****************************************************/
-EFM32_PWM* Factory::createPWM()
+void Factory::createPWM()
 {
 	if(m_PWMCreated == false)
 	{
 		m_PWM = EFM32_PWM(PWM_DUTY_CYCLE);
 		m_PWMCreated = true;
 	}
-	return &m_PWM;
+}
+
+/****************************************************/
+MCP9808TempSensor* Factory::createMCPTempSense()
+{
+	createI2C();
+
+	if(m_MCPTempSenseCreated == false)
+	{
+		m_MCPTempSense = MCP9808TempSensor(&m_I2C ,TEMP_SENSOR_ADDRESS);
+		m_MCPTempSenseCreated = true;
+	}
+
+	return &m_MCPTempSense;
+}
+
+/****************************************************/
+void Factory::initEFM32Functionnality()
+{
+	initTimer0();
+	initSPI();
+	initUSART1();
+	initI2C(I2C_BUS_FREQUENCY);
 }
 
 /****************************************************/
