@@ -43,7 +43,7 @@ private:
 void initUSART1();
 void callbackUSART1Init(callback p_callbackTx, callback p_callbackRx, void* p_USART1Instance);
 
-void USART1_RX_IRQHandler(void);
-void USART1_TX_IRQHandler(void);
+//void USART1_RX_IRQHandler(void);
+//void USART1_TX_IRQHandler(void);
 
 #endif /* INCLUDE_EFM32_EFM32_USART1_HPP_ */

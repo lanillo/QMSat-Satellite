@@ -67,8 +67,10 @@ void EFM32_USART1::callbackForSerialReceive(void* p_USART1Instance)
 	{
 		EFM32_USART1* usart = reinterpret_cast<EFM32_USART1*>(p_USART1Instance);
 		//usart->m_RxBuffer[0] = usart->receiveSerial();
-		char a = (char)USART1->RXDATA;
-		usart->sendSerial(&a, 1);
+		while(usart->isSending());
+		char* a;
+		*a = (char)USART1->RXDATA;
+		usart->sendSerial(a, 1);
 	}
 }
 
@@ -76,6 +78,7 @@ void EFM32_USART1::callbackForSerialReceive(void* p_USART1Instance)
 void USART1_RX_IRQHandler(void)
 {
 	callbackUSART1Rx(USART1Instance);
+	USART1->IFC |= USART_IFC_RXFULL;
 }
 
 /****************************************************/

@@ -14,11 +14,12 @@ RunState::RunState()
 }
 
 /****************************************************/
-RunState::RunState(ISerialComm* p_USART)
+RunState::RunState(ISerialComm* p_UartUI, ISerialComm* p_UartAlim)
 {
 	m_stateId = Run;
 
-	m_USART = p_USART;
+	m_USART = p_UartUI;
+	m_UartAlim = p_UartAlim;
 }
 
 /****************************************************/
@@ -30,14 +31,14 @@ short RunState::getStateId()
 /****************************************************/
 void RunState::onEntry()
 {
-	m_USART->sendSerial("Entering Run State\n",19);
+	//m_USART->sendSerial("Entering Run State\n",19);
 }
 
 /****************************************************/
 short RunState::execute()
 {
-	m_USART->sendSerial("Executing Run State\n",20);
-
+	//m_USART->sendSerial("Executing Run State\n",20);
+	m_UartAlim->sendSerial("Sending to Alim...\n",19);
 	return Init;
 }
 

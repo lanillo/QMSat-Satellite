@@ -15,7 +15,7 @@ class RunState: public IState
 {
 public:
 	RunState();
-	RunState(ISerialComm* p_USART);
+	RunState(ISerialComm* p_UartUI, ISerialComm* p_UartAlim);
 	~RunState() {};
 
 	short getStateId();
@@ -24,6 +24,7 @@ private:
 	short m_stateId;
 
 	ISerialComm* m_USART;
+	ISerialComm* m_UartAlim;
 
 	void onEntry();
 	void onExit();

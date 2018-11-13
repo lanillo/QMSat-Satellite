@@ -16,6 +16,7 @@
 #include "EFM32_Timer0.hpp"
 #include "EFM32_GPIO.hpp"
 #include "EFM32_USART1.hpp"
+#include "EFM32_USART0.hpp"
 #include "EFM32_SPI.hpp"
 #include "EFM32_I2C.hpp"
 #include "EFM32_PWM.hpp"
@@ -48,10 +49,15 @@ private:
 	bool m_LED0Created;
 	void createLED();
 
-	/**** USART0 ****/
+	/**** USART1 ****/
 	EFM32_USART1 m_EFM32_USART1;
 	bool m_USART1Created;
 	void createUSART1();
+
+	/**** UART ALIM ****/
+	EFM32_USART0 m_UartAlim;
+	bool m_USART0Created;
+	void createUSART0();
 
 	/**** SPI ****/
 	EFM32_SPI m_EFM32_SPI;
