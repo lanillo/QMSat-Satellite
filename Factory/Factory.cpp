@@ -44,10 +44,11 @@ void Factory::createStates()
 {
 	createUSART1();
 	createLED();
+	createMCPTempSense();
 	if(m_StatesCreated == false)
 	{
 		m_InitState = InitState(&m_LED0, &m_EFM32_USART1);
-		m_RunState = RunState(&m_EFM32_USART1);
+		m_RunState = RunState(&m_EFM32_USART1, &m_MCPTempSense);
 		m_EconoState = EconoState(&m_EFM32_USART1);
 
 		m_StatesCreated = true;
@@ -111,7 +112,7 @@ EFM32_Timer0* Factory::createTimer0()
 }
 
 /****************************************************/
-EFM32_I2C Factory::createI2C()
+EFM32_I2C* Factory::createI2C()
 {
 	if(m_I2CCreated == false)
 	{
@@ -127,7 +128,7 @@ EFM32_I2C Factory::createI2C()
 		m_I2CCreated = true;
 	}
 
-	return m_I2C;
+	return &m_I2C;
 }
 
 /****************************************************/
@@ -138,6 +139,20 @@ void Factory::createPWM()
 		m_PWM = EFM32_PWM(PWM_DUTY_CYCLE);
 		m_PWMCreated = true;
 	}
+}
+
+/****************************************************/
+MCP9808TempSensor* Factory::createMCPTempSense()
+{
+	createI2C();
+
+	if(m_MCPTempSenseCreated == false)
+	{
+		m_MCPTempSense = MCP9808TempSensor(&m_I2C ,TEMP_SENSOR_ADDRESS);
+		m_MCPTempSenseCreated = true;
+	}
+
+	return &m_MCPTempSense;
 }
 
 /****************************************************/

@@ -24,13 +24,14 @@ short InitState::getStateId()
 /****************************************************/
 void InitState::onEntry()
 {
-	m_USART->sendSerial("Entering Init State\n",20);
+	//m_USART->sendSerial("Entering Init State\n",20);
+
 }
 
 /****************************************************/
 short InitState::execute()
 {
-	m_USART->sendSerial("Executing Init State\n",21);
+	//m_USART->sendSerial("Executing Init State\n",21);
 
 	return Run;
 }

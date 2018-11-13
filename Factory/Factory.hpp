@@ -20,6 +20,7 @@
 #include "EFM32_I2C.hpp"
 #include "EFM32_PWM.hpp"
 #include "LED.hpp"
+#include "MCP9808TempSensor.hpp"
 
 #include "em_cmu.h"
 
@@ -69,6 +70,9 @@ private:
 	EFM32_I2C m_I2C;
 	bool m_I2CCreated;
 
+	/**** TempSense ****/
+	MCP9808TempSensor m_MCPTempSense;
+	bool m_MCPTempSenseCreated;
 
 	/**** PWM ****/
 	EFM32_PWM m_PWM;
@@ -79,7 +83,8 @@ public:
 	Factory();
 	StateManager* createStateManager();
 	EFM32_Timer0* createTimer0();
-	EFM32_I2C createI2C();
+	EFM32_I2C* createI2C();
+	MCP9808TempSensor* createMCPTempSense();
 
 	void initEFM32Functionnality();
 	void clockInit();

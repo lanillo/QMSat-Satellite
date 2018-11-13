@@ -5,8 +5,6 @@
 #include "Factory.hpp"
 #include "Constants.hpp"
 
-void auditBatterySimulator(Factory* factory);
-
 int main(void)
 {
 	/* Initialize chip and check for chip errata */
@@ -15,7 +13,6 @@ int main(void)
 	//Creation of the object
 	Factory factory = Factory();
 	StateManager* stateManager = factory.createStateManager();
-	EFM32_I2C I2C = factory.createI2C();
 	EFM32_Timer0* timer0 = factory.createTimer0();
 
 	// Setup Clock Tree
@@ -23,6 +20,8 @@ int main(void)
 
 	/* Initializations */
 	factory.initEFM32Functionnality();
+
+	stateManager->execute();
 
 	/* Start the timer and take the first reference time */
 	timer0->start();

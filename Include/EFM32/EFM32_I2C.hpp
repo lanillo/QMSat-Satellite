@@ -5,12 +5,13 @@
  *      Author: lfani
  */
 
+#ifndef INCLUDE_EFM32_EFM32_I2C_HPP_
+#define INCLUDE_EFM32_EFM32_I2C_HPP_
+
 #include "em_i2c.h"
-
 #include "Constants.hpp"
-#include "ISerialComm.hpp"
 
-class EFM32_I2C: public ISerialComm
+class EFM32_I2C
 {
 public:
 	EFM32_I2C();
@@ -21,17 +22,17 @@ public:
 
 	uint8_t getCMD(int index);
 	uint8_t getDATA(int index);
-
-	void sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize);
-	char receiveSerial();
-	bool isSending();
-	void setSending(bool p_Sending);
+	I2C_TransferReturn_TypeDef getError();
 
 private:
-	// Globals for persistent storage
+	// For storage of values received and sent on I2C channel
 	uint8_t m_CMDArray[I2C_CMD_ARRAY_SIZE];
 	uint8_t m_DATAArray[I2C_DATA_ARRAY_SIZE];
+
+	I2C_TransferReturn_TypeDef m_Error;
 };
 
 void initI2C(int p_frequency);
+
+#endif /* INCLUDE_EFM32_EFM32_I2C_HPP_ */
 

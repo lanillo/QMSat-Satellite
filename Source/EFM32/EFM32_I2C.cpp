@@ -26,6 +26,8 @@ EFM32_I2C::EFM32_I2C()
 		m_DATAArray[i] = 0;
 	}
 
+	m_Error = i2cTransferDone;
+
 }
 
 /****************************************************/
@@ -60,7 +62,9 @@ bool EFM32_I2C::transfer(uint16_t p_deviceAddr, uint8_t p_cmdArray[], uint8_t p_
 	{
 		if (result != i2cTransferInProgress)
 		{
-			  return false;
+			m_Error = result;
+			DEBUG_BREAK;
+			return false;
 		}
 
 		result = I2C_Transfer(I2C0);
@@ -74,7 +78,7 @@ bool EFM32_I2C::sendI2CCommand(uint8_t p_address, uint8_t p_registerOffset, uint
 	m_CMDArray[0] = p_registerOffset;
 	return transfer(p_address, m_CMDArray, m_DATAArray, cmd_len, data_len, p_flag);
 
-	// exemple of use 	if(I2C.sendCommand(TEMP_SENSOR_ADDRESS, 0x05, 1, 2, I2C_FLAG_WRITE_READ));
+	// exemple of use 	if(I2C.sendCommand(TEMP_SENSOR_ADDRESS, 0x05, 1, 2, I2C_FLAG_WRITE_READ)) { /*do code*/ }
 }
 
 /****************************************************/
@@ -90,27 +94,9 @@ uint8_t EFM32_I2C::getDATA(int index)
 }
 
 /****************************************************/
-void EFM32_I2C::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
+I2C_TransferReturn_TypeDef EFM32_I2C::getError()
 {
-
-}
-
-/****************************************************/
-char EFM32_I2C::receiveSerial()
-{
-	return 0;
-}
-
-/****************************************************/
-bool EFM32_I2C::isSending()
-{
-	return 0;
-}
-
-/****************************************************/
-void EFM32_I2C::setSending(bool p_Sending)
-{
-
+	return m_Error;
 }
 
 /****************************************************/
