@@ -19,6 +19,7 @@
 #include "EFM32_SPI.hpp"
 #include "EFM32_I2C.hpp"
 #include "EFM32_PWM.hpp"
+#include "EFM32_ADC.hpp"
 #include "LED.hpp"
 #include "MCP9808TempSensor.hpp"
 

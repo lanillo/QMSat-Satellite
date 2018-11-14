@@ -173,8 +173,9 @@ void Factory::clockInit()
 	CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFXO); 	// Select HF XTAL osc as system clock source. 48MHz XTAL, but we divided the system clock by 2, therefore our HF clock will be 24MHz
 
     CMU_ClockEnable(cmuClock_GPIO, true);       // Enable GPIO peripheral clock
+    CMU_ClockEnable(cmuClock_ADC0, true);		// Enable ADC peripheral clock
     CMU_ClockEnable(cmuClock_USART1, true);		// Enable USART1 peripheral clock
     CMU_ClockEnable(cmuClock_TIMER0, true);		// Enable Timer_0 peripheral clock
-    CMU_ClockEnable(cmuClock_TIMER3, true);		// Enable Timer_3 peripheral clock
+    CMU_ClockEnable(cmuClock_TIMER3, true);		// Enable Timer_3 peripheral clock, PWM
     CMU_ClockEnable(cmuClock_I2C0, true);		// Enable I2C0 peripheral clock
 }
