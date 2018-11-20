@@ -25,6 +25,11 @@ public:
 	bool isSending();
 	void setSending(bool p_Sending);
 
+	void setSwitchForAlim(unsigned short p_SwitchState);
+	unsigned short getSwitchForAlim();
+	bool getSwitchState();
+	void setSwitchState(bool p_NewSwitchState);
+
 	static void callbackForSerialTransmit(void* p_USART1Instance);
 	static void callbackForSerialReceive(void* p_USART1Instance);
 
@@ -33,6 +38,11 @@ private:
 	bool m_StopBit;
 	bool m_Parity;
 	bool m_IsSending;
+	unsigned short m_RxBufferIndex;
+	bool m_IsReceiving;
+
+	unsigned short m_SwitchState;
+	bool m_NewSwitchState;
 
 	unsigned short m_TxBufferSize;
 	unsigned short m_TxBufferIndex;

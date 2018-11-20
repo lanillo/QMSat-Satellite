@@ -10,12 +10,14 @@
 
 #include "IState.hpp"
 #include "ISerialComm.hpp"
+#include "AlimManager.hpp"
+#include "EFM32_USART1.hpp"
 
 class RunState: public IState
 {
 public:
 	RunState();
-	RunState(ISerialComm* p_UartUI, ISerialComm* p_UartAlim);
+	RunState(EFM32_USART1* p_UartUI, ISerialComm* p_UartAlim, AlimManager* p_AlimManager);
 	~RunState() {};
 
 	short getStateId();
@@ -23,8 +25,12 @@ public:
 private:
 	short m_stateId;
 
-	ISerialComm* m_USART;
+	EFM32_USART1* m_UartUI;
 	ISerialComm* m_UartAlim;
+	AlimManager* m_AlimManager;
+
+	char m_ADCValue[3];
+	char m_SwitchStateValue[4];
 
 	void onEntry();
 	void onExit();
