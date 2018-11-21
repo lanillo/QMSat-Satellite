@@ -12,12 +12,14 @@
 #include "ISerialComm.hpp"
 #include "AlimManager.hpp"
 #include "EFM32_USART1.hpp"
+#include "ITempSensor.hpp"
+#include <stdio.h>
 
 class RunState: public IState
 {
 public:
 	RunState();
-	RunState(EFM32_USART1* p_UartUI, ISerialComm* p_UartAlim, AlimManager* p_AlimManager);
+	RunState(EFM32_USART1* p_UartUI, ISerialComm* p_UartAlim, AlimManager* p_AlimManager, ITempSensor* p_I2C_MCP);
 	~RunState() {};
 
 	short getStateId();
@@ -28,7 +30,8 @@ private:
 	EFM32_USART1* m_UartUI;
 	ISerialComm* m_UartAlim;
 	AlimManager* m_AlimManager;
-
+  ITempSensor* m_I2C_MCP;
+  
 	char m_ADCValue[3];
 	char m_SwitchStateValue[4];
 

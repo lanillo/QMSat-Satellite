@@ -37,7 +37,6 @@ short InitState::execute()
 	m_SwitchValue[1] = m_AlimManager->getSwitchState();
 	m_UartUI->sendSerial(m_SwitchValue,3);
 
-
 	return Run;
 }
 

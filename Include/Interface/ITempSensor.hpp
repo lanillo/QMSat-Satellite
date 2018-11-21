@@ -11,10 +11,11 @@
 class ITempSensor
 {
 public:
-	ITempSensor();
-	virtual ~ITempSensor();
+	ITempSensor() {};
+	virtual ~ITempSensor() {};
 
-	virtual int getTemp() = 0;
+	virtual float getTemp() = 0;
+	virtual char* tempToString() = 0;
 };
 
 

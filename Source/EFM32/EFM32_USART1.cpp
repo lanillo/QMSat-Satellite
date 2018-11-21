@@ -139,7 +139,7 @@ void EFM32_USART1::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
 	{
 		USART1->TXDATA = m_TxBuffer[0];
 	}
-	while(isSending());
+	//while(isSending());
 }
 
 /****************************************************/

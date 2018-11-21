@@ -2,10 +2,11 @@
  * RunState.cpp
  *
  *  Created on: 2018-01-25
- *      Author: Guillaume Beaupré
+ *      Author: Guillaume BeauprÃ©
  */
 
 #include "RunState.hpp"
+#include "Constants.hpp"
 
 /****************************************************/
 RunState::RunState()
@@ -14,11 +15,12 @@ RunState::RunState()
 }
 
 /****************************************************/
-RunState::RunState(EFM32_USART1* p_UartUI, ISerialComm* p_UartAlim, AlimManager* p_AlimManager)
+RunState::RunState(EFM32_USART1* p_UartUI, ISerialComm* p_UartAlim, AlimManager* p_AlimManager, ITempSensor* p_I2C_MCP)
 {
 	m_UartUI = p_UartUI;
 	m_UartAlim = p_UartAlim;
 	m_AlimManager = p_AlimManager;
+  m_I2C_MCP = p_I2C_MCP;
 
 	m_ADCValue[0] = 'B';
 	m_ADCValue[2] = '\n';
@@ -40,6 +42,13 @@ short RunState::getStateId()
 void RunState::onEntry()
 {
 	m_UartUI->sendSerial("Running State\n",14);
+
+	// Start I2C and get ambient temperature (Ta)
+	m_I2C_MCP->getTemp();
+
+	// Create char* for UI with Ta
+	char* temperatureString = m_I2C_MCP->tempToString();
+	m_UartUI->sendSerial(temperatureString,6);
 }
 
 /****************************************************/

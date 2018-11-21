@@ -2,7 +2,7 @@
  * Factory.cpp
  *
  *  Created on: 2018-01-24
- *      Author: Guillaume Beaupré
+ *      Author: Guillaume Beauprï¿½
  */
 
 #include "Factory.hpp"
@@ -49,10 +49,11 @@ void Factory::createStates()
 	createUSART1();
 	createUART0();
 	createLED();
+	createMCPTempSense();
 	if(m_StatesCreated == false)
 	{
 		m_InitState = InitState(&m_LED0, &m_UartUI,&m_AlimManager);
-		m_RunState = RunState(&m_UartUI, &m_UartAlim, &m_AlimManager);
+		m_RunState = RunState(&m_UartUI, &m_UartAlim, &m_AlimManager, &m_I2C);
 		m_EconoState = EconoState(&m_UartUI, &m_AlimManager);
 
 		m_StatesCreated = true;
@@ -86,12 +87,6 @@ void Factory::createGPIO()
 	{
 		/***** PWM *****/
 		EFM32_GPIO LED0(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPull, 0); // set LED0 (PE2) pin as push-pull output
-
-		/***** I2C *****/
-		/* MUST BE initialized after ROUTE of I2C to avoid glitches */
-	    /* Output value must be set to 1 to not drive lines low. Set SCL first, to ensure it is high before changing SDA. */
-	    EFM32_GPIO SCL(gpioPortC, 7, gpioModeWiredAndPullUpFilter, 1);	// PD7(I2C0) #1 - PC5(I2C1) #0 - PC7(I2C0) #1 - SCL
-	    EFM32_GPIO SDA(gpioPortC, 6, gpioModeWiredAndPullUpFilter, 1);	// PD6(I2C0) #1 - PC4(I2C1) #0 - PC6(I2C0) #1 - SDA
 
 	    /***** GPIO *****/
 		m_PB0 = EFM32_GPIO(BSP_GPIO_PB0_PORT, BSP_GPIO_PB0_PIN, gpioModeInput, 1); // set PBO button (B9) as input
@@ -145,13 +140,23 @@ EFM32_Timer0* Factory::createTimer0()
 }
 
 /****************************************************/
-void Factory::createI2C()
+EFM32_I2C* Factory::createI2C()
 {
 	if(m_I2CCreated == false)
 	{
+		//Route PC6 abd PC7 to I2C0
 		m_I2C = EFM32_I2C();
+
+		/***** I2C *****/
+		/* MUST BE initialized after ROUTE of I2C to avoid glitches */
+	    /* Output value must be set to 1 to not drive lines low. Set SCL first, to ensure it is high before changing SDA. */
+	    EFM32_GPIO SCL(gpioPortC, 7, gpioModeWiredAndPullUpFilter, 1);	// PD7(I2C0) #1 - PC5(I2C1) #0 - PC7(I2C0) #1 - SCL
+	    EFM32_GPIO SDA(gpioPortC, 6, gpioModeWiredAndPullUpFilter, 1);	// PD6(I2C0) #1 - PC4(I2C1) #0 - PC6(I2C0) #1 - SDA
+
 		m_I2CCreated = true;
 	}
+
+	return &m_I2C;
 }
 
 /****************************************************/
@@ -165,13 +170,27 @@ void Factory::createPWM()
 }
 
 /****************************************************/
+MCP9808TempSensor* Factory::createMCPTempSense()
+{
+	createI2C();
+
+	if(m_MCPTempSenseCreated == false)
+	{
+		m_MCPTempSense = MCP9808TempSensor(&m_I2C ,TEMP_SENSOR_ADDRESS);
+		m_MCPTempSenseCreated = true;
+	}
+
+	return &m_MCPTempSense;
+}
+
+/****************************************************/
 void Factory::initEFM32Functionnality()
 {
 	initTimer0();
 	initSPI();
 	initUSART1();
 	initUART0();
-	initI2C();
+	initI2C(I2C_BUS_FREQUENCY);
 }
 
 /****************************************************/
@@ -183,9 +202,10 @@ void Factory::clockInit()
 	CMU_ClockSelectSet(cmuClock_HF, cmuSelect_HFXO); 	// Select HF XTAL osc as system clock source. 48MHz XTAL, but we divided the system clock by 2, therefore our HF clock will be 24MHz
 
     CMU_ClockEnable(cmuClock_GPIO, true);       // Enable GPIO peripheral clock
+    CMU_ClockEnable(cmuClock_ADC0, true);		// Enable ADC peripheral clock
     CMU_ClockEnable(cmuClock_USART1, true);		// Enable USART1 peripheral clock
     CMU_ClockEnable(cmuClock_UART0, true);		// Enable UART0 peripheral clock
     CMU_ClockEnable(cmuClock_TIMER0, true);		// Enable Timer_0 peripheral clock
-    CMU_ClockEnable(cmuClock_TIMER3, true);		// Enable Timer_3 peripheral clock
+    CMU_ClockEnable(cmuClock_TIMER3, true);		// Enable Timer_3 peripheral clock, PWM
     CMU_ClockEnable(cmuClock_I2C0, true);		// Enable I2C0 peripheral clock
 }

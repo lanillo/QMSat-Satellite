@@ -63,8 +63,7 @@ Source/Application/main.o: ../Source/Application/main.cpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/ILED.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/ISerialComm.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Application/RunState.hpp \
- C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Peripherals/LED.hpp \
- C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/IGPIO.hpp \
+ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Application/EconoState.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_Timer0.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/ITimer.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp \
@@ -72,6 +71,7 @@ Source/Application/main.o: ../Source/Application/main.cpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\hardware\kit\common\bsp\bsp_bcp.h \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg990f1024.h \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp \
+ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/IGPIO.hpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_gpio.h \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_USART1.hpp \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Callback.hpp \
@@ -80,6 +80,7 @@ Source/Application/main.o: ../Source/Application/main.cpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_i2c.h \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_PWM.hpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_timer.h \
+ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Peripherals/LED.hpp \
  c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_cmu.h \
  C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Factory/Constants.hpp
 
@@ -211,9 +212,7 @@ C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/ISerialComm.hpp
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Application/RunState.hpp:
 
-C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Peripherals/LED.hpp:
-
-C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/IGPIO.hpp:
+C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Application/EconoState.hpp:
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_Timer0.hpp:
 
@@ -228,6 +227,8 @@ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\hardware\
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\device\siliconlabs\efm32gg\include\efm32gg990f1024.h:
 
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_GPIO.hpp:
+
+C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Interface/IGPIO.hpp:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_gpio.h:
 
@@ -244,6 +245,8 @@ c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\
 C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\EFM32/EFM32_PWM.hpp:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_timer.h:
+
+C:\Universite\ProjetFinBac\Git\QMSat-Satellite\Include\Peripherals/LED.hpp:
 
 c:\siliconlabs\simplicitystudio\v4\developer\sdks\gecko_sdk_suite\v2.1\platform\emlib\inc\em_cmu.h:
 
