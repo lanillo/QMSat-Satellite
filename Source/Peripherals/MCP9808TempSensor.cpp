@@ -36,10 +36,11 @@ float MCP9808TempSensor::getTemp()
 char* MCP9808TempSensor::tempToString()
 {
 
-	char fstr[6];
+	char fstr[7];
+	fstr[0] = 'T';
 	float num = m_Temp;
 	int digit;
-	int ind = 0;
+	int ind = 1;
 	if (num < 0)
 	{
 		fstr[ind] = '-';
@@ -49,7 +50,7 @@ char* MCP9808TempSensor::tempToString()
 	int m = log10(num);
 
 	// Change temp
-	for(int i = 0 + ind; i < 5; i++)
+	for(int i = 0 + ind; i < 6; i++)
 	{
 	    float weight = pow(10.0f, m);
 	    digit = floor(num / weight);
@@ -64,7 +65,8 @@ char* MCP9808TempSensor::tempToString()
 
 	    m--;
 	}
-	fstr[ind] = '\0';
+	//fstr[ind] = '\0';
+	fstr[6] = '\n';
 
 	return fstr;
 }

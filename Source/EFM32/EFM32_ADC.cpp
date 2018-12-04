@@ -16,7 +16,7 @@ EFM32_ADC::EFM32_ADC()
 /****************************************************/
 void initADC()
 {
-	ADC_Reset(ADC0);
+	/*ADC_Reset(ADC0);
 	ADC_Init_TypeDef ADCInit = ADC_INITSINGLE_DEFAULT;
-	ADC_Init(ADC0, &ADCInit);
+	ADC_Init(ADC0, &ADCInit);*/
 }

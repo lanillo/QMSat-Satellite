@@ -13,9 +13,12 @@
 #include "RunState.hpp"
 #include "EconoState.hpp"
 
+#include "AlimManager.hpp"
+
 #include "EFM32_Timer0.hpp"
 #include "EFM32_GPIO.hpp"
 #include "EFM32_USART1.hpp"
+#include "EFM32_UART0.hpp"
 #include "EFM32_SPI.hpp"
 #include "EFM32_I2C.hpp"
 #include "EFM32_PWM.hpp"
@@ -41,6 +44,11 @@ private:
 	EconoState m_EconoState;
 	void createStates();
 
+	/**** Managers ****/
+	AlimManager m_AlimManager;
+	bool m_AlimManagerCreated;
+	void createAlimManager();
+
 	/**** Timer0 ****/
 	EFM32_Timer0 m_Timer0;
 	bool m_Timer0Created;
@@ -50,10 +58,15 @@ private:
 	bool m_LED0Created;
 	void createLED();
 
-	/**** USART0 ****/
-	EFM32_USART1 m_EFM32_USART1;
+	/**** USART1 ****/
+	EFM32_USART1 m_UartUI;
 	bool m_USART1Created;
 	void createUSART1();
+
+	/**** UART ALIM ****/
+	EFM32_UART0 m_UartAlim;
+	bool m_UART0Created;
+	void createUART0();
 
 	/**** SPI ****/
 	EFM32_SPI m_EFM32_SPI;

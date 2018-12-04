@@ -8,11 +8,15 @@ InitState::InitState()
 }
 
 /****************************************************/
-InitState::InitState(ILED* p_LED, ISerialComm* p_USART)
+InitState::InitState(ILED* p_LED, ISerialComm* p_UartUI, AlimManager* p_AlimManager)
 {
 	m_LED = p_LED;
-	m_USART = p_USART;
+	m_UartUI = p_UartUI;
 	m_stateId = Init;
+	m_AlimManager = p_AlimManager;
+
+	m_SwitchValue[0] = 'S';
+	m_SwitchValue[2] = '\n';
 }
 
 /****************************************************/
@@ -24,14 +28,14 @@ short InitState::getStateId()
 /****************************************************/
 void InitState::onEntry()
 {
-	//m_USART->sendSerial("Entering Init State\n",20);
-
+	m_UartUI->sendSerial("Initiation of QMSat Sattelite\n",30);
 }
 
 /****************************************************/
 short InitState::execute()
 {
-	//m_USART->sendSerial("Executing Init State\n",21);
+	m_SwitchValue[1] = m_AlimManager->getSwitchState();
+	m_UartUI->sendSerial(m_SwitchValue,3);
 
 	return Run;
 }

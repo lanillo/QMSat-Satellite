@@ -8,6 +8,7 @@
 #include "IState.hpp"
 #include "ILED.hpp"
 #include "ISerialComm.hpp"
+#include "AlimManager.hpp"
 
 #ifndef INCLUDE_APPLICATION_INITSTATE_HPP_
 #define INCLUDE_APPLICATION_INITSTATE_HPP_
@@ -16,7 +17,7 @@ class InitState: public IState
 {
 public:
 	InitState();
-	InitState(ILED* p_LED0,ISerialComm* p_USART);
+	InitState(ILED* p_LED0, ISerialComm* p_UartUI, AlimManager* p_AlimManager);
 	~InitState() {};
 
 	short getStateId();
@@ -24,7 +25,10 @@ public:
 private:
 	short m_stateId;
 	ILED* m_LED;
-	ISerialComm* m_USART;
+	ISerialComm* m_UartUI;
+	AlimManager* m_AlimManager;
+
+	char m_SwitchValue[3];
 
 	void onEntry();
 	void onExit();

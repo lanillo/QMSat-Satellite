@@ -31,6 +31,8 @@
 //Buffers
 #define TX_BUFFER_SIZE_USART1 	(50U)
 #define RX_BUFFER_SIZE_USART1 	(50U)
+#define TX_BUFFER_SIZE_UART0 	(50U)
+#define RX_BUFFER_SIZE_UART0 	(50U)
 
 //I2C
 #define TEMP_SENSOR_ADDRESS		0x18 << 1

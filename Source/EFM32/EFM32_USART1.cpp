@@ -24,6 +24,7 @@ EFM32_USART1::EFM32_USART1(int p_Baudrate, bool p_StopBit, bool p_Parity)
 	m_TxBufferSize = 0;
 	m_TxBufferIndex = 0;
 	m_IsSending = false;
+	m_NewSwitchState = false;
 
 	for(unsigned short index = 0; index < TX_BUFFER_SIZE_USART1; index++)
 	{
@@ -66,16 +67,61 @@ void EFM32_USART1::callbackForSerialReceive(void* p_USART1Instance)
 	if (p_USART1Instance != null)
 	{
 		EFM32_USART1* usart = reinterpret_cast<EFM32_USART1*>(p_USART1Instance);
-		//usart->m_RxBuffer[0] = usart->receiveSerial();
-		char a = (char)USART1->RXDATA;
-		usart->sendSerial(&a, 1);
+		char RxData = usart->receiveSerial();
+		if(RxData == '%')
+		{
+			usart->m_IsReceiving = true;
+			usart->m_RxBufferIndex = 0;
+		}
+		else if(usart->m_IsReceiving)
+		{
+			if(RxData != '&')
+			{
+				usart->m_RxBuffer[usart->m_RxBufferIndex] = RxData;
+				usart->m_RxBufferIndex++;
+			}
+			else
+			{
+				usart->m_IsReceiving = false;
+				if(usart->m_RxBuffer[0] == 'O')
+				{
+					usart->setSwitchForAlim(usart->m_RxBuffer[1]);
+					usart->setSwitchState(true);
+				}
+			}
+		}
 	}
+}
+
+/****************************************************/
+void EFM32_USART1::setSwitchForAlim(unsigned short p_SwitchState)
+{
+	m_SwitchState = p_SwitchState;
+}
+
+/****************************************************/
+unsigned short EFM32_USART1::getSwitchForAlim()
+{
+	return m_SwitchState;
+}
+
+/****************************************************/
+bool EFM32_USART1::getSwitchState()
+{
+	return m_NewSwitchState;
+}
+
+/****************************************************/
+void EFM32_USART1::setSwitchState(bool p_NewSwitchState)
+{
+	m_NewSwitchState = p_NewSwitchState;
 }
 
 /****************************************************/
 void USART1_RX_IRQHandler(void)
 {
 	callbackUSART1Rx(USART1Instance);
+	USART1->IFC |= USART_IFC_RXFULL;
 }
 
 /****************************************************/

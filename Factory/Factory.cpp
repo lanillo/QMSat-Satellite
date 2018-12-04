@@ -2,7 +2,7 @@
  * Factory.cpp
  *
  *  Created on: 2018-01-24
- *      Author: Guillaume
+ *      Author: Guillaume Beaupr�
  */
 
 #include "Factory.hpp"
@@ -12,9 +12,13 @@ Factory::Factory()
 {
 	m_StateManagerCreated = false;
 	m_StatesCreated = false;
+
+	m_AlimManagerCreated = false;
+
 	m_Timer0Created = false;
 	m_LED0Created = false;
 	m_USART1Created = false;
+	m_UART0Created = false;
 	m_SPICreated = false;
 	m_GPIOCreated = false;
 	m_I2CCreated = false;
@@ -43,15 +47,28 @@ StateManager* Factory::createStateManager()
 void Factory::createStates()
 {
 	createUSART1();
+	createUART0();
 	createLED();
+	createAlimManager();
 	createMCPTempSense();
 	if(m_StatesCreated == false)
 	{
-		m_InitState = InitState(&m_LED0, &m_EFM32_USART1);
-		m_RunState = RunState(&m_EFM32_USART1, &m_MCPTempSense);
-		m_EconoState = EconoState(&m_EFM32_USART1);
+		m_InitState = InitState(&m_LED0, &m_UartUI,&m_AlimManager);
+		m_RunState = RunState(&m_UartUI, &m_UartAlim, &m_AlimManager, &m_MCPTempSense);
+		m_EconoState = EconoState(&m_UartUI, &m_AlimManager);
 
 		m_StatesCreated = true;
+	}
+}
+
+/****************************************************/
+void Factory::createAlimManager()
+{
+	if(m_AlimManagerCreated == false)
+	{
+		m_AlimManager = AlimManager();
+
+		m_AlimManagerCreated = true;
 	}
 }
 
@@ -85,9 +102,21 @@ void Factory::createUSART1()
 {
 	if(m_USART1Created == false)
 	{
-		m_EFM32_USART1 = EFM32_USART1(9600, _USART_FRAME_STOPBITS_ONE, _USART_FRAME_PARITY_NONE);
-		callbackUSART1Init(&EFM32_USART1::callbackForSerialTransmit, &EFM32_USART1::callbackForSerialReceive, (void*)&m_EFM32_USART1);
+		m_UartUI = EFM32_USART1(9600, _USART_FRAME_STOPBITS_ONE, _USART_FRAME_PARITY_NONE);
+		callbackUSART1Init(&EFM32_USART1::callbackForSerialTransmit, &EFM32_USART1::callbackForSerialReceive, (void*)&m_UartUI);
 		m_USART1Created = true;
+	}
+}
+
+/****************************************************/
+void Factory::createUART0()
+{
+	createAlimManager();
+	if(m_UART0Created == false)
+	{
+		m_UartAlim = EFM32_UART0(9600, _USART_FRAME_STOPBITS_ONE, _USART_FRAME_PARITY_NONE);
+		callbackUART0Init(&EFM32_UART0::callbackForSerialTransmit, &AlimManager::callbackForSerialReceive, (void*)&m_UartAlim, (void*)&m_AlimManager);
+		m_UART0Created = true;
 	}
 }
 
@@ -161,6 +190,7 @@ void Factory::initEFM32Functionnality()
 	initTimer0();
 	initSPI();
 	initUSART1();
+	initUART0();
 	initI2C(I2C_BUS_FREQUENCY);
 }
 
@@ -175,6 +205,7 @@ void Factory::clockInit()
     CMU_ClockEnable(cmuClock_GPIO, true);       // Enable GPIO peripheral clock
     CMU_ClockEnable(cmuClock_ADC0, true);		// Enable ADC peripheral clock
     CMU_ClockEnable(cmuClock_USART1, true);		// Enable USART1 peripheral clock
+    CMU_ClockEnable(cmuClock_UART0, true);		// Enable UART0 peripheral clock
     CMU_ClockEnable(cmuClock_TIMER0, true);		// Enable Timer_0 peripheral clock
     CMU_ClockEnable(cmuClock_TIMER3, true);		// Enable Timer_3 peripheral clock, PWM
     CMU_ClockEnable(cmuClock_I2C0, true);		// Enable I2C0 peripheral clock
