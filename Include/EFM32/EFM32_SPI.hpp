@@ -1,8 +1,11 @@
 /*
  * EFM32_SPI.hpp
  *
- *  Created on: 2018-09-10
- *      Author: Guillaume
+ *  Created on: September 10, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief SPI Class Prototype
  */
 
 #ifndef INCLUDE_EFM32_EFM32_SPI_HPP_

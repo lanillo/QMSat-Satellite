@@ -1,8 +1,11 @@
 /*
  * EconoState.cpp
  *
- *  Created on: 2018-10-22
- *      Author: Guillaume Beaupré
+ *  Created on: October 22, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief EconoState Class Definition
  */
 
 #include "EconoState.hpp"

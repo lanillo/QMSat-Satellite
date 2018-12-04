@@ -1,8 +1,11 @@
 /*
  * Factory.hpp
  *
- *  Created on: 2018-01-24
- *      Author: Guillaume Beaupré
+ *  Created on: January 24, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief Creates all objects necessary for the execution of the code
  */
 
 #ifndef FACTORY_FACTORY_HPP_

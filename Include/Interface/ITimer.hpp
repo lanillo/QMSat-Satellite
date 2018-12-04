@@ -1,8 +1,11 @@
 /*
  * ITimer.hpp
  *
- *  Created on: 2018-01-25
- *      Author: guillaume
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief ITimer Abstract Class Prototype
  */
 
 #ifndef INCLUDE_INTERFACE_ITIMER_HPP_

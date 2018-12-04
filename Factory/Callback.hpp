@@ -1,8 +1,11 @@
 /*
  * Callback.hpp
  *
- *  Created on: 2018-02-14
- *      Author: Guillaume
+ *  Created on: February 14, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief	????????????????????
  */
 
 #ifndef FACTORY_CALLBACK_HPP_

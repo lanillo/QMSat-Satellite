@@ -36,3 +36,38 @@ GNU ARM v4.9.3 - Debug/makefile
 *.s37
 *.d
 *.o
+GNU ARM v4.9.3 - Debug/emlib/subdir.mk
+GNU ARM v4.9.3 - Debug/Factory/Factory.d
+GNU ARM v4.9.3 - Debug/makefile
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.bin
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.hex
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.map
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.s37
+GNU ARM v4.9.3 - Debug/Source/Application/InitState.d
+GNU ARM v4.9.3 - Debug/Source/Application/main.d
+GNU ARM v4.9.3 - Debug/Source/Application/RunState.d
+GNU ARM v4.9.3 - Debug/Source/Application/StateManager.o
+GNU ARM v4.9.3 - Debug/Source/Application/subdir.mk
+GNU ARM v4.9.3 - Debug/Source/EFM32/EFM32_GPIO.o
+GNU ARM v4.9.3 - Debug/Source/EFM32/EFM32_Timer0.o
+GNU ARM v4.9.3 - Debug/Source/EFM32/subdir.mk
+GNU ARM v4.9.3 - Debug/Source/Peripherals/LED.o
+GNU ARM v4.9.3 - Debug/Source/Peripherals/subdir.mk
+GNU ARM v4.9.3 - Debug/emlib/subdir.mk
+GNU ARM v4.9.3 - Debug/Factory/Factory.d
+GNU ARM v4.9.3 - Debug/makefile
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.bin
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.hex
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.map
+GNU ARM v4.9.3 - Debug/QMSat_Embeded.s37
+GNU ARM v4.9.3 - Debug/Source/Application/InitState.d
+GNU ARM v4.9.3 - Debug/Source/Application/main.d
+GNU ARM v4.9.3 - Debug/Source/Application/RunState.d
+GNU ARM v4.9.3 - Debug/Source/Application/StateManager.o
+GNU ARM v4.9.3 - Debug/Source/Application/subdir.mk
+GNU ARM v4.9.3 - Debug/Source/EFM32/EFM32_GPIO.o
+GNU ARM v4.9.3 - Debug/Source/EFM32/EFM32_Timer0.o
+GNU ARM v4.9.3 - Debug/Source/EFM32/subdir.mk
+GNU ARM v4.9.3 - Debug/Source/Peripherals/LED.o
+GNU ARM v4.9.3 - Debug/Source/Peripherals/subdir.mk
+*.mk

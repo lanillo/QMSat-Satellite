@@ -1,8 +1,11 @@
 /*
  * MCP9808TempSensor.hpp
  *
- *  Created on: 2018-10-31
- *      Author: Luis Anillo
+ *  Created on: October 31, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief MCP9808TempSensor Class Prototype
  */
 
 #ifndef INCLUDE_PERIPHERALS_MCP9808TEMPSENSOR_HPP_

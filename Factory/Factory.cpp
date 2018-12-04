@@ -1,8 +1,11 @@
 /*
  * Factory.cpp
  *
- *  Created on: 2018-01-24
- *      Author: Guillaume Beauprï¿½
+ *  Created on: January 24, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief Creates all objects necessary for the execution of the code
  */
 
 #include "Factory.hpp"

@@ -1,8 +1,11 @@
 /*
  * AlimManager.hpp
  *
- *  Created on: 2018-11-19
- *      Author: Guillaume Beaupré
+ *  Created on: November 19, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief AlimManager Class Prototype
  */
 
 #ifndef INCLUDE_PERIPHERALS_ALIMMANAGER_HPP_

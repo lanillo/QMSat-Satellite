@@ -1,10 +1,11 @@
 /*
  * IGPIO.hpp
  *
- *  Created on: 2018-02-14
- *      Author: Guillaume
- *  Created on: Feb 13, 2018
- *      Author: lfani
+ *  Created on: February 13, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief IGIO Abstract Class Prototype
  */
 
 #ifndef INCLUDE_INTERFACE_IGPIO_HPP_

@@ -1,8 +1,11 @@
 /*
  * SerialCom.hpp
  *
- *  Created on: 2018-02-18
- *      Author: Guillaume Beaupré
+ *  Created on: February 18, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief ISerialComm Abstract Class Prototype
  */
 
 #ifndef INCLUDE_INTERFACE_ISERIALCOMM_HPP_

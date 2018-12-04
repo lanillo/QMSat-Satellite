@@ -1,8 +1,11 @@
 /*
  * EFM32_Timer0.cpp
  *
- *  Created on: 2018-01-25
- *      Author: Guillaume
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief Timer0 Class Definition
  */
 
 #include "EFM32_Timer0.hpp"
