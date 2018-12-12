@@ -47,7 +47,7 @@ void RunState::onEntry()
 /****************************************************/
 short RunState::execute()
 {
-	m_ADCValue[1] = m_AlimManager->getBatterieVoltage();
+	m_ADCValue[1] = m_AlimManager->getBatteryVoltage();
 	m_UartUI->sendSerial(m_ADCValue,3);
 
 	if(m_UartUI->getSwitchState() == true)
@@ -66,7 +66,7 @@ short RunState::execute()
 		tempValue[i] = *temperatureString++;
 	}
 	tempValue[6] = '\n';
-	if(m_AlimManager->getBatterieVoltage() < 5)
+	if(m_AlimManager->getBatteryVoltage() < 5)
 	{
 		return Econo;
 	}

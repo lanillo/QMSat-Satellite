@@ -83,10 +83,12 @@ private:
 	/**** I2C ****/
 	EFM32_I2C m_I2C;
 	bool m_I2CCreated;
+	void createI2C();
 
 	/**** TempSense ****/
 	MCP9808TempSensor m_MCPTempSense;
 	bool m_MCPTempSenseCreated;
+	void createMCPTempSense();
 
 	/**** PWM ****/
 	EFM32_PWM m_PWM;
@@ -95,10 +97,11 @@ private:
 
 public:
 	Factory();
+
+	//These 2 objects are the only public one as they are use in the main()
 	StateManager* createStateManager();
 	EFM32_Timer0* createTimer0();
-	EFM32_I2C* createI2C();
-	MCP9808TempSensor* createMCPTempSense();
+
 
 	void initEFM32Functionnality();
 	void clockInit();

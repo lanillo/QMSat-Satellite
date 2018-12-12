@@ -44,6 +44,4 @@
 //PWM
 #define PWM_DUTY_CYCLE			5
 
-//LED Array
-
 #endif /* FACTORY_CONSTANTS_HPP_ */

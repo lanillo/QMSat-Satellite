@@ -28,16 +28,16 @@ public:
 
 	static void callbackForSerialTransmit(void* p_UART0Instance);
 
-	unsigned short m_RxBufferIndex;
-	char m_RxBuffer[RX_BUFFER_SIZE_UART0];
-	bool m_IsReceiving;
+	unsigned short m_RxBufferIndex;			//Index of received characters
+	char m_RxBuffer[RX_BUFFER_SIZE_UART0];	//Buffer of the received character
+	bool m_IsReceiving;						//State of sending communication
 
 private:
-	int m_Baudrate;
-	bool m_StopBit;
-	bool m_Parity;
+	int m_Baudrate;							//Baud Rate
+	bool m_StopBit;							//number of stop bit (0-2)
+	bool m_Parity;							//As parity bit or not
 
-	unsigned short m_TxBufferSize;
+	unsigned short m_TxBufferSize;			//Index
 	unsigned short m_TxBufferIndex;
 	char m_TxBuffer[TX_BUFFER_SIZE_UART0];
 	bool m_IsSending;

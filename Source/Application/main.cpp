@@ -1,3 +1,9 @@
+/**
+* \ file	main.cpp
+* \ author	Guillaume Beaupré - 14 061 463
+* \ author	Luis Anillo - 14 086 865
+* \brief Ce fichier contient un jeu de BattleShip simple
+*/
 
 //For CHIP_Init which must be called in main
 #include "em_chip.h"
@@ -21,11 +27,9 @@ int main(void)
 	/* Initializations */
 	factory.initEFM32Functionnality();
 
-	stateManager->execute();
-
 	/* Start the timer and take the first reference time */
-	timer0->start();
 	static unsigned int referenceTime_microsecond;
+	timer0->start();
 	referenceTime_microsecond = timer0->getReferenceTime_microsecond();
 
 	/* Main program loop */
@@ -33,8 +37,8 @@ int main(void)
 	{
 		if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_1_SECOND)
 		{
-			stateManager->execute();
-			referenceTime_microsecond = timer0->getReferenceTime_microsecond();
+			stateManager->execute(); //Principal execution of the code
+			referenceTime_microsecond = timer0->getReferenceTime_microsecond(); // restart the time counter for the execution loop
 		}
 	}
 

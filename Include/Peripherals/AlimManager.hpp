@@ -13,7 +13,7 @@
 class AlimManager
 {
 private:
-	unsigned short m_BatterieVoltage;
+	unsigned short m_BatteryVoltage;
 	unsigned short m_SwitchState;
 	bool m_TelecommunicationSubsystemEnable;
 	bool m_QuantumMagnetometerSubsystemEnable;
@@ -24,10 +24,10 @@ public:
 	AlimManager();
 	~AlimManager() {};
 
-	unsigned short getBatterieVoltage();
+	unsigned short getBatteryVoltage();
 	unsigned short getSwitchState();
 	void setSwitchState(unsigned short p_SwitchState);
-	void setBatterieVoltage(unsigned short p_BatterieVoltage);
+	void setBatteryVoltage(unsigned short p_BatteryVoltage);
 
 	bool isTelecommunicationSubsystemEnable();
 	bool isQuantumMagnetometerSubsystemEnable();
