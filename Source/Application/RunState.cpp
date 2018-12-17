@@ -1,8 +1,11 @@
 /*
  * RunState.cpp
  *
- *  Created on: 2018-01-25
- *      Author: Guillaume BeauprÃ©
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief RunState Class Definition
  */
 
 #include "RunState.hpp"

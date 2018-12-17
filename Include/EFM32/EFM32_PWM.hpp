@@ -1,8 +1,11 @@
 /*
  * EFM32_PWM.hpp
  *
- *  Created on: Oct 7, 2018
- *      Author: lfani
+ *  Created on: October 7, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief PWM Class Prototype
  */
 
 #ifndef INCLUDE_EFM32_EFM32_PWM_HPP_

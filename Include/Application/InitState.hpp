@@ -1,8 +1,11 @@
 /*
  * InitState.hpp
  *
- *  Created on: 2018-01-23
- *      Author: Guillaume
+ *  Created on: January 23, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief Initialization State Prototype
  */
 
 #include "IState.hpp"

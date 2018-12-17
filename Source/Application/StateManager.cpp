@@ -1,14 +1,17 @@
 /*
  * StateManager.cpp
  *
- *  Created on: 2018-01-24
- *      Author: Guillaume Beaupré
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief StateManager Class Definition
  */
 
 
 #include "StateManager.hpp"
 
-
+/****************************************************/
 StateManager::StateManager()
 {
 	m_StatesIndex = 0;

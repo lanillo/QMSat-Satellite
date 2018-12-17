@@ -1,8 +1,11 @@
 /*
  * StateManager.hpp
  *
- *  Created on: 2018-01-24
- *      Author: Guillaume
+ *  Created on: January 24, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief State Manager Prototype
  */
 
 #include "IState.hpp"

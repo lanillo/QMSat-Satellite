@@ -1,3 +1,12 @@
+/*
+ * main.cpp
+ *
+ *  Created on: January 24, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief main function
+ */
 
 //For CHIP_Init which must be called in main
 #include "em_chip.h"

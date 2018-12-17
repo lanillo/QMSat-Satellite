@@ -1,8 +1,11 @@
 /*
  * ITempSensor.hpp
  *
- *  Created on: 2018-10-31
- *      Author: guill
+ *  Created on: October 31, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief ITempSensor Abstract Class Prototype
  */
 
 #ifndef INCLUDE_INTERFACE_ITEMPSENSOR_HPP_

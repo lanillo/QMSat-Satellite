@@ -1,8 +1,11 @@
 /*
  * EFM32_Timer0.hpp
  *
- *  Created on: 2018-01-25
- *      Author: Guillaume
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief Timer0 Class Prototype
  */
 
 #ifndef INCLUDE_EFM32_EFM32_TIMER0_HPP_

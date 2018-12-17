@@ -1,8 +1,11 @@
 /*
  * IState.hpp
  *
- *  Created on: 2018-01-23
- *      Author: Guillaume
+ *  Created on: January 23, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief IState Abstract Class Prototype
  */
 
 #ifndef INCLUDE_INTERFACE_ISTATE_HPP_

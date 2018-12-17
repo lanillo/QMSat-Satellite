@@ -1,8 +1,11 @@
 /*
- * GPIO.hpp
+ * EFM32_GPIO.hpp
  *
- *  Created on: Feb 13, 2018
- *      Author: Luis Anillo
+ *  Created on: February 13, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief GPIO Class Prototype
  */
 
 #ifndef INCLUDE_EFM32_EFM32_GPIO_HPP_
@@ -46,16 +49,17 @@ public:
 	bool toggleOutput();
 
 	// For interrupts
-	void clearInterruptsToTest(uint32_t flags);
+	/* Not tested yet, to do */
+	/*void clearInterruptsToTest(uint32_t flags);
 	void disableInterruptsToTest(uint32_t flags);
 	void enableInterruptsToTest(uint32_t flags);
 	uint32_t getInterruptsToTest();
 	uint32_t getEnabledInterruptsToTest();
+	void setInterruptToTest(bool risingEdge, bool fallingEdge, bool enable);*/
 
 	// Set attributes
 	void setGPIOMode(GPIO_Mode_TypeDef mode, unsigned int dout);
 	void setGPIOPortDriveMode(GPIO_DriveMode_TypeDef driveMode);
-	void setInterruptToTest(bool risingEdge, bool fallingEdge, bool enable);
 
 	// Get attributes
 	bool getError();
@@ -71,7 +75,6 @@ public:
 	//GPIO_DriveMode_TypeDef getGPIODriveMode(); 	// Commented because DriveMode is for the whole port, not the pin.
 
 private:
-
 	bool m_error;
 	bool m_GPIOCreated;
 	bool m_isInterrupt;

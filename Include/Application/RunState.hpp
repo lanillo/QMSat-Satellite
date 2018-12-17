@@ -1,8 +1,11 @@
 /*
  * RunState.hpp
  *
- *  Created on: 2018-01-25
- *      Author: Guillaume
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief Run State Prototype
  */
 
 #ifndef INCLUDE_APPLICATION_RUNSTATE_HPP_
