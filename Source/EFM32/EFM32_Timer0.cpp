@@ -12,6 +12,11 @@ static unsigned int s_Period_Timer0_microsecond;
 static unsigned int s_IntMaxValue = 4294967000;
 
 /****************************************************/
+/**
+* \brief Object constructor for the Timer
+* \param[in] p_Period_microsecond : Period at which to timer counts
+* \return None
+*/
 EFM32_Timer0::EFM32_Timer0(unsigned int p_Period_microsecond)
 {
 	s_Period_Timer0_microsecond = p_Period_microsecond;
@@ -20,15 +25,29 @@ EFM32_Timer0::EFM32_Timer0(unsigned int p_Period_microsecond)
 	s_ElapsedTime_Timer0_microsecond = 0;
 }
 
+/****************************************************/
+/**
+* \brief Starts the timer
+* \return None
+*/
 void EFM32_Timer0::start() {
 	TIMER0->CMD = 0x1;
 }
 
+/****************************************************/
+/**
+* \brief  Stop the timer
+* \return None
+*/
 void EFM32_Timer0::stop() {
 	TIMER0->CMD = 0x2;
 }
 
 /****************************************************/
+/**
+* \brief  Get the actual time on the counter
+* \return Reference time
+*/
 unsigned int EFM32_Timer0::getReferenceTime_microsecond()
 {
 	m_ReferenceTime_microsecond = s_ElapsedTime_Timer0_microsecond;
@@ -36,6 +55,11 @@ unsigned int EFM32_Timer0::getReferenceTime_microsecond()
 }
 
 /****************************************************/
+/**
+* \brief Use the reference time the count the time passed since the reference time
+* \param[in] p_ReferenceTime_microsecond :  The time at which the timer as start to count
+* \return Time passed
+*/
 unsigned int EFM32_Timer0::getElapsedTime_microsecond(unsigned int p_ReferenceTime_microsecond)
 {
 	if (p_ReferenceTime_microsecond > s_ElapsedTime_Timer0_microsecond)
@@ -46,7 +70,10 @@ unsigned int EFM32_Timer0::getElapsedTime_microsecond(unsigned int p_ReferenceTi
 }
 
 /****************************************************/
-/*interrupt d'incrémentation*/
+/**
+* \brief Interrupt Service Routine of the Timer0
+* \return None
+*/
 void TIMER0_IRQHandler(void)
 {
     TIMER0->IFC = 1; // Clear overflow flag
@@ -58,7 +85,10 @@ void TIMER0_IRQHandler(void)
 }
 
 /****************************************************/
-/*initialization*/
+/**
+* \brief Initiation of the Timer0 registers
+* \return None
+*/
 void initTimer0()
 {
 	TIMER0->IEN = 1;             // Enable Timer0 overflow interrupt

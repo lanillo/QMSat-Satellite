@@ -17,14 +17,13 @@ class InitState: public IState
 {
 public:
 	InitState();
-	InitState(ILED* p_LED0, ISerialComm* p_UartUI, AlimManager* p_AlimManager);
+	InitState(ISerialComm* p_UartUI, AlimManager* p_AlimManager);
 	~InitState() {};
 
 	short getStateId();
 
 private:
 	short m_stateId;
-	ILED* m_LED;
 	ISerialComm* m_UartUI;
 	AlimManager* m_AlimManager;
 

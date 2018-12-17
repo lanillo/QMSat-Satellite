@@ -13,6 +13,13 @@ callback callbackUSART1Rx;
 void* USART1Instance;
 
 /****************************************************/
+/**
+* \brief Object construtor for the USART communication with the UI
+* \param[in] p_Baudrate :  Baud rate of the signal
+* \param[in] p_StopBit  :  Select the number of stop bit
+* \param[in] p_Parity   :  Add or not the parity bit
+* \return None
+*/
 EFM32_USART1::EFM32_USART1(int p_Baudrate, bool p_StopBit, bool p_Parity)
 {
 	m_Baudrate = 4*((24000000/(16*p_Baudrate)) - 1);
@@ -40,6 +47,10 @@ EFM32_USART1::EFM32_USART1(int p_Baudrate, bool p_StopBit, bool p_Parity)
 }
 
 /****************************************************/
+/**
+* \brief Receive the next character from USART1
+* \return The next character or '\0' if RX is empty or not ready
+*/
 char EFM32_USART1::receiveSerial()
 {
 	if(USART1->STATUS & (1 << 7))  // if RX buffer contains valid data
@@ -50,18 +61,32 @@ char EFM32_USART1::receiveSerial()
 }
 
 /****************************************************/
+/**
+* \brief Get the value of the sending state
+* \return Sending state
+*/
 bool EFM32_USART1::isSending()
 {
 	return m_IsSending;
 }
 
 /****************************************************/
+/**
+* \brief Set the value of the sending state
+* \param[in] p_Sending :  Set this value to sending state
+* \return None
+*/
 void EFM32_USART1::setSending(bool p_Sending)
 {
 	m_IsSending = p_Sending;
 }
 
 /****************************************************/
+/**
+* \brief function used in the RX Interrupt
+* \param[in] p_USART1Instance :  The instance of the USART1 Object
+* \return None
+*/
 void EFM32_USART1::callbackForSerialReceive(void* p_USART1Instance)
 {
 	if (p_USART1Instance != null)
@@ -94,30 +119,52 @@ void EFM32_USART1::callbackForSerialReceive(void* p_USART1Instance)
 }
 
 /****************************************************/
+/**
+* \brief Used to keep the actual value from the UI switches
+* \param[in] p_SwitchState :  Contain the value from the UI to de/activate power to sub-system
+* \return None
+*/
 void EFM32_USART1::setSwitchForAlim(unsigned short p_SwitchState)
 {
 	m_SwitchState = p_SwitchState;
 }
 
 /****************************************************/
+/**
+* \brief Used to get the actual value from the UI switches
+* \return Actual value from the UI switches
+*/
 unsigned short EFM32_USART1::getSwitchForAlim()
 {
 	return m_SwitchState;
 }
 
 /****************************************************/
+/**
+* \brief To verify if the OBC as receive a new values from the UI switches
+* \return True if as received a new value for the switches from the UI
+*/
 bool EFM32_USART1::getSwitchState()
 {
 	return m_NewSwitchState;
 }
 
 /****************************************************/
+/**
+* \brief To set true if the OBC as receive a new values from the UI switches
+* \param[in] p_NewSwitchState :  1 when a value is received and 0 when it is stock
+* \return None
+*/
 void EFM32_USART1::setSwitchState(bool p_NewSwitchState)
 {
 	m_NewSwitchState = p_NewSwitchState;
 }
 
 /****************************************************/
+/**
+* \brief Interrupt Service Routine of the USART1 RX
+* \return None
+*/
 void USART1_RX_IRQHandler(void)
 {
 	callbackUSART1Rx(USART1Instance);
@@ -125,6 +172,12 @@ void USART1_RX_IRQHandler(void)
 }
 
 /****************************************************/
+/**
+* \brief Interrupt Service Routine of the USART1 TX
+* \param[in] p_TxBuffer 	:  Buffer pointing to the data buffer
+* \param[in] p_TxBufferSize :  Size of the data buffer to send
+* \return None
+*/
 void EFM32_USART1::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
 {
 	m_TxBufferSize = p_TxBufferSize;
@@ -143,6 +196,11 @@ void EFM32_USART1::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
 }
 
 /****************************************************/
+/**
+* \brief function used in the TX Interrupt
+* \param[in] p_USART1Instance :  The instance of the USART1 Object
+* \return None
+*/
 void EFM32_USART1::callbackForSerialTransmit(void* p_USART1Instance)
 {
 	if (p_USART1Instance != null)
@@ -170,6 +228,10 @@ void EFM32_USART1::callbackForSerialTransmit(void* p_USART1Instance)
 }
 
 /****************************************************/
+/**
+* \brief Interrupt Service Routine of the UART0 TX
+* \return None
+*/
 void USART1_TX_IRQHandler(void)
 {
 	callbackUSART1Tx(USART1Instance);
@@ -177,6 +239,10 @@ void USART1_TX_IRQHandler(void)
 }
 
 /****************************************************/
+/**
+* \brief Initiation of the USART1 registers
+* \return None
+*/
 void initUSART1()
 {
 	GPIO->P[3].MODEL = GPIO_P_MODEL_MODE1_INPUT | GPIO_P_MODEL_MODE0_PUSHPULL;  // Configure PD0 as digital output and PD1 as input
@@ -192,6 +258,10 @@ void initUSART1()
 }
 
 /****************************************************/
+/**
+* \brief Initialize the function and instance pointer used in the interrupt
+* \return None
+*/
 void callbackUSART1Init(callback p_callbackTx, callback p_callbackRx, void* p_USART1Instance)
 {
 	callbackUSART1Tx = p_callbackTx;

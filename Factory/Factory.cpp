@@ -65,7 +65,7 @@ void Factory::createStates()
 	createMCPTempSense();
 	if(m_StatesCreated == false)
 	{
-		m_InitState = InitState(&m_LED0, &m_UartUI,&m_AlimManager);
+		m_InitState = InitState(&m_UartUI,&m_AlimManager);
 		m_RunState = RunState(&m_UartUI, &m_UartAlim, &m_AlimManager, &m_MCPTempSense);
 		m_EconoState = EconoState(&m_UartUI, &m_AlimManager);
 

@@ -15,7 +15,7 @@ void* AlimManagerInstance;
 
 /****************************************************/
 /**
-* \brief Object construtor for the UART communication with the Alim uC
+* \brief Object constructor for the UART communication with the Alim uC
 * \param[in] p_Baudrate :  Baud rate of the signal
 * \param[in] p_StopBit  :  Select the number of stop bit
 * \param[in] p_Parity   :  Add or not the parity bit

@@ -8,7 +8,11 @@
 
 #include "StateManager.hpp"
 
-
+/****************************************************/
+/**
+* \brief By default Object constructor for the INIT State
+* \return None
+*/
 StateManager::StateManager()
 {
 	m_StatesIndex = 0;
@@ -18,6 +22,11 @@ StateManager::StateManager()
 }
 
 /****************************************************/
+/**
+* \brief Object constructor for the INIT State
+* \param[in] p_State 	:  The first state that will be executed
+* \return None
+*/
 StateManager::StateManager(IState* p_State)
 {
 	m_StatesIndex = 0;
@@ -28,6 +37,10 @@ StateManager::StateManager(IState* p_State)
 }
 
 /****************************************************/
+/**
+* \brief Execute the next state depending on the next ID given by the execution of the current state
+* \return None
+*/
 void StateManager::execute()
 {
 	if(m_CurrentStateId != m_NextStateId)
@@ -47,6 +60,10 @@ void StateManager::execute()
 }
 
 /****************************************************/
+/**
+* \brief  Add a state to the state machine (only the state added that way are accessible for the StateManager)
+* \return None
+*/
 void StateManager::addState(IState* p_State)
 {
 	m_States[m_StatesIndex] = p_State;
@@ -54,6 +71,10 @@ void StateManager::addState(IState* p_State)
 }
 
 /****************************************************/
+/**
+* \brief  Check the list of States to find the one with the Next state ID
+* \return Pointer to the next state to be executed
+*/
 IState* StateManager::getNextState()
 {
 	for(unsigned short index = 0; index < m_StatesIndex; index++)
