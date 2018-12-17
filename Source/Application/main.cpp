@@ -1,9 +1,12 @@
-/**
-* \ file	main.cpp
-* \ author	Guillaume Beaupré - 14 061 463
-* \ author	Luis Anillo - 14 086 865
-* \brief Ce fichier contient un jeu de BattleShip simple
-*/
+/*
+ * main.cpp
+ *
+ *  Created on: January 24, 2018
+ *   Authors: Luis Anillo
+ * 			      Guillaume BeauprÃ©
+ *
+ *   \brief main function
+ */
 
 //For CHIP_Init which must be called in main
 #include "em_chip.h"

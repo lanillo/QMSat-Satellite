@@ -1,8 +1,11 @@
 /*
  * EFM32_I2C.hpp
  *
- *  Created on: Oct 10, 2018
- *      Author: lfani
+ *  Created on: October 10, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief I2C Class Prototype
  */
 
 #ifndef INCLUDE_EFM32_EFM32_I2C_HPP_

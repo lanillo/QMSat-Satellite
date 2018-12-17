@@ -1,8 +1,11 @@
 /*
  * EconoState.hpp
  *
- *  Created on: 2018-10-22
- *      Author: Guillaume Beaupré
+ *  Created on: October 22, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief Economy State protype
  */
 
 #include "IState.hpp"

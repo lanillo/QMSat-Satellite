@@ -1,8 +1,12 @@
 /*
  * Constants.hpp
  *
- *  Created on: Feb 13, 2018
- *      Author: lfani
+ *  Created on: February 13, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief List of constants used through all code.
+ *
  */
 
 #ifndef FACTORY_CONSTANTS_HPP_

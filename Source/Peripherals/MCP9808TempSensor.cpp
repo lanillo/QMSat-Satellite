@@ -1,13 +1,22 @@
 /*
- * MCP9808.cpp
+ * MCP9808TempSensor.cpp
  *
- *  Created on: 2018-10-31
- *      Author: Luis Anillo
+ *  Created on: October 31, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief MCP9808TempSensor Class Definition
  */
 
 #include "MCP9808TempSensor.hpp"
 
 /****************************************************/
+/**
+* \brief Construct MCP9808 temperature sensor object
+*  \param[in] p_I2C : 	I2C pointer
+*  \param[in] address : Temperature sensor address (0x????????)
+* \return MCP9808 object
+*/
 MCP9808TempSensor::MCP9808TempSensor(EFM32_I2C* p_I2C, uint8_t address)
 {
 	m_Temp = 0;
@@ -16,6 +25,10 @@ MCP9808TempSensor::MCP9808TempSensor(EFM32_I2C* p_I2C, uint8_t address)
 }
 
 /****************************************************/
+/**
+* \brief Get temperature value from temperature sensor connected with the I2C
+* \return Temperature value
+*/
 float MCP9808TempSensor::getTemp()
 {
 	m_I2C->sendI2CCommand(m_Address, MCP9808_REG_AMBIENT_TEMP, 1, 2, I2C_FLAG_WRITE_READ);
@@ -33,9 +46,12 @@ float MCP9808TempSensor::getTemp()
 }
 
 /****************************************************/
+/**
+* \brief Transform float temperature into char* for UART communication
+* \return None
+*/
 char* MCP9808TempSensor::tempToString()
 {
-
 	char fstr[7];
 	fstr[0] = 'T';
 	float num = m_Temp;

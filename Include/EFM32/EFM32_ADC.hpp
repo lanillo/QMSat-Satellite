@@ -1,8 +1,11 @@
 /*
  * EFM32_ADC.hpp
  *
- *  Created on: Nov 13, 2018
- *      Author: lfani
+ *  Created on: November 13, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief ADC Class Prototype
  */
 
 #ifndef INCLUDE_EFM32_EFM32_ADC_HPP_

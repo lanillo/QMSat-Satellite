@@ -1,14 +1,21 @@
 /*
  * EFM32_PWM.cpp
  *
- *  Created on: Oct 7, 2018
- *      Author: lfani
+ *  Created on: October 7, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief PWM Class Definition
  */
 
 #include "EFM32_PWM.hpp"
 
-
 /****************************************************/
+/**
+* \brief Create PWM object
+*  \param[in] p_dutyCycle : Duty Cycle of the PWM
+* \return None
+*/
 EFM32_PWM::EFM32_PWM(int p_dutyCycle)
 :
 	m_dutyCycle(p_dutyCycle)
@@ -38,6 +45,12 @@ EFM32_PWM::EFM32_PWM(int p_dutyCycle)
 }
 
 /****************************************************/
+/**
+ * \brief Set new duty cycle for the PWM object with the TIMER_TOP limits
+ *  \param[in] p_dutyCycle : New duty cycle value of the PWM
+ * \return 	true if successful,
+ * 			false if it failed (check limits)
+ */
 bool EFM32_PWM::setDutyCycle(int p_dutyCycle)
 {
 	if (m_dutyCycle > TIMER_TOP || m_dutyCycle < 0)
@@ -52,6 +65,12 @@ bool EFM32_PWM::setDutyCycle(int p_dutyCycle)
 }
 
 /****************************************************/
+/**
+* \brief Reduce duty cycle
+*  \param[in] p_factor : Step to reduce the PWM duty cycle
+* \return 	true if successful,
+* 			false if it failed (check limits)
+*/
 bool EFM32_PWM::reduceDutyCycleBy(int p_factor)
 {
 	if (m_dutyCycle - p_factor < 0)
@@ -66,6 +85,12 @@ bool EFM32_PWM::reduceDutyCycleBy(int p_factor)
 }
 
 /****************************************************/
+/**
+* \brief Augment duty cycle
+*  \param[in] p_factor : Step to augment the PWM duty cycle
+* \return 	true if successful,
+* 			false if it failed (check limits)
+*/
 bool EFM32_PWM::augmentDutyCycleBy(int p_factor)
 {
 	if (m_dutyCycle + p_factor > TIMER_TOP)
@@ -80,12 +105,20 @@ bool EFM32_PWM::augmentDutyCycleBy(int p_factor)
 }
 
 /****************************************************/
+/**
+* \brief Get duty cycle
+* \return PWM object duty cycle
+*/
 int EFM32_PWM::getDutyCycle()
 {
 	return m_dutyCycle;
 }
 
 /****************************************************/
+/**
+* \brief Sets the LED on and off by TIMER_STEP each cycle.
+* \return PWM object duty cycle
+*/
 void EFM32_PWM::onAndOffLED()
 {
 
@@ -106,5 +139,4 @@ void EFM32_PWM::onAndOffLED()
 		s_goingUp = true;
 	}
 }
-
 

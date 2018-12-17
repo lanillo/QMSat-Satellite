@@ -1,8 +1,11 @@
 /*
  * EFM32_USART1.cpp
  *
- *  Created on: 2018-02-18
- *      Author: Guillaume
+ *  Created on: February 18, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief USART1 Class Definition
  */
 
 #include "EFM32_USART1.hpp"

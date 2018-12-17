@@ -1,3 +1,13 @@
+/*
+ * RunState.cpp
+ *
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief InitState Class Definition
+ */
+
 #include "InitState.hpp"
 #include "efm32gg990f1024.h"
 

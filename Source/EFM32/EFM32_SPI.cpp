@@ -1,8 +1,11 @@
 /*
  * EFM32_SPI.cpp
  *
- *  Created on: 2018-09-10
- *      Author: Guillaume
+ *  Created on: September 10, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief SPI Class Definition
  */
 
 #include "EFM32_SPI.hpp"

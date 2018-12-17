@@ -1,8 +1,11 @@
 /*
  * EFM32_USART1.hpp
  *
- *  Created on: 2018-02-18
- *      Author: Guillaume
+ *  Created on: February 18, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief USART1 Class Prototype
  */
 
 #ifndef INCLUDE_EFM32_EFM32_USART1_HPP_

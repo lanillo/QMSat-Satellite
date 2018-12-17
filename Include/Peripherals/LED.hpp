@@ -1,8 +1,11 @@
 /*
  * LED.hpp
  *
- *  Created on: 2018-01-25
- *      Author: Guillaume
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief LED Class Prototype
  */
 
 #ifndef INCLUDE_EF32GG_LED_HPP_

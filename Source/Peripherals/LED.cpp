@@ -1,13 +1,21 @@
 /*
  * LED.cpp
  *
- *  Created on: 2018-01-25
- *      Author: guillaume
+ *  Created on: January 25, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief LED Class Definition
  */
 
 #include "LED.hpp"
 
 /****************************************************/
+/**
+* \brief Create a LED object with a GPIO
+*  \param[in] p_GPIO : GPIO pin pointer
+* \return None
+*/
 LED::LED(IGPIO* p_GPIO)
 {
 	m_GPIO = p_GPIO;
@@ -15,6 +23,10 @@ LED::LED(IGPIO* p_GPIO)
 }
 
 /****************************************************/
+/**
+* \brief Turn off LED
+* \return None
+*/
 void LED::turnOFF()
 {
 	m_GPIO->setOutputLow();
@@ -22,6 +34,10 @@ void LED::turnOFF()
 }
 
 /****************************************************/
+/**
+* \brief Turn on LED
+* \return None
+*/
 void LED::turnON()
 {
 	m_GPIO->setOutputHigh();
@@ -29,6 +45,10 @@ void LED::turnON()
 }
 
 /****************************************************/
+/**
+* \brief Toggle LED
+* \return None
+*/
 void LED::toggle()
 {
     m_GPIO->toggleOutput();
@@ -36,6 +56,10 @@ void LED::toggle()
 }
 
 /****************************************************/
+/**
+* \brief Get LED Status
+* \return None
+*/
 bool LED::getState()
 {
     return m_State;

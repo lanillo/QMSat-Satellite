@@ -1,8 +1,11 @@
 /*
  * EFM32_ADC.cpp
  *
- *  Created on: Nov 13, 2018
- *      Author: lfani
+ *  Created on: November 13, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief ADC Class Definition
  */
 
 #include "EFM32_ADC.hpp"

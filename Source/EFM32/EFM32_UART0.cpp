@@ -1,8 +1,11 @@
 /*
  * EFM32_UART0.cpp
  *
- *  Created on: 2018-11-13
- *      Author: Guillaume Beaupré
+ *  Created on: November 13, 2018
+ *   Authors: Luis Anillo
+ * 			  Guillaume Beaupré.
+ *
+ *   \brief UART0 Class Definition
  */
 
 #include <EFM32_UART0.hpp>
