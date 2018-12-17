@@ -3,7 +3,7 @@
  *
  *  Created on: January 24, 2018
  *   Authors: Luis Anillo
- * 			  Guillaume Beaupré.
+ * 			      Guillaume BeauprÃ©
  *
  *   \brief main function
  */
@@ -30,11 +30,9 @@ int main(void)
 	/* Initializations */
 	factory.initEFM32Functionnality();
 
-	stateManager->execute();
-
 	/* Start the timer and take the first reference time */
-	timer0->start();
 	static unsigned int referenceTime_microsecond;
+	timer0->start();
 	referenceTime_microsecond = timer0->getReferenceTime_microsecond();
 
 	/* Main program loop */
@@ -42,8 +40,8 @@ int main(void)
 	{
 		if (timer0->getElapsedTime_microsecond(referenceTime_microsecond) >= TIME_1_SECOND)
 		{
-			stateManager->execute();
-			referenceTime_microsecond = timer0->getReferenceTime_microsecond();
+			stateManager->execute(); //Principal execution of the code
+			referenceTime_microsecond = timer0->getReferenceTime_microsecond(); // restart the time counter for the execution loop
 		}
 	}
 

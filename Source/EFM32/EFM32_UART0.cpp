@@ -17,6 +17,13 @@ void* UART0Instance;
 void* AlimManagerInstance;
 
 /****************************************************/
+/**
+* \brief Object constructor for the UART communication with the Alim uC
+* \param[in] p_Baudrate :  Baud rate of the signal
+* \param[in] p_StopBit  :  Select the number of stop bit
+* \param[in] p_Parity   :  Add or not the parity bit
+* \return None
+*/
 EFM32_UART0::EFM32_UART0(int p_Baudrate, bool p_StopBit, bool p_Parity)
 {
 
@@ -44,6 +51,10 @@ EFM32_UART0::EFM32_UART0(int p_Baudrate, bool p_StopBit, bool p_Parity)
 }
 
 /****************************************************/
+/**
+* \brief Receive the next character from UART0
+* \return The next character or '\0' if RX is empty or not ready
+*/
 char EFM32_UART0::receiveSerial()
 {
 	if(UART0->STATUS & (1 << 7))  // if RX buffer contains valid data
@@ -54,18 +65,31 @@ char EFM32_UART0::receiveSerial()
 }
 
 /****************************************************/
+/**
+* \brief Get the value of the sending state
+* \return Sending state
+*/
 bool EFM32_UART0::isSending()
 {
 	return m_IsSending;
 }
 
 /****************************************************/
+/**
+* \brief Set the value of the sending state
+* \param[in] p_Sending :  Set this value to sending state
+* \return None
+*/
 void EFM32_UART0::setSending(bool p_Sending)
 {
 	m_IsSending = p_Sending;
 }
 
 /****************************************************/
+/**
+* \brief Interrupt Service Routine of the UART0 RX
+* \return None
+*/
 void UART0_RX_IRQHandler(void)
 {
 	callbackUART0Rx(UART0Instance, AlimManagerInstance);
@@ -73,6 +97,12 @@ void UART0_RX_IRQHandler(void)
 }
 
 /****************************************************/
+/**
+* \brief Interrupt Service Routine of the UART0 TX
+* \param[in] p_TxBuffer 	:  Buffer pointing to the data buffer
+* \param[in] p_TxBufferSize :  Size of the data buffer to send
+* \return None
+*/
 void EFM32_UART0::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
 {
 	m_TxBufferSize = p_TxBufferSize;
@@ -91,6 +121,11 @@ void EFM32_UART0::sendSerial(char* p_TxBuffer, unsigned short p_TxBufferSize)
 }
 
 /****************************************************/
+/**
+* \brief function used in the TX Interrupt
+* \param[in] p_UART0Instance :  The instance of the UART0 Object
+* \return None
+*/
 void EFM32_UART0::callbackForSerialTransmit(void* p_UART0Instance)
 {
 	if (p_UART0Instance != null)
@@ -118,6 +153,10 @@ void EFM32_UART0::callbackForSerialTransmit(void* p_UART0Instance)
 }
 
 /****************************************************/
+/**
+* \brief Interrupt Service Routine of the UART0 TX
+* \return None
+*/
 void UART0_TX_IRQHandler(void)
 {
 	callbackUART0Tx(UART0Instance);
@@ -125,6 +164,10 @@ void UART0_TX_IRQHandler(void)
 }
 
 /****************************************************/
+/**
+* \brief Initiation of the UART0 registers
+* \return None
+*/
 void initUART0()
 {
 	GPIO->P[4].MODEL = GPIO_P_MODEL_MODE1_INPUT | GPIO_P_MODEL_MODE0_PUSHPULL;  // Configure PE0 as digital output and PE1 as input
@@ -140,6 +183,10 @@ void initUART0()
 }
 
 /****************************************************/
+/**
+* \brief Initialize the function and instance pointer used in the interrupt
+* \return None
+*/
 void callbackUART0Init(callback p_callbackTx, callback2 p_callbackRx, void* p_USAT0Instance, void* p_AlimManagerInstance)
 {
 	callbackUART0Tx = p_callbackTx;

@@ -3,7 +3,7 @@
  *
  *  Created on: January 24, 2018
  *   Authors: Luis Anillo
- * 			  Guillaume Beaupré.
+ * 			  Guillaume BeauprÃ©.
  *
  *   \brief Creates all objects necessary for the execution of the code
  */
@@ -11,6 +11,10 @@
 #include "Factory.hpp"
 
 /****************************************************/
+/**
+* \brief Initialise the created state of each object and start-up the different clocks
+* \return None
+*/
 Factory::Factory()
 {
 	m_StateManagerCreated = false;
@@ -32,6 +36,10 @@ Factory::Factory()
 }
 
 /****************************************************/
+/**
+* \brief Creates the StateManager object and add the states to it
+* \return StateManager Object pointer
+*/
 StateManager* Factory::createStateManager()
 {
 	createStates();
@@ -47,6 +55,10 @@ StateManager* Factory::createStateManager()
 }
 
 /****************************************************/
+/**
+* \brief Creates the different state to be use in the StateManager
+* \return None
+*/
 void Factory::createStates()
 {
 	createUSART1();
@@ -56,7 +68,7 @@ void Factory::createStates()
 	createMCPTempSense();
 	if(m_StatesCreated == false)
 	{
-		m_InitState = InitState(&m_LED0, &m_UartUI,&m_AlimManager);
+		m_InitState = InitState(&m_UartUI,&m_AlimManager);
 		m_RunState = RunState(&m_UartUI, &m_UartAlim, &m_AlimManager, &m_MCPTempSense);
 		m_EconoState = EconoState(&m_UartUI, &m_AlimManager);
 
@@ -65,6 +77,10 @@ void Factory::createStates()
 }
 
 /****************************************************/
+/**
+* \brief Creates the AlimManager object
+* \return None
+*/
 void Factory::createAlimManager()
 {
 	if(m_AlimManagerCreated == false)
@@ -76,6 +92,10 @@ void Factory::createAlimManager()
 }
 
 /****************************************************/
+/**
+* \brief This function is useless at the moment
+* \return None
+*/
 void Factory::createLED()
 {
   if(m_LED0Created == false)
@@ -85,6 +105,10 @@ void Factory::createLED()
 }
 
 /****************************************************/
+/**
+* \brief Creates the different GPIO objects
+* \return None
+*/
 void Factory::createGPIO()
 {
 	if(m_GPIOCreated == false)
@@ -101,17 +125,26 @@ void Factory::createGPIO()
 }
 
 /****************************************************/
+/**
+* \brief Creates USART object used for the communication with the UI
+* \return None
+*/
 void Factory::createUSART1()
 {
 	if(m_USART1Created == false)
 	{
 		m_UartUI = EFM32_USART1(9600, _USART_FRAME_STOPBITS_ONE, _USART_FRAME_PARITY_NONE);
 		callbackUSART1Init(&EFM32_USART1::callbackForSerialTransmit, &EFM32_USART1::callbackForSerialReceive, (void*)&m_UartUI);
+
 		m_USART1Created = true;
 	}
 }
 
 /****************************************************/
+/**
+* \brief Creates UART object used for the communication with the Alim uC
+* \return None
+*/
 void Factory::createUART0()
 {
 	createAlimManager();
@@ -119,11 +152,16 @@ void Factory::createUART0()
 	{
 		m_UartAlim = EFM32_UART0(9600, _USART_FRAME_STOPBITS_ONE, _USART_FRAME_PARITY_NONE);
 		callbackUART0Init(&EFM32_UART0::callbackForSerialTransmit, &AlimManager::callbackForSerialReceive, (void*)&m_UartAlim, (void*)&m_AlimManager);
+
 		m_UART0Created = true;
 	}
 }
 
 /****************************************************/
+/**
+* \brief Creates SPI object used for the communication with the Magnetometer
+* \return None
+*/
 void Factory::createSPI()
 {
 	if(m_SPICreated == false)
@@ -133,6 +171,10 @@ void Factory::createSPI()
 }
 
 /****************************************************/
+/**
+* \brief Creates Timer object used for the loop of the 	StateManager execution
+* \return None
+*/
 EFM32_Timer0* Factory::createTimer0()
 {
 	if(m_Timer0Created == false)
@@ -144,7 +186,11 @@ EFM32_Timer0* Factory::createTimer0()
 }
 
 /****************************************************/
-EFM32_I2C* Factory::createI2C()
+/**
+* \brief Creates I2C object used for several peripherals
+* \return None
+*/
+void Factory::createI2C()
 {
 	if(m_I2CCreated == false)
 	{
@@ -159,11 +205,13 @@ EFM32_I2C* Factory::createI2C()
 
 		m_I2CCreated = true;
 	}
-
-	return &m_I2C;
 }
 
 /****************************************************/
+/**
+* \brief Creates PWM object
+* \return None
+*/
 void Factory::createPWM()
 {
 	if(m_PWMCreated == false)
@@ -174,7 +222,11 @@ void Factory::createPWM()
 }
 
 /****************************************************/
-MCP9808TempSensor* Factory::createMCPTempSense()
+/**
+* \brief Creates the different Temperature Sensors objects
+* \return None
+*/
+void Factory::createMCPTempSense()
 {
 	createI2C();
 
@@ -183,11 +235,13 @@ MCP9808TempSensor* Factory::createMCPTempSense()
 		m_MCPTempSense = MCP9808TempSensor(&m_I2C ,TEMP_SENSOR_ADDRESS);
 		m_MCPTempSenseCreated = true;
 	}
-
-	return &m_MCPTempSense;
 }
 
 /****************************************************/
+/**
+* \brief start all the initialization of the EFM32 functionalities
+* \return None
+*/
 void Factory::initEFM32Functionnality()
 {
 	initTimer0();
@@ -198,6 +252,10 @@ void Factory::initEFM32Functionnality()
 }
 
 /****************************************************/
+/**
+* \brief Initialize the clocks of the uC functionalities
+* \return None
+*/
 void Factory::clockInit()
 {
 	// Setup Clock Tree
