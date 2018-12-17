@@ -1,0 +1,1 @@
+"./Source/Application/main.obj" "./Source/MSP430/MSP430_ADC.obj" "./Source/MSP430/MSP430_GPIO.obj" "./Source/MSP430/MSP430_UART.obj" "../lnk_msp430f2274.cmd" -llibc.a 
